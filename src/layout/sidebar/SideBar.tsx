@@ -1,11 +1,11 @@
 import React from "react"
 import {S} from "./Sidebar_Styles"
-import {SidebarMenu} from "./SidebarMenu"
+import {Menu} from "./menu/Menu"
 
 export const SideBar: React.FC = () => {
     return (
         <S.Sidebar>
-            <SidebarMenu/>
+            <Menu/>
         </S.Sidebar>
     )
 }

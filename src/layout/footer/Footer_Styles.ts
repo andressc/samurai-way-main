@@ -12,7 +12,6 @@ const Footer = styled.footer`
   ${font({fMax: 13, fMin: 12, color: theme.colors.tripleFont})}
 `
 
-
 export const S = {
     Footer,
 }

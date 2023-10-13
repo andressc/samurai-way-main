@@ -1,5 +1,5 @@
 import React from "react"
-import {S} from "../Content_Styles"
+import { S } from "./Comments_Styles"
 
 type CommentPropType = {
     img: string

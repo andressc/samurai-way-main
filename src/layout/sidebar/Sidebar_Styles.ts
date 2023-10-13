@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import {theme} from "../../../styles/Theme"
-import {font} from "../../../styles/Common"
+import {theme} from "../../styles/Theme"
+import {font} from "../../styles/Common"
 
 const Sidebar = styled.nav`
   height: 100%;

@@ -1,5 +1,5 @@
 import React from "react"
-import {S} from "../Content_Styles"
+import { S } from "./Comments_Styles"
 import {Comment} from "./Comment"
 
 export const Comments: React.FC = () => {

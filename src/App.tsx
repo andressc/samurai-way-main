@@ -1,12 +1,19 @@
 import React from "react"
-import "./App.css"
+import {Header} from "./layout/header/Header"
+import {Content} from "./layout/sections/content/Content"
+import {Footer} from "./layout/footer/Footer"
+import {SideBar} from "./layout/sections/sidebar/SideBar"
+import {AppWrapper} from "./components/AppWrapper"
 
 function App() {
 
     return (
-        <div className="App">
-            'Hello, samurai! Let's go!'
-        </div>
+        <AppWrapper>
+            <Header/>
+            <SideBar/>
+            <Content/>
+            <Footer/>
+        </AppWrapper>
     )
 }
 

@@ -1,16 +1,16 @@
 import React from "react"
-import { S } from "./Comments_Styles"
+import { S } from "./Posts_Styles"
 
 type CommentPropType = {
     img: string
     comment: string
 }
 
-export const Comment: React.FC<CommentPropType> = (props) => {
+export const Post: React.FC<CommentPropType> = (props) => {
     return (
-        <S.Comment>
+        <S.Post>
             <img src={props.img} alt=""/>
             <p>{props.comment}</p>
-        </S.Comment>
+        </S.Post>
     )
 }

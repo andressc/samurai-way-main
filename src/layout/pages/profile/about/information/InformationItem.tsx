@@ -7,6 +7,8 @@ type InformationItemPropsType = {
 }
 export const InformationItem: React.FC<InformationItemPropsType> = (props) => {
     return (
-        <S.InformationItem>{props.title}: {props.description}</S.InformationItem>
+        <S.InformationItem>
+            <span>{props.title}:</span> {props.description}
+        </S.InformationItem>
     )
 }

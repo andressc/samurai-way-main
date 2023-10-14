@@ -1,13 +1,13 @@
 import styled from "styled-components"
-import {theme} from "../../../../styles/Theme"
+import {theme} from "../../../../../styles/Theme"
 
-const Post = styled.div`
+const PostForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 15px;
 `
 
-const FieldPost = styled.input`
+const PostFormField = styled.input`
   width: 100%;
   background-color: ${theme.colors.secondaryBg};
   border: 0;
@@ -31,6 +31,6 @@ const FieldPost = styled.input`
 `
 
 export const S = {
-    Post,
-    FieldPost,
+    PostForm,
+    PostFormField,
 }

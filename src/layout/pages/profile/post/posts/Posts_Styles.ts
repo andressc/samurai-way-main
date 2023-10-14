@@ -1,19 +1,25 @@
-import {theme} from "../../../../styles/Theme"
+import {theme} from "../../../../../styles/Theme"
 import styled from "styled-components"
 
-const Comments = styled.div`
+const Posts = styled.div`
   display: flex;
   flex-direction: column;
   gap:20px;
   margin-top: 20px;
 `
 
-const Comment = styled.div`
+const Post = styled.div`
   display: flex;
   gap: 30px;
   background-color: ${theme.colors.tripleBg};
   color: ${theme.colors.tripleFont};
   padding: 15px;
+  transition: .3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${theme.colors.quaternaryBg};
+  }
   
   img {
     width: 50px;
@@ -23,6 +29,6 @@ const Comment = styled.div`
 `
 
 export const S = {
-    Comments,
-    Comment
+    Posts,
+    Post
 }

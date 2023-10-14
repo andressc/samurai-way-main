@@ -24,7 +24,7 @@ export const Button = styled.button`
 const ButtonTitle = styled.span<ButtonPropsType>`
   position: relative;
   padding-left: 30px;
-  margin: 25px;
+  margin: 15px;
   text-transform: capitalize;
   
   &:before {

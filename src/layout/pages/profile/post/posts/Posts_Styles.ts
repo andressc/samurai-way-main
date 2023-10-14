@@ -4,23 +4,24 @@ import styled from "styled-components"
 const Posts = styled.div`
   display: flex;
   flex-direction: column;
-  gap:20px;
+  gap: 15px;
   margin-top: 20px;
 `
 
 const Post = styled.div`
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+  gap: 15px;
   background-color: ${theme.colors.tripleBg};
   color: ${theme.colors.tripleFont};
   padding: 15px;
   transition: .3s;
   cursor: pointer;
 
-  &:hover {
+  /*&:hover {
     background-color: ${theme.colors.quaternaryBg};
-  }
-  
+  }*/
+
   img {
     width: 50px;
     height: 50px;
@@ -30,5 +31,5 @@ const Post = styled.div`
 
 export const S = {
     Posts,
-    Post
+    Post,
 }

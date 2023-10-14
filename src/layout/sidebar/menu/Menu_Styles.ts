@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import {theme} from "../../../styles/Theme"
-import {font} from "../../../styles/Common"
 
 type MenuItemIcon = {
     icon: string
@@ -15,7 +14,7 @@ const Menu = styled.ul`
 
 const MenuItem = styled.li<MenuItemIcon>`
   position: relative;
-  padding-left: 25px;
+  padding-left: 30px;
   
   &:before {
     content: "";
@@ -26,12 +25,14 @@ const MenuItem = styled.li<MenuItemIcon>`
     display: inline-block;
     position: absolute;
     left: 0;
+    top: 2px;
     fill: red
   }
 `
 
 const MenuLink = styled.a`
-  ${font({fMax: 17, fMin: 12, color: theme.colors.tripleFont})}
+  font-size: 17px;
+  color: ${theme.colors.tripleFont}
 `
 
 

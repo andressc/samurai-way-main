@@ -1,8 +1,13 @@
 import styled from "styled-components"
 import {theme} from "../../../styles/Theme"
+import {NavLink} from "react-router-dom"
 
 type MenuItemIcon = {
     icon: string
+}
+
+type MenuLinkPropsType = {
+    activeClassName: string
 }
 
 const Menu = styled.ul`
@@ -30,11 +35,19 @@ const MenuItem = styled.li<MenuItemIcon>`
   }
 `
 
-const MenuLink = styled.a`
+const MenuLink = styled(NavLink)<MenuLinkPropsType>`
   font-size: 17px;
-  color: ${theme.colors.tripleFont}
-`
+  color: ${theme.colors.tripleFont};
+  transition: .3s;
 
+  &.${props => props.activeClassName} {
+    color: #a6a6a6;
+  }
+  
+  &:hover {
+    color: #a6a6a6;
+  }
+`
 
 export const S = {
     Menu,

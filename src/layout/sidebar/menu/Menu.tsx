@@ -11,11 +11,11 @@ import {MenuItem} from "./MenuItem"
 export const Menu: React.FC = () => {
     return (
         <S.Menu>
-            <MenuItem link="#" title="Profile" icon={profileIcon}/>
-            <MenuItem link="#" title="Messages" icon={messageIcon}/>
-            <MenuItem link="#" title="News" icon={newsIcon}/>
-            <MenuItem link="#" title="Music" icon={musicIcon}/>
-            <MenuItem link="#" title="Settings" icon={settingsIcon}/>
+            <MenuItem link="/profile" title="Profile" icon={profileIcon}/>
+            <MenuItem link="/messages" title="Messages" icon={messageIcon}/>
+            <MenuItem link="/news" title="News" icon={newsIcon}/>
+            <MenuItem link="/music" title="Music" icon={musicIcon}/>
+            <MenuItem link="/settings" title="Settings" icon={settingsIcon}/>
         </S.Menu>
     )
 }

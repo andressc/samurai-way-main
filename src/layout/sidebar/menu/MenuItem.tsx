@@ -9,7 +9,7 @@ type SidebarMenuItemPropsType = {
 export const MenuItem: React.FC<SidebarMenuItemPropsType> = (props) => {
     return (
         <S.MenuItem icon={props.icon}>
-            <S.MenuLink href={props.link}>{props.title}</S.MenuLink>
+            <S.MenuLink to={props.link} activeClassName={"activeClassName"}>{props.title}</S.MenuLink>
         </S.MenuItem>
     )
 }

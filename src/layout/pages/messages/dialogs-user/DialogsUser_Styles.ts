@@ -1,12 +1,12 @@
 import styled from "styled-components"
 
-const Posts = styled.div`
+const DialogsUser = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-top: 20px;
+  flex: 1;
 `
 
 export const S = {
-    Posts,
+    DialogsUser
 }

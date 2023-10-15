@@ -1,10 +1,11 @@
 import React from "react"
-import {S} from "./Posts_Styles"
-import {FlexWrapper} from "../../../../../components/FlexWrapper"
 import messageIcon from "../../../../../assets/icons/message.svg"
 import heartIcon from "../../../../../assets/icons/heart.svg"
 import shareIcon from "../../../../../assets/icons/share.svg"
-import {Button} from "../../../../../components/button/Button"
+import {Button} from "../../../../../components/Button/Button"
+import {SimpleCell} from "../../../../../components/SimpleCell/SimpleCell"
+import {ButtonBar} from "../../../../../components/ButtonBar/ButtonBar"
+import {Group} from "../../../../../components/Group"
 
 type CommentPropType = {
     img: string
@@ -15,20 +16,14 @@ type CommentPropType = {
 
 export const Post: React.FC<CommentPropType> = (props) => {
     return (
-        <S.Post>
-            <FlexWrapper gap={15}>
-                <img src={props.img} alt=""/>
-                <FlexWrapper flexDirection="column">
-                    <h4>{props.userName}</h4>
-                    <span>{props.date}</span>
-                </FlexWrapper>
-            </FlexWrapper>
+        <Group>
+            <SimpleCell image={props.img} title={props.userName} subtitle={props.date}/>
             <p>{props.comment}</p>
-            <FlexWrapper justifyContent="flex-end" gap={15}>
+            <ButtonBar>
                 <Button icon={heartIcon} title="34"/>
                 <Button icon={messageIcon} title="answer"/>
                 <Button icon={shareIcon} title="share"/>
-            </FlexWrapper>
-        </S.Post>
+            </ButtonBar>
+        </Group>
     )
 }

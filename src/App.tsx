@@ -1,10 +1,9 @@
 import React from "react"
 import {Header} from "./layout/header/Header"
-import {Profile} from "./layout/pages/profile/Profile"
 import {Footer} from "./layout/footer/Footer"
 import {SideBar} from "./layout/sidebar/SideBar"
 import {AppWrapper} from "./components/AppWrapper"
-import {ContentWrapper} from "./components/ContentWrapper"
+import {Content} from "./layout/content/Content"
 
 function App() {
 
@@ -12,9 +11,7 @@ function App() {
         <AppWrapper>
             <Header/>
             <SideBar/>
-            <ContentWrapper>
-                <Profile/>
-            </ContentWrapper>
+            <Content/>
             <Footer/>
         </AppWrapper>
     )

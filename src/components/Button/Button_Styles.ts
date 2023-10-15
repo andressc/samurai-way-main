@@ -36,7 +36,6 @@ const ButtonTitle = styled.span<ButtonPropsType>`
     display: inline-block;
     position: absolute;
     left: 0;
-    fill: red
   }
 `
 

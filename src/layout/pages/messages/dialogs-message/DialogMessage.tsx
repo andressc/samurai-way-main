@@ -10,12 +10,12 @@ type DialogMessagePropType = {
     date: string
     align?: boolean
 }
-export const DialogMessage: React.FC<DialogMessagePropType> = (props) => {
+export const DialogMessage: React.FC<DialogMessagePropType> = ({img, comment, userName, date, align}) => {
     return (
-        <FlexWrapper justify={props.align ? "flex-end" : "flex-start"}>
+        <FlexWrapper justify={align ? "flex-end" : "flex-start"}>
             <ContentBlock size={70}>
-                <SimpleCell image={props.img} title={props.userName} subtitle={props.date}/>
-                <p>{props.comment}</p>
+                <SimpleCell image={img} title={userName} subtitle={date}/>
+                <p>{comment}</p>
             </ContentBlock>
         </FlexWrapper>
     )

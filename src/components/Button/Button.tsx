@@ -5,10 +5,10 @@ type ButtonPropsType = {
     icon: string
     title: string | number
 }
-export const Button: React.FC<ButtonPropsType> = (props) => {
+export const Button: React.FC<ButtonPropsType> = ({icon, title}) => {
     return (
         <S.Button>
-            <S.ButtonTitle icon={props.icon}>{props.title}</S.ButtonTitle>
+            <S.ButtonTitle icon={icon}>{title}</S.ButtonTitle>
         </S.Button>
     )
 }

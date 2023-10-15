@@ -9,11 +9,11 @@ type DialogUserPropType = {
     userId: number
     active?: boolean
 }
-export const DialogUser: React.FC<DialogUserPropType> = (props) => {
+export const DialogUser: React.FC<DialogUserPropType> = ({img, userName, userId, active}) => {
     return (
-        <NavLink to={`/messages/${props.userId}`}>
-            <ContentBlock hover={true} active={props.active}>
-                <SimpleCell image={props.img} title={props.userName}/>
+        <NavLink to={`/messages/${userId}`}>
+            <ContentBlock hover={true} active={active}>
+                <SimpleCell image={img} title={userName}/>
             </ContentBlock>
         </NavLink>
     )

@@ -4,7 +4,7 @@ import {Profile} from "../pages/profile/Profile"
 import {Route} from "react-router-dom"
 import {Messages} from "../pages/messages/Messages"
 import {News} from "../pages/news/News"
-import {Music} from "../pages/Music/Music"
+import {Music} from "../pages/music/Music"
 import {Settings} from "../pages/settings/Settings"
 
 export const Content: React.FC = () => {

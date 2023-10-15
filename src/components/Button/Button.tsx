@@ -3,7 +3,7 @@ import React from "react"
 
 type ButtonPropsType = {
     icon: string
-    title: string
+    title: string | number
 }
 export const Button: React.FC<ButtonPropsType> = (props) => {
     return (

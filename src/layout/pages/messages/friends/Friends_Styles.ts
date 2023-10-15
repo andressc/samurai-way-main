@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const DialogsUser = styled.div`
+const Friends = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -8,5 +8,5 @@ const DialogsUser = styled.div`
 `
 
 export const S = {
-    DialogsUser
+    Friends,
 }

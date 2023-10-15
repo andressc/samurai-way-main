@@ -1,6 +1,6 @@
 import React from "react"
-import {Avatar} from "../Avatar"
-import {FlexWrapper} from "../FlexWrapper"
+import {Avatar} from "../Avatar/Avatar"
+import {FlexWrapper} from "../Wrapper/FlexWrapper"
 
 type SimpleCellPropsType = {
     image: string

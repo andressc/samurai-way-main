@@ -1,4 +1,4 @@
-import {theme} from "../styles/Theme"
+import {theme} from "../../styles/Theme"
 import styled from "styled-components"
 
 export const ContentWrapper = styled.main`

@@ -5,24 +5,28 @@ import shareIcon from "../../assets/icons/share.svg"
 import {Button} from "../Button/Button"
 import {SimpleCell} from "../SimpleCell/SimpleCell"
 import {ButtonBar} from "../ButtonBar/ButtonBar"
-import {ContentBlock} from "../ContentBlock"
-import {FlexWrapper} from "../FlexWrapper"
-import {Views} from "../Views"
+import {ContentBlock} from "../ContentBlock/ContentBlock"
+import {FlexWrapper} from "../Wrapper/FlexWrapper"
+import {Views} from "../Views/Views"
 
-type PostPropType = {
-    img: string
+export type PostType = {
+    id: number
+    userImg: string
     comment: string
+    userId: number
     userName: string
     date: string
     likes: number
     views: number
 }
 
-export const Post: React.FC<PostPropType> = ({img, comment, userName, date, likes, views}) => {
+export const Post: React.FC<PostType> = (props) => {
+    const {userImg, comment, userName, date, likes, views, userId, id} = props
+
     return (
         <ContentBlock>
             <FlexWrapper justify="space-between">
-                <SimpleCell image={img} title={userName} subtitle={date}/>
+                <SimpleCell image={userImg} title={userName} subtitle={date}/>
                 <Views>{views}</Views>
             </FlexWrapper>
             <p>{comment}</p>

@@ -1,13 +1,14 @@
 import React from "react"
-import {DialogsUser} from "./dialogs-user/DialogsUser"
-import {DialogsMessage} from "./dialogs-message/DialogsMessage"
+import {Friends} from "./friends/Friends"
+import {Dialogs} from "./dialogs/Dialogs"
 import {S} from "./Messages_Styles"
+import {db} from "../../../db/db"
 
 export const Messages: React.FC = () => {
     return (
         <S.Messages>
-            <DialogsUser/>
-            <DialogsMessage/>
+            <Friends friends={db.friends}/>
+            <Dialogs dialogs={db.dialogs}/>
         </S.Messages>
     )
 }

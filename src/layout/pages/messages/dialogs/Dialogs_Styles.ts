@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import {theme} from "../../../../styles/Theme"
 
-const DialogsMessage = styled.div`
+const Dialogs = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -11,5 +11,5 @@ const DialogsMessage = styled.div`
 `
 
 export const S = {
-    DialogsMessage
+    Dialogs
 }

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import icon from "../assets/icons/view.svg"
+import icon from "../../assets/icons/view.svg"
 
 export const Views = styled.span`
   position: relative;

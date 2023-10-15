@@ -1,5 +1,5 @@
 import React from "react"
-import {FlexWrapper} from "../FlexWrapper"
+import {FlexWrapper} from "../Wrapper/FlexWrapper"
 
 type ButtonBarPropsType = {
     children: React.ReactNode

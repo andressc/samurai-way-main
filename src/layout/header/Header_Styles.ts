@@ -5,7 +5,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px;
+  padding: ${theme.indentation.padding};
   
   grid-area: header;
   background-color: ${theme.colors.tripleBg};

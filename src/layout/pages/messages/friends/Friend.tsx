@@ -13,7 +13,7 @@ export type FriendType = {
 export const Friend: React.FC<FriendType> = ({userImg, userName, userId, active, id}) => {
     return (
         <NavLink to={`/messages/${userId}`}>
-            <ContentBlock hover={true} active={active}>
+            <ContentBlock $hover={true} $active={active}>
                 <SimpleCell image={userImg} title={userName}/>
             </ContentBlock>
         </NavLink>

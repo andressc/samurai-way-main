@@ -14,7 +14,7 @@ export const Menu: React.FC = () => {
             <MenuItem link="/profile" title="Profile" icon={profileIcon}/>
             <MenuItem link="/messages" title="Messages" icon={messageIcon}/>
             <MenuItem link="/news" title="News" icon={newsIcon}/>
-            <MenuItem link="/music" title="Music" icon={musicIcon}/>
+            <MenuItem link="/friends" title="Friends" icon={musicIcon}/>
             <MenuItem link="/settings" title="Settings" icon={settingsIcon}/>
         </S.Menu>
     )

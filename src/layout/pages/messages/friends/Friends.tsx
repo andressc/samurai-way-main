@@ -9,7 +9,8 @@ export const Friends: React.FC<FriendsPropsType> = ({friends}) => {
     return (
         <S.Friends>
             {friends && friends.map(v => (
-                <Friend id={v.id}
+                <Friend key={v.id}
+                        id={v.id}
                         userImg={v.userImg}
                         userName={v.userName}
                         userId={v.userId}

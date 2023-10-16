@@ -12,6 +12,12 @@ export const theme = {
         borderColor: "#4A4A4A",
     },
 
+    indentation: {
+        padding: "15px",
+        margin: "15px",
+        gap: "15px",
+    },
+
     media: {
         tablet: "screen and (max-width: 900px)",
         mobile: "screen and (max-width: 576px)",
@@ -19,7 +25,7 @@ export const theme = {
     },
 
     animations: {
-        transition: ".2s ease-in-out"
+        transition: ".3s ease-in-out"
     },
 
     transform: {

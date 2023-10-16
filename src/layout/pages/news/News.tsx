@@ -1,14 +1,12 @@
 import React from "react"
-import {S} from "./News_Styles"
 import {Posts} from "../../../components/Posts/Posts"
-import {ItemTitle} from "../../../components/ItemTitle/ItemTitle"
 import {db} from "../../../db/db"
+import {BlockWrapper} from "../../../components/Wrapper/BlockWrapper"
 
 export const News: React.FC = () => {
     return (
-        <S.News>
-            <ItemTitle>My News</ItemTitle>
+        <BlockWrapper title="News">
             <Posts posts={db.posts}/>
-        </S.News>
+        </BlockWrapper>
     )
 }

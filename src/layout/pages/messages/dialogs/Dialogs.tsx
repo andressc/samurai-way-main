@@ -9,13 +9,13 @@ export const Dialogs: React.FC<DialogsPropsType> = ({dialogs}) => {
     return (
         <S.Dialogs>
             {dialogs && dialogs.map(v => (
-                <Dialog
-                    id={v.id}
-                    userImg={v.userImg}
-                    comment={v.comment}
-                    userId={v.userId}
-                    userName={v.userName}
-                    date={v.date}
+                <Dialog key={v.id}
+                        id={v.id}
+                        userImg={v.userImg}
+                        comment={v.comment}
+                        userId={v.userId}
+                        userName={v.userName}
+                        date={v.date}
                 />
             ))}
         </S.Dialogs>

@@ -5,7 +5,7 @@ const Footer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: ${theme.indentation.padding};
   grid-area: footer;
   background-color: ${theme.colors.tripleBg};
   font-size: 13px;

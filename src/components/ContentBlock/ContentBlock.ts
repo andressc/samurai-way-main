@@ -3,29 +3,29 @@ import {theme} from "../../styles/Theme"
 
 export type ChatType = "Left" | "Right"
 
-type GroupPropsType = {
+type ContentBlockPropsType = {
     size?: number
-    hover?: boolean
-    active?: boolean
+    $hover?: boolean
+    $active?: boolean
     chat? : ChatType
 }
-export const ContentBlock = styled.div<GroupPropsType>`
+export const ContentBlock = styled.div<ContentBlockPropsType>`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: ${theme.indentation.gap};
   position: relative;
   z-index: 1000;
-  background-color: ${props => props.active ? theme.colors.quaternaryBg : theme.colors.tripleBg};
+  background-color: ${props => props.$active ? theme.colors.quaternaryBg : theme.colors.tripleBg};
   color: ${theme.colors.tripleFont};
-  padding: 15px;
+  padding: ${theme.indentation.padding};
   
   ${props => props.size && 'width:' + props.size + '%'};
 
-  ${props => props.hover && `
+  ${props => props.$hover && `
   &:hover {
     background-color: ${theme.colors.quaternaryBg};
     cursor: pointer;
-    transition: .3s;
+    transition: ${theme.animations.transition};
   }
   `};
 

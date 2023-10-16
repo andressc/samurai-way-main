@@ -13,7 +13,7 @@ export const Button = styled.button`
   cursor: pointer;
   font-size: 17px;
   ${font({fMax: 17, fMin: 17, color: theme.colors.tripleFont})};
-  transition: .3s;
+  transition: ${theme.animations.transition};
   text-align: center;
   
   &:hover {

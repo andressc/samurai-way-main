@@ -14,7 +14,7 @@ const Menu = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 15px;
+  padding: ${theme.indentation.padding};
 `
 
 const MenuItem = styled.li<MenuItemIcon>`
@@ -38,7 +38,7 @@ const MenuItem = styled.li<MenuItemIcon>`
 const MenuLink = styled(NavLink)<MenuLinkPropsType>`
   font-size: 17px;
   color: ${theme.colors.tripleFont};
-  transition: .3s;
+  transition: ${theme.animations.transition};
 
   &.${props => props.activeClassName} {
     color: #a6a6a6;

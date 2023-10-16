@@ -1,9 +1,10 @@
 import styled from "styled-components"
+import {theme} from "../../../styles/Theme"
 
 const Profile = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: ${theme.indentation.gap};
 `
 
 const ProfileCover = styled.img`

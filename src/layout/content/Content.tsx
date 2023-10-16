@@ -4,7 +4,7 @@ import {Profile} from "../pages/profile/Profile"
 import {Route} from "react-router-dom"
 import {Messages} from "../pages/messages/Messages"
 import {News} from "../pages/news/News"
-import {Music} from "../pages/music/Music"
+import {Friends} from "../pages/friends/Friends"
 import {Settings} from "../pages/settings/Settings"
 
 export const Content: React.FC = () => {
@@ -14,7 +14,7 @@ export const Content: React.FC = () => {
                 <Route path="/profile" component={Profile}/>
                 <Route path="/messages" component={Messages}/>
                 <Route path="/news" component={News}/>
-                <Route path="/music" component={Music}/>
+                <Route path="/friends" component={Friends}/>
                 <Route path="/settings" component={Settings}/>
             </S.Content>
 

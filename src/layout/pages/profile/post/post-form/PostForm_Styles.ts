@@ -4,14 +4,14 @@ import {theme} from "../../../../../styles/Theme"
 const PostForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: ${theme.indentation.gap};
 `
 
 const PostFormField = styled.input`
   width: 100%;
   background-color: ${theme.colors.secondaryBg};
   border: 0;
-  padding: 7px 15px;
+  padding: 7px ${theme.indentation.padding};
 
   font-family: "Poppins", sans-serif;
   font-weight: 400;

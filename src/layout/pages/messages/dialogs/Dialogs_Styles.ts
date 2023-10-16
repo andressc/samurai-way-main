@@ -7,7 +7,9 @@ const Dialogs = styled.div`
   gap: 30px;
   flex: 3;
   background-color: ${theme.colors.secondaryBg};
-  padding: 15px;
+  padding: ${theme.indentation.padding};
+  overflow-x: scroll;
+  height: 70vh;
 `
 
 export const S = {

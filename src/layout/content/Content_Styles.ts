@@ -4,7 +4,7 @@ import {theme} from "../../styles/Theme"
 const Content = styled.main`
   grid-area: content;
   background-color:  ${theme.colors.primaryBg};
-  padding: 15px;
+  padding: ${theme.indentation.padding};
 `
 
 export const S = {

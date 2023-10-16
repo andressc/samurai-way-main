@@ -98,6 +98,34 @@ export const db: dbType = {
             userId: 5,
             active: false,
         },
+        {
+            id: 6,
+            userImg: "https://xc-life.ru/wp-content/gallery/avatar-kosmos-devushki/avatarka-devushka.jpg",
+            userName: "Lina Potova",
+            userId: 6,
+            active: false,
+        },
+        {
+            id: 7,
+            userImg: "https://xc-life.ru/wp-content/gallery/avatar-kosmos-devushki/avatarka-devushka.jpg",
+            userName: "Lina Potova",
+            userId: 7,
+            active: false,
+        },
+        {
+            id: 8,
+            userImg: "https://xc-life.ru/wp-content/gallery/avatar-kosmos-devushki/avatarka-devushka.jpg",
+            userName: "Lina Potova",
+            userId: 8,
+            active: false,
+        },
+        {
+            id: 9,
+            userImg: "https://xc-life.ru/wp-content/gallery/avatar-kosmos-devushki/avatarka-devushka.jpg",
+            userName: "Lina Potova",
+            userId: 9,
+            active: false,
+        },
     ],
     dialogs: [
         {

@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import {theme} from "../../../../styles/Theme"
+import {theme} from "../../styles/Theme"
 
 const UserName = styled.h1``
 
-const About = styled.div`
+const AboutUser = styled.div`
   display: flex;
   gap: ${theme.indentation.gap};
   
@@ -15,6 +15,6 @@ const About = styled.div`
 `
 
 export const S = {
-    About,
+    AboutUser,
     UserName,
 }

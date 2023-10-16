@@ -8,7 +8,7 @@ const Dialogs = styled.div`
   flex: 3;
   background-color: ${theme.colors.secondaryBg};
   padding: ${theme.indentation.padding};
-  overflow-x: scroll;
+  overflow-y: scroll;
   height: 70vh;
 `
 

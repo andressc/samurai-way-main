@@ -1,46 +1,22 @@
 import React from "react"
 import {ContentBlock} from "../../../components/ContentBlock/ContentBlock"
-import {SimpleCell} from "../../../components/SimpleCell/SimpleCell"
-import {ButtonBar} from "../../../components/ButtonBar/ButtonBar"
-import {Button} from "../../../components/Button/Button"
-import messageIcon from "../../../assets/icons/message.svg"
-import viewIcon from "../../../assets/icons/view.svg"
 import {BlockWrapper} from "../../../components/Wrapper/BlockWrapper"
+import {AboutUser} from "../../../components/AboutUser/AboutUser"
+import {db} from "../../../db/db"
 
 export const Friends: React.FC = () => {
     return (
         <BlockWrapper title="Friends">
-            <ContentBlock>
-                <SimpleCell image={"https://брендлист.рф/upload/000/u60/73/53/manikyur-avatarka-photo-normal.jpg"} title={"Igor Petrov"} subtitle={"St. Peterburg"}/>
-                <ButtonBar>
-                    <Button icon={messageIcon} title="send message"/>
-                    <Button icon={viewIcon} title="show user"/>
-                </ButtonBar>
-            </ContentBlock>
 
-            <ContentBlock>
-                <SimpleCell image={"https://брендлист.рф/upload/000/u60/73/53/manikyur-avatarka-photo-normal.jpg"} title={"Igor Petrov"} subtitle={"St. Peterburg"}/>
-                <ButtonBar>
-                    <Button icon={messageIcon} title="send message"/>
-                    <Button icon={viewIcon} title="show user"/>
-                </ButtonBar>
-            </ContentBlock>
-
-            <ContentBlock>
-                <SimpleCell image={"https://брендлист.рф/upload/000/u60/73/53/manikyur-avatarka-photo-normal.jpg"} title={"Igor Petrov"} subtitle={"St. Peterburg"}/>
-                <ButtonBar>
-                    <Button icon={messageIcon} title="send message"/>
-                    <Button icon={viewIcon} title="show user"/>
-                </ButtonBar>
-            </ContentBlock>
-
-            <ContentBlock>
-                <SimpleCell image={"https://брендлист.рф/upload/000/u60/73/53/manikyur-avatarka-photo-normal.jpg"} title={"Igor Petrov"} subtitle={"St. Peterburg"}/>
-                <ButtonBar>
-                    <Button icon={messageIcon} title="send message"/>
-                    <Button icon={viewIcon} title="show user"/>
-                </ButtonBar>
-            </ContentBlock>
+            {db.users && db.users.map(v => (
+                <ContentBlock>
+                    <AboutUser id={v.id}
+                               userId={v.userId}
+                               userName={v.userName}
+                               userImg={v.userImg}
+                               information={v.information}/>
+                </ContentBlock>
+            ))}
         </BlockWrapper>
     )
 }

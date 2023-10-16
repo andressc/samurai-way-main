@@ -6,7 +6,7 @@ const Friends = styled.div`
   flex-direction: column;
   gap: ${theme.indentation.gap};
   flex: 1;
-  overflow-x: scroll;
+  overflow-y: scroll;
   height: 70vh;
 `
 

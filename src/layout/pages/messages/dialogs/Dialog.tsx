@@ -11,14 +11,17 @@ export type DialogType = {
     userId: number
     date: string
 }
-export const Dialog: React.FC<DialogType> = (props) => {
-    const {userImg, comment, userName, date, id, userId} = props
+
+type DialogPropsType = {
+    dialog: DialogType
+}
+export const Dialog: React.FC<DialogPropsType> = ({dialog}) => {
 
     return (
-        <FlexWrapper justify={userId === 1 ? "flex-end" : "flex-start"}>
-            <ContentBlock size={70} chat={userId === 1 ? "Right" : "Left"}>
-                <SimpleCell image={userImg} title={userName} subtitle={date}/>
-                <p>{comment}</p>
+        <FlexWrapper justify={dialog.userId === 1 ? "flex-end" : "flex-start"}>
+            <ContentBlock size={70} chat={dialog.userId === 1 ? "Right" : "Left"}>
+                <SimpleCell image={dialog.userImg} title={dialog.userName} subtitle={dialog.date}/>
+                <p>{dialog.comment}</p>
             </ContentBlock>
         </FlexWrapper>
     )

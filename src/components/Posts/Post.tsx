@@ -20,18 +20,21 @@ export type PostType = {
     views: number
 }
 
-export const Post: React.FC<PostType> = (props) => {
-    const {userImg, comment, userName, date, likes, views, userId, id} = props
+type PostPropsType = {
+    post: PostType
+}
+
+export const Post: React.FC<PostPropsType> = ({post}) => {
 
     return (
         <ContentBlock>
             <FlexWrapper justify="space-between">
-                <SimpleCell image={userImg} title={userName} subtitle={date}/>
-                <Views>{views}</Views>
+                <SimpleCell image={post.userImg} title={post.userName} subtitle={post.date}/>
+                <Views>{post.views}</Views>
             </FlexWrapper>
-            <p>{comment}</p>
+            <p>{post.comment}</p>
             <ButtonBar>
-                <Button icon={heartIcon} title={likes}/>
+                <Button icon={heartIcon} title={post.likes}/>
                 <Button icon={messageIcon} title="answer"/>
                 <Button icon={shareIcon} title="share"/>
             </ButtonBar>

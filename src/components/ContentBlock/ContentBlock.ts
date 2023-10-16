@@ -7,19 +7,26 @@ type ContentBlockPropsType = {
     size?: number
     $hover?: boolean
     $active?: boolean
-    chat? : ChatType
+    chat?: ChatType
+    $row?: boolean
 }
 export const ContentBlock = styled.div<ContentBlockPropsType>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${props => props.$row ? "row" : "column"};
+
+  ${props => props.$row && `
+      justify-content: space-between;
+      align-items: center;`
+  }
+
   gap: ${theme.indentation.gap};
   position: relative;
   z-index: 1000;
   background-color: ${props => props.$active ? theme.colors.quaternaryBg : theme.colors.tripleBg};
   color: ${theme.colors.tripleFont};
   padding: ${theme.indentation.padding};
-  
-  ${props => props.size && 'width:' + props.size + '%'};
+
+  ${props => props.size && "width:" + props.size + "%"};
 
   ${props => props.$hover && `
   &:hover {

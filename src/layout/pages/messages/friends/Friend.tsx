@@ -10,11 +10,16 @@ export type FriendType = {
     userId: number
     active?: boolean
 }
-export const Friend: React.FC<FriendType> = ({userImg, userName, userId, active, id}) => {
+
+type FriendPropsType = {
+    friend: FriendType
+}
+
+export const Friend: React.FC<FriendPropsType> = ({friend}) => {
     return (
-        <NavLink to={`/messages/${userId}`}>
-            <ContentBlock $hover={true} $active={active}>
-                <SimpleCell image={userImg} title={userName}/>
+        <NavLink to={`/messages/${friend.userId}`}>
+            <ContentBlock $hover={true} $active={friend.active}>
+                <SimpleCell image={friend.userImg} title={friend.userName}/>
             </ContentBlock>
         </NavLink>
     )

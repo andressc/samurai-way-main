@@ -6,17 +6,12 @@ type FriendsPropsType = {
     friends: FriendType[]
 }
 export const Friends: React.FC<FriendsPropsType> = ({friends}) => {
+
+    const friendsList: Array<JSX.Element> = friends.map(friend => (<Friend key={friend.id} friend={friend}/>))
+
     return (
         <S.Friends>
-            {friends && friends.map(v => (
-                <Friend key={v.id}
-                        id={v.id}
-                        userImg={v.userImg}
-                        userName={v.userName}
-                        userId={v.userId}
-                        active={v.active}
-                />
-            ))}
+            {friendsList}
         </S.Friends>
     )
 }

@@ -7,20 +7,11 @@ type PostsPropsTypes = {
 }
 export const Posts: React.FC<PostsPropsTypes> = ({posts}) => {
 
+    const postsList: Array<JSX.Element> = posts.map(post => (<Post key={post.id} post={post}/>))
+
     return (
         <S.Posts>
-            {posts && posts.map(v => (
-                <Post key={v.id}
-                      id={v.id}
-                      userImg={v.userImg}
-                      comment={v.comment}
-                      userId={v.userId}
-                      userName={v.userName}
-                      date={v.date}
-                      likes={v.likes}
-                      views={v.views}
-                />
-            ))}
+            {postsList}
         </S.Posts>
     )
 }

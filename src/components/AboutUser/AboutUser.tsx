@@ -1,23 +1,26 @@
 import React from "react"
 import {Information} from "./information/Information"
 import { S } from "./AboutUser_Styles"
-import {InformationItem} from "./information/InformationItem"
+import {InformationItemType} from "./information/InformationItem"
 
-export type AboutUserType = {
-    id: number
+export type AuthUserType = {
     userId: number
     userName: string
     userImg: string
-    information: InformationItem[]
+    information: InformationItemType[]
 }
 
-export const AboutUser: React.FC<AboutUserType> = ({userId, userName, userImg, information, id}) => {
+type AboutUserPropsType = {
+    user: AuthUserType
+}
+
+export const AboutUser: React.FC<AboutUserPropsType> = ({user}) => {
     return (
         <S.AboutUser>
-            <img src={userImg} alt="avatar"/>
+            <img src={user.userImg} alt="avatar"/>
             <div>
-                <S.UserName>{userName}</S.UserName>
-                <Information information={information}/>
+                <S.UserName>{user.userName}</S.UserName>
+                <Information information={user.information}/>
             </div>
         </S.AboutUser>
     )

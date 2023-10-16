@@ -1,14 +1,15 @@
 import React from "react"
 import { S } from "./Information_Styles"
-import {InformationItem} from "./InformationItem"
+import {InformationItem, InformationItemType} from "./InformationItem"
+
 
 type InformationPropsType = {
-    information: InformationItem[]
+    information: InformationItemType[]
 }
 export const Information: React.FC<InformationPropsType> = ({information}) => {
     return (
         <S.Information>
-            {information && information.map(v => <InformationItem title={v.title} description={v.description}/>)}
+            {information && information.map(v => <InformationItem key={v.id} information={v}/>)}
         </S.Information>
     )
 }

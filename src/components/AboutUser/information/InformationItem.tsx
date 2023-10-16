@@ -1,14 +1,19 @@
 import React from "react"
 import {S} from "./Information_Styles"
 
-export type InformationItem = {
+export type InformationItemType = {
+    id: number
     title: string
     description: string
 }
-export const InformationItem: React.FC<InformationItem> = ({title, description}) => {
+
+type InformationItemPropsType = {
+    information: InformationItemType
+}
+export const InformationItem: React.FC<InformationItemPropsType> = ({information}) => {
     return (
         <S.InformationItem>
-            <span>{title}:</span> {description}
+            <span>{information.title}:</span> {information.description}
         </S.InformationItem>
     )
 }

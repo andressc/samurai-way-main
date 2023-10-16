@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {theme} from "../../../../styles/Theme"
+import {theme} from "../../../../../styles/Theme"
 
 const Dialogs = styled.div`
   display: flex;
@@ -8,8 +8,15 @@ const Dialogs = styled.div`
   flex: 3;
   background-color: ${theme.colors.secondaryBg};
   padding: ${theme.indentation.padding};
-  overflow-y: scroll;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   height: 70vh;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 `
 
 export const S = {

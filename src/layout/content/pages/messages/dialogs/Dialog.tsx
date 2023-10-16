@@ -1,7 +1,7 @@
 import React from "react"
-import {ContentBlock} from "../../../../components/ContentBlock/ContentBlock"
-import {SimpleCell} from "../../../../components/SimpleCell/SimpleCell"
-import {FlexWrapper} from "../../../../components/Wrapper/FlexWrapper"
+import {ContentBlock} from "../../../../../components/ContentBlock/ContentBlock"
+import {SimpleCell} from "../../../../../components/SimpleCell/SimpleCell"
+import {FlexWrapper} from "../../../../../components/Wrapper/FlexWrapper"
 
 export type DialogType = {
     id: number

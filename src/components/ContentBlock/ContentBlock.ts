@@ -8,16 +8,10 @@ type ContentBlockPropsType = {
     $hover?: boolean
     $active?: boolean
     chat?: ChatType
-    $row?: boolean
 }
 export const ContentBlock = styled.div<ContentBlockPropsType>`
   display: flex;
-  flex-direction: ${props => props.$row ? "row" : "column"};
-
-  ${props => props.$row && `
-      justify-content: space-between;
-      align-items: center;`
-  }
+  flex-direction: column;
 
   gap: ${theme.indentation.gap};
   position: relative;

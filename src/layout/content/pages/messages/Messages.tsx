@@ -2,8 +2,8 @@ import React from "react"
 import {Friends} from "./friends/Friends"
 import {Dialogs} from "./dialogs/Dialogs"
 import {S} from "./Messages_Styles"
-import {db} from "../../../db/db"
-import {BlockWrapper} from "../../../components/Wrapper/BlockWrapper"
+import {db} from "../../../../db/db"
+import {BlockWrapper} from "../../../../components/Wrapper/BlockWrapper"
 
 export const Messages: React.FC = () => {
     return (

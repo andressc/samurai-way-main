@@ -1,5 +1,5 @@
 import React from "react"
-import {BlockWrapper} from "../../../components/Wrapper/BlockWrapper"
+import {BlockWrapper} from "../../../../components/Wrapper/BlockWrapper"
 
 export const Settings: React.FC = () => {
     return (

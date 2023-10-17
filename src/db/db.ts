@@ -125,7 +125,7 @@ export const db: DbType = {
             userImg: "https://cs14.pikabu.ru/post_img/big/2023/02/13/8/1676295806139337963.png",
             comment: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, unde!",
             userId: 2,
-            userName: "Andrey R.",
+            userName: "Vasya F.",
             date: "11 oct 2023",
         },
         {
@@ -141,7 +141,7 @@ export const db: DbType = {
             userImg: "https://cs14.pikabu.ru/post_img/big/2023/02/13/8/1676295806139337963.png",
             comment: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, unde!",
             userId: 2,
-            userName: "Andrey R.",
+            userName: "Vasya F.",
             date: "11 oct 2023",
         },
         {
@@ -165,24 +165,24 @@ export const db: DbType = {
             userImg: "https://cs14.pikabu.ru/post_img/big/2023/02/13/8/1676295806139337963.png",
             comment: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, unde!",
             userId: 2,
-            userName: "Andrey R.",
+            userName: "Vasya F.",
             date: "11 oct 2023",
         },
     ],
     user: {
         userId: 1,
-        userName: "Andrey Rebrov",
+        userName: "Vasya F.",
         userImg: "https://cs14.pikabu.ru/post_img/big/2023/02/13/8/1676295806139337963.png",
         information: [
             {
                 id: 1,
                 title: "Date of Birth",
-                description: "21 jul",
+                description: "13 jul",
             },
             {
                 id: 2,
                 title: "City",
-                description: "St Peterburg",
+                description: "Ivanovo",
             },
             {
                 id: 3,
@@ -192,7 +192,7 @@ export const db: DbType = {
             {
                 id: 4,
                 title: "Web Site",
-                description: "https://it-kamasutra.com",
+                description: "Https://Web.com",
             }
         ],
     },

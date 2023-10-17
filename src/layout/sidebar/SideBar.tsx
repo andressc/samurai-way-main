@@ -1,11 +1,12 @@
 import React from "react"
-import {S} from "./Sidebar_Styles"
-import {Menu} from "./menu/Menu"
+import * as S from "./Sidebar.styled"
+import {Menu} from "../../components/Menu/Menu"
+import {db} from "../../db/db"
 
 export const SideBar: React.FC = () => {
     return (
         <S.Sidebar>
-            <Menu/>
+            <Menu menu={db.menu}/>
         </S.Sidebar>
     )
 }

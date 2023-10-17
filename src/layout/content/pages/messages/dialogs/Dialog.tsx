@@ -1,7 +1,6 @@
 import React from "react"
-import {ContentBlock} from "../../../../../components/ContentBlock/ContentBlock"
 import {SimpleCell} from "../../../../../components/SimpleCell/SimpleCell"
-import {FlexWrapper} from "../../../../../components/Wrapper/FlexWrapper"
+import * as C from "../../../../../components/Styled/Components"
 
 export type DialogType = {
     id: number
@@ -18,11 +17,11 @@ type DialogPropsType = {
 export const Dialog: React.FC<DialogPropsType> = ({dialog}) => {
 
     return (
-        <FlexWrapper justify={dialog.userId === 1 ? "flex-end" : "flex-start"}>
-            <ContentBlock size={70} chat={dialog.userId === 1 ? "Right" : "Left"}>
+        <C.FlexWrapper justify={dialog.userId === 1 ? "flex-end" : "flex-start"}>
+            <C.ContentBlock size={70} chat={dialog.userId === 1 ? "Right" : "Left"}>
                 <SimpleCell image={dialog.userImg} title={dialog.userName} subtitle={dialog.date}/>
                 <p>{dialog.comment}</p>
-            </ContentBlock>
-        </FlexWrapper>
+            </C.ContentBlock>
+        </C.FlexWrapper>
     )
 }

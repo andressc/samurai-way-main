@@ -1,6 +1,6 @@
 import React from "react"
 import {Friend} from "./Friend"
-import {S} from "./Friends_Styles"
+import * as S from "./Friends.styled"
 import {FriendType} from "../../friends/Friend"
 
 type FriendsPropsType = {
@@ -8,7 +8,7 @@ type FriendsPropsType = {
 }
 export const Friends: React.FC<FriendsPropsType> = ({friends}) => {
 
-    const friendsList: Array<JSX.Element> = friends.map(friend => (<Friend key={friend.userId} friend={friend}/>))
+    const friendsList: JSX.Element[] = friends.map(friend => (<Friend key={friend.userId} friend={friend}/>))
 
     return (
         <S.Friends>

@@ -1,5 +1,5 @@
 import React from "react"
-import { S } from "./Information_Styles"
+import * as S from "./Information.styled"
 import {InformationItem, InformationItemType} from "./InformationItem"
 
 

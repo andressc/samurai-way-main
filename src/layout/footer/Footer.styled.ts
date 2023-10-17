@@ -1,21 +1,13 @@
 import styled from "styled-components"
 import {theme} from "../../styles/Theme"
 
-const Header = styled.header`
+export const Footer = styled.footer`
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
   padding: ${theme.indentation.padding};
-  
-  grid-area: header;
+  grid-area: footer;
   background-color: ${theme.colors.tripleBg};
-  
-  img {
-    height: 30px;
-  }
+  font-size: 13px;
+  color: ${theme.colors.tripleFont}
 `
-
-
-export const S = {
-    Header,
-}

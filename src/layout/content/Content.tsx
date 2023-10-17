@@ -1,5 +1,5 @@
 import React from "react"
-import {S} from "./Content_Styles"
+import * as S from "./Content.styled"
 import {Profile} from "./pages/profile/Profile"
 import {Route} from "react-router-dom"
 import {Messages} from "./pages/messages/Messages"

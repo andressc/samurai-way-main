@@ -5,9 +5,7 @@ import shareIcon from "../../assets/icons/share.svg"
 import {Button} from "../Button/Button"
 import {SimpleCell} from "../SimpleCell/SimpleCell"
 import {ButtonBar} from "../ButtonBar/ButtonBar"
-import {ContentBlock} from "../ContentBlock/ContentBlock"
-import {FlexWrapper} from "../Wrapper/FlexWrapper"
-import {Views} from "../Views/Views"
+import * as C from "../Styled/Components"
 
 export type PostType = {
     id: number
@@ -27,17 +25,17 @@ type PostPropsType = {
 export const Post: React.FC<PostPropsType> = ({post}) => {
 
     return (
-        <ContentBlock>
-            <FlexWrapper justify="space-between">
+        <C.ContentBlock>
+            <C.FlexWrapper justify="space-between">
                 <SimpleCell image={post.userImg} title={post.userName} subtitle={post.date}/>
-                <Views>{post.views}</Views>
-            </FlexWrapper>
+                <C.Views>{post.views}</C.Views>
+            </C.FlexWrapper>
             <p>{post.comment}</p>
             <ButtonBar>
                 <Button icon={heartIcon} title={post.likes}/>
                 <Button icon={messageIcon} title="answer"/>
                 <Button icon={shareIcon} title="share"/>
             </ButtonBar>
-        </ContentBlock>
+        </C.ContentBlock>
     )
 }

@@ -1,5 +1,5 @@
 import React from "react"
-import {S} from "./Profile_Styles"
+import * as S from "./Profile.styled"
 import {AboutUser} from "../../../../components/AboutUser/AboutUser"
 import {PostWrapper} from "./post/PostWrapper"
 import {db} from "../../../../db/db"

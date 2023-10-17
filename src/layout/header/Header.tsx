@@ -1,5 +1,5 @@
 import React from "react"
-import {S} from "./Header_Styles"
+import * as S from "./Header.styled"
 
 export const Header: React.FC = () => {
     return (

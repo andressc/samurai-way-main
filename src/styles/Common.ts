@@ -1,6 +1,6 @@
 import {theme} from "./Theme";
 
-type FontPropsType = {
+type FontType = {
     family?: string
     weight?: number
     color?: string
@@ -9,7 +9,7 @@ type FontPropsType = {
     fMax?: number
 }
 
-export const font = ({family, weight, color, lineHeight, fMin, fMax}: FontPropsType) => `
+export const font = ({family, weight, color, lineHeight, fMin, fMax}: FontType) => `
     font-family: ${family || 'Poppins'};
     font-weight: ${weight || 400};
     color: ${color || theme.colors.primaryFont};

@@ -1,7 +1,7 @@
 import React from "react"
 import newsIcon from "../../../../../../assets/icons/news.svg"
 import {Button} from "../../../../../../components/Button/Button"
-import { S } from "./PostForm_Styles"
+import * as S from "./PostForm.styled"
 
 export const PostForm: React.FC = () => {
     return (

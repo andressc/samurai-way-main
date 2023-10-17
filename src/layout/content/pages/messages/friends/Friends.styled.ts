@@ -1,13 +1,11 @@
 import styled from "styled-components"
 import {theme} from "../../../../../styles/Theme"
 
-const Dialogs = styled.div`
+export const Friends = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  flex: 3;
-  background-color: ${theme.colors.secondaryBg};
-  padding: ${theme.indentation.padding};
+  gap: ${theme.indentation.gap};
+  flex: 1;
   overflow: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -18,7 +16,3 @@ const Dialogs = styled.div`
     height: 0;
   }
 `
-
-export const S = {
-    Dialogs
-}

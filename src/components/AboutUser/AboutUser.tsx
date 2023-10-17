@@ -1,6 +1,6 @@
 import React from "react"
 import {Information} from "./information/Information"
-import { S } from "./AboutUser_Styles"
+import * as S from "./AboutUser.styled"
 import {InformationItemType} from "./information/InformationItem"
 
 export type AuthUserType = {

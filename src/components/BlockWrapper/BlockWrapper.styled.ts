@@ -1,12 +1,8 @@
 import styled from "styled-components"
 import {theme} from "../../styles/Theme"
 
-const Posts = styled.div`
+export const BlockWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${theme.indentation.gap};
 `
-
-export const S = {
-    Posts,
-}

@@ -1,5 +1,5 @@
 import React from "react"
-import {S} from "./Dialogs_Styles"
+import * as S from "./Dialogs.styles"
 import {Dialog, DialogType} from "./Dialog"
 
 type DialogsPropsType = {
@@ -7,7 +7,7 @@ type DialogsPropsType = {
 }
 export const Dialogs: React.FC<DialogsPropsType> = ({dialogs}) => {
 
-    const dialogsList: Array<JSX.Element> = dialogs.map(dialog => (<Dialog key={dialog.id} dialog={dialog}/>))
+    const dialogsList: JSX.Element[] = dialogs.map(dialog => (<Dialog key={dialog.id} dialog={dialog}/>))
 
     return (
         <S.Dialogs>

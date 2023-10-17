@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import {theme} from "../../styles/Theme"
-import {font} from "../../styles/Common"
 
 type ButtonPropsType = {
   icon: string
 }
+
 export const Button = styled.button`
   background-color: ${theme.colors.tripleBg};
   height: 40px;
@@ -12,7 +12,7 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   font-size: 17px;
-  ${font({fMax: 17, fMin: 17, color: theme.colors.tripleFont})};
+  color: ${theme.colors.tripleFont};
   transition: ${theme.animations.transition};
   text-align: center;
   
@@ -21,7 +21,7 @@ export const Button = styled.button`
   }
 `
 
-const ButtonTitle = styled.span<ButtonPropsType>`
+export const ButtonTitle = styled.span<ButtonPropsType>`
   position: relative;
   padding-left: 30px;
   margin: 15px;
@@ -38,8 +38,3 @@ const ButtonTitle = styled.span<ButtonPropsType>`
     left: 0;
   }
 `
-
-export const S = {
-  Button,
-  ButtonTitle,
-}

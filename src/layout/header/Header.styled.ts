@@ -1,17 +1,16 @@
 import styled from "styled-components"
 import {theme} from "../../styles/Theme"
 
-const Footer = styled.footer`
+export const Header = styled.header`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   padding: ${theme.indentation.padding};
-  grid-area: footer;
+  
+  grid-area: header;
   background-color: ${theme.colors.tripleBg};
-  font-size: 13px;
-  color: ${theme.colors.tripleFont}
+  
+  img {
+    height: 30px;
+  }
 `
-
-export const S = {
-    Footer,
-}

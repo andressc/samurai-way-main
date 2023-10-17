@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import {theme} from "../../styles/Theme"
 
-const UserName = styled.h1``
+export const UserName = styled.h1``
 
-const AboutUser = styled.div`
+export const AboutUser = styled.div`
   display: flex;
   gap: ${theme.indentation.gap};
   
@@ -13,8 +13,3 @@ const AboutUser = styled.div`
     object-fit: cover;
   }
 `
-
-export const S = {
-    AboutUser,
-    UserName,
-}

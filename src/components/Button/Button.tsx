@@ -1,4 +1,4 @@
-import {S} from "./Button_Styles"
+import * as S from "./Button.styled"
 import React from "react"
 
 type ButtonPropsType = {

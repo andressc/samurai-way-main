@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {theme} from "../../../styles/Theme"
+import {theme} from "../../styles/Theme"
 import {NavLink} from "react-router-dom"
 
 type MenuItemIcon = {
@@ -10,14 +10,14 @@ type MenuLinkPropsType = {
     activeClassName: string
 }
 
-const Menu = styled.ul`
+export const Menu = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: ${theme.indentation.padding};
 `
 
-const MenuItem = styled.li<MenuItemIcon>`
+export const MenuItem = styled.li<MenuItemIcon>`
   position: relative;
   padding-left: 30px;
   
@@ -35,7 +35,7 @@ const MenuItem = styled.li<MenuItemIcon>`
   }
 `
 
-const MenuLink = styled(NavLink)<MenuLinkPropsType>`
+export const MenuLink = styled(NavLink)<MenuLinkPropsType>`
   font-size: 17px;
   color: ${theme.colors.tripleFont};
   transition: ${theme.animations.transition};
@@ -48,9 +48,3 @@ const MenuLink = styled(NavLink)<MenuLinkPropsType>`
     color: #a6a6a6;
   }
 `
-
-export const S = {
-    Menu,
-    MenuItem,
-    MenuLink,
-}

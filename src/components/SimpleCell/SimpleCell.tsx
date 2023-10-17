@@ -1,6 +1,5 @@
 import React from "react"
-import {Avatar} from "../Avatar/Avatar"
-import {FlexWrapper} from "../Wrapper/FlexWrapper"
+import * as C from "../Styled/Components"
 
 type SimpleCellPropsType = {
     image: string
@@ -9,12 +8,12 @@ type SimpleCellPropsType = {
 }
 export const SimpleCell: React.FC<SimpleCellPropsType> = ({image, subtitle, title}) => {
     return (
-        <FlexWrapper gap={15} align="center">
-            <Avatar src={image} alt=""/>
-            <FlexWrapper direction="column" justify="center" align="flex-start">
+        <C.FlexWrapper gap={15} align="center">
+            <C.Avatar src={image} alt=""/>
+            <C.FlexWrapper direction="column" justify="center" align="flex-start">
                 {title && <h4>{title}</h4>}
                 {subtitle && <span>{subtitle}</span>}
-            </FlexWrapper>
-        </FlexWrapper>
+            </C.FlexWrapper>
+        </C.FlexWrapper>
     )
 }

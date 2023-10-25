@@ -7,9 +7,13 @@ type InformationPropsType = {
     information: InformationItemType[]
 }
 export const Information: React.FC<InformationPropsType> = ({information}) => {
+
+    const InformationList: JSX.Element[] = information && information
+        .map(information => (<InformationItem key={information.id} information={information}/>))
+
     return (
         <S.Information>
-            {information && information.map(v => <InformationItem key={v.id} information={v}/>)}
+            {InformationList}
         </S.Information>
     )
 }

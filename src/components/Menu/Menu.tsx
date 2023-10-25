@@ -8,7 +8,7 @@ type MenuPropsType = {
 
 export const Menu: React.FC<MenuPropsType> = ({menu}) => {
 
-    const MenuList: JSX.Element[] = menu.map(menu => <MenuItem key={menu.id} menu={menu}/>)
+    const MenuList: JSX.Element[] = menu && menu.map(menu => <MenuItem key={menu.id} menu={menu}/>)
 
     return (
         <S.Menu>

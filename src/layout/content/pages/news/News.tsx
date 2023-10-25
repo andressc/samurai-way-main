@@ -1,12 +1,15 @@
 import React from "react"
 import {Posts} from "../../../../components/Posts/Posts"
-import {db} from "../../../../db/db"
 import {BlockWrapper} from "../../../../components/BlockWrapper/BlockWrapper"
+import {PostType} from "../../../../components/Posts/Post"
 
-export const News: React.FC = () => {
+type PropsType = {
+    posts: PostType[]
+}
+export const News: React.FC<PropsType> = ({posts}) => {
     return (
         <BlockWrapper title="News">
-            <Posts posts={db.posts}/>
+            <Posts posts={posts}/>
         </BlockWrapper>
     )
 }

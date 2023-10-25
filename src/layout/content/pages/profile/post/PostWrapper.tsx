@@ -2,13 +2,16 @@ import React from "react"
 import {Posts} from "../../../../../components/Posts/Posts"
 import {PostForm} from "./post-form/PostForm"
 import * as S from "./PostWrapper.styled"
-import {db} from "../../../../../db/db"
+import {PostType} from "../../../../../components/Posts/Post"
 
-export const PostWrapper: React.FC = () => {
+type PropsType = {
+    posts: PostType[]
+}
+export const PostWrapper: React.FC<PropsType> = ({posts}) => {
     return (
         <S.PostWrapper>
             <PostForm/>
-            <Posts posts={db.posts}/>
+            <Posts posts={posts}/>
         </S.PostWrapper>
     )
 }

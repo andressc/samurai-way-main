@@ -9,7 +9,7 @@ import newsIcon from "../assets/icons/news.svg"
 import musicIcon from "../assets/icons/music.svg"
 import settingsIcon from "../assets/icons/setting.svg"
 
-type DbType = {
+export type StateType = {
     posts: PostType[]
     friends: FriendType[]
     dialogs: DialogType[]
@@ -17,7 +17,7 @@ type DbType = {
     menu: MenuItemType[]
 }
 
-export const db: DbType = {
+export const state: StateType = {
     posts: [
         {
             id: 1,

@@ -7,7 +7,7 @@ type DialogsPropsType = {
 }
 export const Dialogs: React.FC<DialogsPropsType> = ({dialogs}) => {
 
-    const dialogsList: JSX.Element[] = dialogs.map(dialog => (<Dialog key={dialog.id} dialog={dialog}/>))
+    const dialogsList: JSX.Element[] = dialogs && dialogs.map(dialog => (<Dialog key={dialog.id} dialog={dialog}/>))
 
     return (
         <S.Dialogs>

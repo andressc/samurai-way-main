@@ -1,17 +1,21 @@
 import React from "react"
 import * as S from "./Profile.styled"
-import {AboutUser} from "../../../../components/AboutUser/AboutUser"
+import {AboutUser, AuthUserType} from "../../../../components/AboutUser/AboutUser"
 import {PostWrapper} from "./post/PostWrapper"
-import {db} from "../../../../db/db"
+import {PostType} from "../../../../components/Posts/Post"
 
-export const Profile: React.FC = () => {
+type PropsType = {
+    user: AuthUserType
+    posts: PostType[]
+}
+export const Profile: React.FC<PropsType> = ({user, posts}) => {
     return (
         <S.Profile>
             <S.ProfileCover
                 src="https://cs8.pikabu.ru/post_img/big/2018/02/06/12/151794761518266918.jpg"
                 alt="cover"/>
-            <AboutUser user={db.user}/>
-            <PostWrapper/>
+            <AboutUser user={user}/>
+            <PostWrapper posts={posts}/>
         </S.Profile>
     )
 }

@@ -6,16 +6,20 @@ import {Messages} from "./pages/messages/Messages"
 import {News} from "./pages/news/News"
 import {Friends} from "./pages/friends/Friends"
 import {Settings} from "./pages/settings/Settings"
+import {StateType} from "../../redux/state"
 
-export const Content: React.FC = () => {
+type PropsType = {
+    state: StateType
+}
+export const Content: React.FC<PropsType> = ({state}) => {
     return (
 
             <S.Content>
-                <Route path="/profile" component={Profile}/>
-                <Route path="/messages" component={Messages}/>
-                <Route path="/news" component={News}/>
-                <Route path="/friends" component={Friends}/>
-                <Route path="/settings" component={Settings}/>
+                <Route path="/profile" render={() => <Profile user={state.user} posts={state.posts}/>}/>
+                <Route path="/messages"  render={() => <Messages dialogs={state.dialogs} friends={state.friends}/>}/>
+                <Route path="/news"  render={() => <News posts={state.posts}/>}/>
+                <Route path="/friends"  render={() => <Friends friends={state.friends}/>}/>
+                <Route path="/settings"  render={() => <Settings/>}/>
             </S.Content>
 
     )

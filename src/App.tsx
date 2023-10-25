@@ -4,14 +4,18 @@ import {Footer} from "./layout/footer/Footer"
 import {SideBar} from "./layout/sidebar/SideBar"
 import {Content} from "./layout/content/Content"
 import * as C from "./components/Styled/Components"
+import {StateType} from "./redux/state"
 
-function App() {
+type PropsType = {
+    state: StateType
+}
+function App({state}: PropsType) {
 
     return (
         <C.AppWrapper>
             <Header/>
-            <SideBar/>
-            <Content/>
+            <SideBar menu={state.menu}/>
+            <Content state={state}/>
             <Footer/>
         </C.AppWrapper>
     )

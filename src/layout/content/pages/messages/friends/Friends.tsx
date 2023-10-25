@@ -8,7 +8,7 @@ type FriendsPropsType = {
 }
 export const Friends: React.FC<FriendsPropsType> = ({friends}) => {
 
-    const friendsList: JSX.Element[] = friends.map(friend => (<Friend key={friend.userId} friend={friend}/>))
+    const friendsList: JSX.Element[] = friends && friends.map(friend => (<Friend key={friend.userId} friend={friend}/>))
 
     return (
         <S.Friends>

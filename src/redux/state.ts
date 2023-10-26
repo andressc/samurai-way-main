@@ -1,23 +1,12 @@
-import {PostType} from "../components/Posts/Post"
-import {DialogType} from "../layout/content/pages/messages/dialogs/Dialog"
-import {AuthUserType} from "../components/AboutUser/AboutUser"
-import {FriendType} from "../layout/content/pages/friends/Friend"
-import {MenuItemType} from "../components/Menu/MenuItem"
 import profileIcon from "../assets/icons/profile.svg"
 import messageIcon from "../assets/icons/message.svg"
 import newsIcon from "../assets/icons/news.svg"
 import musicIcon from "../assets/icons/music.svg"
 import settingsIcon from "../assets/icons/setting.svg"
+import {rerenderEntireTree} from "../render"
+import {StateType} from "./stateType"
 
-export type StateType = {
-    posts: PostType[]
-    friends: FriendType[]
-    dialogs: DialogType[]
-    user: AuthUserType
-    menu: MenuItemType[]
-}
-
-export const state: StateType = {
+export let state: StateType = {
     posts: [
         {
             id: 1,
@@ -228,4 +217,28 @@ export const state: StateType = {
             icon: settingsIcon,
         },
     ]
+}
+
+function getRandomInt(min: number, max: number) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+}
+
+export const addNewPost = (userText: string) => {
+    state.posts.push(
+        {
+            id: getRandomInt(100, 1000000),
+            userImg: "https://брендлист.рф/upload/000/u60/73/53/manikyur-avatarka-photo-normal.jpg",
+            comment: userText,
+            userId: 1,
+            userName: "Arin Stone",
+            date: "11 oct 2023",
+            likes: 23,
+            views: 12,
+        }
+    )
+
+    //console.log(state.posts)
+    rerenderEntireTree(state, addNewPost)
 }

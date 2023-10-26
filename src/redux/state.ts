@@ -3,9 +3,11 @@ import messageIcon from "../assets/icons/message.svg"
 import newsIcon from "../assets/icons/news.svg"
 import musicIcon from "../assets/icons/music.svg"
 import settingsIcon from "../assets/icons/setting.svg"
-import {rerenderEntireTree} from "../render"
 import {StateType} from "./stateType"
 
+let rerenderEntireTree = (state: StateType) => {
+    return
+}
 export let state: StateType = {
     posts: [
         {
@@ -240,5 +242,9 @@ export const addNewPost = (userText: string) => {
     )
 
     //console.log(state.posts)
-    rerenderEntireTree(state, addNewPost)
+    rerenderEntireTree(state)
+}
+
+export const subscribe = (observer: (state: StateType) => void) => {
+    rerenderEntireTree = observer
 }

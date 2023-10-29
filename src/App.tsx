@@ -5,18 +5,19 @@ import {SideBar} from "./layout/sidebar/SideBar"
 import {Content} from "./layout/content/Content"
 import * as C from "./components/Styled/Components"
 import {StateType} from "./redux/stateType"
+import {ActionType} from "./redux/actionType"
 
 type PropsType = {
     state: StateType
-    callBack: (userText: string) => void
+    dispatch: (action: ActionType) => void
 }
-function App({state, callBack}: PropsType) {
+function App({state, dispatch}: PropsType) {
 
     return (
         <C.AppWrapper>
             <Header/>
-            <SideBar menu={state.menu}/>
-            <Content state={state} callBack={callBack}/>
+            <SideBar menu={state.sidebar.menu}/>
+            <Content state={state} dispatch={dispatch}/>
             <Footer/>
         </C.AppWrapper>
     )

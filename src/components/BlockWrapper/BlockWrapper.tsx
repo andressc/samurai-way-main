@@ -14,7 +14,6 @@ export const BlockWrapper: React.FC<BlockWrapperPropsType> = ({title, children})
                 <C.ItemTitle>{title}</C.ItemTitle>
             </C.ContentBlock>
             {children}
-            <button></button>
         </S.BlockWrapper>
     )
 }

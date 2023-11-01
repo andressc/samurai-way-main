@@ -1,7 +1,7 @@
 import {createGlobalStyle} from "styled-components";
 import {theme} from "./Theme";
 
-export const GlobalStyled = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   *,
   *::before,
   *::after {

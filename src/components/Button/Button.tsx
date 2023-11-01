@@ -4,12 +4,12 @@ import React from "react"
 type ButtonPropsType = {
     icon: string
     title: string | number
-    callBack?: () => void
+    onClick?: () => void
 }
-export const Button: React.FC<ButtonPropsType> = ({icon, title, callBack}) => {
+export const Button: React.FC<ButtonPropsType> = ({icon, title, onClick}) => {
 
     const onClickHandler = () => {
-        if(callBack) callBack()
+        if(onClick) onClick()
     }
 
     return (

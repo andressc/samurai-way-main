@@ -29,7 +29,7 @@ export const Form: React.FC<PropsType> = ({dispatch, actionCreator, buttonTitle}
     return (
         <S.PostForm onSubmit={handleSubmit}>
             <S.PostFormField as="textarea" placeholder="your text..." value={newValue} onChange={changeHandler}/>
-            <Button icon={newsIcon} title={buttonTitle} callBack={onClickHandler}/>
+            <Button icon={newsIcon} title={buttonTitle} onClick={onClickHandler}/>
         </S.PostForm>
     )
 }

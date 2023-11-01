@@ -26,7 +26,7 @@ export const Post: React.FC<PostPropsType> = ({post}) => {
 
     return (
         <C.ContentBlock>
-            <C.FlexWrapper justify="space-between">
+            <C.FlexWrapper $justify="space-between">
                 <SimpleCell image={post.userImg} title={post.userName} subtitle={post.date}/>
                 <C.Views>{post.views}</C.Views>
             </C.FlexWrapper>

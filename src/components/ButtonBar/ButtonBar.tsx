@@ -7,7 +7,7 @@ type ButtonBarPropsType = {
 
 export const ButtonBar: React.FC<ButtonBarPropsType> = ({children}) => {
     return (
-        <C.FlexWrapper justify="flex-end" gap={15}>
+        <C.FlexWrapper $justify="flex-end" $gap={15}>
             {children}
         </C.FlexWrapper>
     )

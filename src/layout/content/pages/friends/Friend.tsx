@@ -20,7 +20,7 @@ type FriendPropsType = {
 export const Friend: React.FC<FriendPropsType> = ({friend}) => {
     return (
         <C.ContentBlock>
-            <C.FlexWrapper justify="space-between" align="center">
+            <C.FlexWrapper $justify="space-between" $align="center">
                 <SimpleCell image={friend.userImg} title={friend.userName} subtitle={friend.city}/>
                 <ButtonBar>
                     <Button icon={messageIcon} title="send message"/>

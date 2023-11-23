@@ -1,4 +1,3 @@
-import {ActionType} from "./actionType"
 import {postsPageType} from "./stateType"
 
 const ADD_POST = "ADD-POST"
@@ -58,8 +57,10 @@ let initialState: postsPageType = {
     ]
 }
 
+type ActionsType = AddPostType
 
-const postsReducer = (state: postsPageType = initialState, action: ActionType): postsPageType => {
+
+const postsReducer = (state: postsPageType = initialState, action: ActionsType): postsPageType => {
 
     switch (action.type) {
         case ADD_POST:
@@ -82,6 +83,7 @@ const postsReducer = (state: postsPageType = initialState, action: ActionType): 
     }
 }
 
+type AddPostType = ReturnType<typeof addPostAC>
 export const addPostAC = (value: string) => ({type: ADD_POST, userText: value})
 
 export default postsReducer

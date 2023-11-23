@@ -20,7 +20,7 @@ export type Store = {
     dispatch: (action: ActionType) => void
 }
 
-export const store: Store = {
+/*export const store: Store = {
     _state: {
         postsPage: {
             posts: [
@@ -267,4 +267,4 @@ export const store: Store = {
 
         this._callSubscriber(this._state)
     }
-}
+}*/

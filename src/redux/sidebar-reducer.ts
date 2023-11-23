@@ -41,8 +41,6 @@ const initialState: sidebarType = {
     ]
 }
 const sidebarReducer = (state: sidebarType = initialState, action: ActionType): sidebarType => {
-
-
     return state
 }
 

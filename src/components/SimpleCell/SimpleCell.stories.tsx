@@ -1,5 +1,6 @@
 import {SimpleCell} from "./SimpleCell"
 import {Meta, StoryObj} from "@storybook/react"
+import * as C from "../Styled/Components"
 
 // export default {
 //     component: SimpleCell,
@@ -7,11 +8,11 @@ import {Meta, StoryObj} from "@storybook/react"
 
 const meta: Meta<typeof SimpleCell> = {
     component: SimpleCell,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     parameters: {
         docs: {
             description: {
-                component: 'Компонент клетка пользователя'
+                component: `### Компонент клетка пользователя`,
             },
         },
     },
@@ -32,7 +33,31 @@ export const Cell: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Another description on the story, overriding the comments'
+                story: `
+\`\`\`
+
+import {SimpleCell} from "../SimpleCell/SimpleCell"
+\`\`\``
+            },
+        },
+    },
+}
+
+export const CellInWrapper: Story = {
+    render: (args) => (
+        <C.ContentBlock>
+            <SimpleCell {...args}/>
+        </C.ContentBlock>
+    ),
+    args: {...Cell.args},
+    parameters: {
+        docs: {
+            description: {
+                story: `
+\`\`\`
+import {SimpleCell} from "../SimpleCell/SimpleCell"
+import * as C from "../Styled/Components";
+\`\`\``
             },
         },
     },

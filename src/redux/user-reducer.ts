@@ -31,8 +31,6 @@ const initialState: userType = {
     }
 }
 const userReducer = (state: userType = initialState, action: ActionType): userType => {
-
-
     return state
 }
 

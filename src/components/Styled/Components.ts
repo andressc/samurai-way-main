@@ -95,6 +95,7 @@ export const ContentBlock = styled.div<ContentBlockPropsType>`
   }
   `};
 `
+ContentBlock.displayName = 'C.ContentBlock';
 
 export const Views = styled.span`
   position: relative;

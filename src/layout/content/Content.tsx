@@ -1,20 +1,14 @@
 import React from "react"
 import * as S from "./Content.styled"
-import {Profile} from "./pages/profile/Profile"
 import {Redirect, Route, Switch} from "react-router-dom"
-import {Messages} from "./pages/messages/Messages"
-import {News} from "./pages/news/News"
-import {Friends} from "./pages/friends/Friends"
 import {Settings} from "./pages/settings/Settings"
-import {StateType} from "../../redux/stateType"
-import {ActionType} from "../../redux/actionType"
 import {NotFound} from "./pages/not-found/NotFound"
+import {MessagesContainer} from "./pages/messages/MessagesContainer"
+import {ProfileContainer} from "./pages/profile/ProfileContainer"
+import {NewsContainer} from "./pages/news/NewsContainer"
+import {FriendsContainer} from "./pages/friends/FriendsContainer"
 
-type PropsType = {
-    state: StateType
-    dispatch: (action: ActionType) => void
-}
-export const Content: React.FC<PropsType> = ({state, dispatch}) => {
+export const Content: React.FC = () => {
     return (
 
         <S.Content>
@@ -23,17 +17,16 @@ export const Content: React.FC<PropsType> = ({state, dispatch}) => {
                     <Redirect to="/samurai-way-main/profile"/>
                 </Route>
                 <Route path="/samurai-way-main/profile">
-                    <Profile user={state.user.user} posts={state.postsPage.posts} dispatch={dispatch}/>
+                    <ProfileContainer/>
                 </Route>
                 <Route path="/samurai-way-main/messages">
-                    <Messages dialogs={state.dialogsPage.dialogs} friends={state.dialogsPage.friends}
-                              dispatch={dispatch}/>
+                    <MessagesContainer/>
                 </Route>
                 <Route path="/samurai-way-main/news">
-                    <News posts={state.postsPage.posts}/>
+                    <NewsContainer/>
                 </Route>
                 <Route path="/samurai-way-main/friends">
-                    <Friends friends={state.dialogsPage.friends}/>
+                    <FriendsContainer/>
                 </Route>
                 <Route path="/samurai-way-main/settings">
                     <Settings/>

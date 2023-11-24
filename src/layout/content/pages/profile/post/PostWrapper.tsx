@@ -1,20 +1,14 @@
 import React from "react"
-import {Posts} from "../../../../../components/Posts/Posts"
-import {Form} from "../../../../../components/Form/Form"
 import * as S from "./PostWrapper.styled"
-import {PostType} from "../../../../../components/Posts/Post"
 import {addPostAC} from "../../../../../redux/posts-reducer"
-import {ActionType} from "../../../../../redux/actionType"
+import {FormContainer} from "../../../../../components/Form/FormContainer"
+import {PostsContainer} from "../../../../../components/Posts/PostsContainer"
 
-type PropsType = {
-    posts: PostType[]
-    dispatch: (action: ActionType) => void
-}
-export const PostWrapper: React.FC<PropsType> = ({posts, dispatch}) => {
+export const PostWrapper: React.FC = () => {
     return (
         <S.PostWrapper>
-            <Form dispatch={dispatch} actionCreator={addPostAC} buttonTitle="Send Post"/>
-            <Posts posts={posts}/>
+            <FormContainer actionCreator={addPostAC} buttonTitle="Send Post"/>
+            <PostsContainer/>
         </S.PostWrapper>
     )
 }

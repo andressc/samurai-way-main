@@ -2,15 +2,13 @@ import React, {ChangeEvent, FormEvent, useState} from "react"
 import newsIcon from "../../assets/icons/news.svg"
 import {Button} from "../Button/Button"
 import * as S from "./Form.styled"
-import {ActionType} from "../../redux/actionType"
 
 type PropsType = {
-    dispatch: (action: ActionType) => void
-    actionCreator: (value: string) => ActionType
     buttonTitle: string
+    callback: (value: string) => void
 }
 
-export const Form: React.FC<PropsType> = ({dispatch, actionCreator, buttonTitle}) => {
+export const Form: React.FC<PropsType> = ({callback, buttonTitle}) => {
 
     const [newValue, setNewValue] = useState<string>("")
 
@@ -22,7 +20,7 @@ export const Form: React.FC<PropsType> = ({dispatch, actionCreator, buttonTitle}
         setNewValue(e.currentTarget.value)
     }
     const onClickHandler = () => {
-        dispatch(actionCreator(newValue))
+        callback(newValue)
         setNewValue("")
     }
 

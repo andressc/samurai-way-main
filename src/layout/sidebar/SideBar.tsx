@@ -1,15 +1,11 @@
 import React from "react"
 import * as S from "./Sidebar.styled"
-import {Menu} from "../../components/Menu/Menu"
-import {MenuItemType} from "../../components/Menu/MenuItem"
+import {MenuContainer} from "../../components/Menu/MenuContainer"
 
-type PropsType = {
-    menu: MenuItemType[]
-}
-export const SideBar: React.FC<PropsType> = ({menu}) => {
+export const SideBar: React.FC = () => {
     return (
         <S.Sidebar>
-            <Menu menu={menu}/>
+            <MenuContainer/>
         </S.Sidebar>
     )
 }

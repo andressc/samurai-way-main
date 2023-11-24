@@ -5,12 +5,15 @@ import {GlobalStyles} from "./styles/Global.styled"
 import App from "./App"
 import React from "react"
 import {StateType} from "./redux/stateType"
+import {StoreContext} from "./StoreContext"
 
 export const rerenderEntireTree = (state: StateType) => {
     ReactDOM.render(
         <BrowserRouter>
             <GlobalStyles/>
-            <App state={state} dispatch={store.dispatch.bind(store)}/>
+            <StoreContext.Provider value={store}>
+                <App/>
+            </StoreContext.Provider>
         </BrowserRouter>,
         document.getElementById("root")
     )

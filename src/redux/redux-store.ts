@@ -10,4 +10,7 @@ const reducers = combineReducers({
     user: userReducer,
     sidebar: sidebarReducer
 })
+
+export type AppStore = typeof store
+
 export const store = createStore(reducers)

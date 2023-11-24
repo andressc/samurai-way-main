@@ -5,7 +5,7 @@ const ADD_POST = "ADD-POST"
 let initialState: postsPageType = {
     posts: [
         {
-            id: 1,
+            id: 0,
             userImg: "https://брендлист.рф/upload/000/u60/73/53/manikyur-avatarka-photo-normal.jpg",
             comment: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, unde!",
             userId: 1,
@@ -15,7 +15,7 @@ let initialState: postsPageType = {
             views: 12,
         },
         {
-            id: 2,
+            id: 1,
             userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBMTYZOYQG0cQOvm5v0-RRP2JHkkQOHB8m_g&usqp=CAU",
             comment: "consectetur adipisicing elit",
             userId: 2,
@@ -25,7 +25,7 @@ let initialState: postsPageType = {
             views: 211,
         },
         {
-            id: 3,
+            id: 2,
             userImg: "https://habrastorage.org/webt/5b/db/fe/5bdbfe8c54bc4130948080.jpeg",
             comment: "sit amet, consectetur!",
             userId: 3,
@@ -35,7 +35,7 @@ let initialState: postsPageType = {
             views: 27,
         },
         {
-            id: 4,
+            id: 3,
             userImg: "https://i.pinimg.com/736x/b0/2d/a7/b02da7cbdb25c5e1f1ae9f4e0f73903b.jpg",
             comment: "Facilis, unde!",
             userId: 4,
@@ -45,7 +45,7 @@ let initialState: postsPageType = {
             views: 1,
         },
         {
-            id: 5,
+            id: 4,
             userImg: "https://cs13.pikabu.ru/post_img/big/2023/02/13/8/1676295806122712757.png",
             comment: "Lorem consectetur adipisicing ipsum dolor sit amet, consectetur adipisicing ipsum dolor sit amet, consectetur adipisicing elit. Facilis, unde!",
             userId: 5,

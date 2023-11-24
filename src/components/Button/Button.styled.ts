@@ -2,7 +2,7 @@ import styled from "styled-components"
 import {theme} from "../../styles/Theme"
 
 type ButtonPropsType = {
-  icon: string
+  $icon: string
 }
 
 export const Button = styled.button`
@@ -31,7 +31,7 @@ export const ButtonTitle = styled.span<ButtonPropsType>`
     content: "";
     width: 20px;
     height: 20px;
-    background-image: url(${props => props.icon});
+    background-image: url(${props => props.$icon});
     background-repeat: no-repeat;
     display: inline-block;
     position: absolute;

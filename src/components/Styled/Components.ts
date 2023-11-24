@@ -16,7 +16,7 @@ type ContentBlockPropsType = {
     size?: number
     $hover?: boolean
     $active?: boolean
-    chat?: ChatType
+    $chat?: ChatType
 }
 
 export const AppWrapper = styled.div`
@@ -69,7 +69,7 @@ export const ContentBlock = styled.div<ContentBlockPropsType>`
   }
   `};
 
-  ${props => props.chat === "Left" && `
+  ${props => props.$chat === "Left" && `
   &:before {
     content: '';
     position: absolute;
@@ -82,7 +82,7 @@ export const ContentBlock = styled.div<ContentBlockPropsType>`
   }
   `};
 
-  ${props => props.chat === "Right" && `
+  ${props => props.$chat === "Right" && `
   &:before {
     content: '';
     position: absolute;

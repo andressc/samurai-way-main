@@ -14,7 +14,7 @@ type MenuItemPropsType = {
 
 export const MenuItem: React.FC<MenuItemPropsType> = ({menu}) => {
     return (
-        <S.MenuItem icon={menu.icon}>
+        <S.MenuItem $icon={menu.icon}>
             <S.MenuLink to={menu.link} activeClassName={"activeClassName"}>{menu.title}</S.MenuLink>
         </S.MenuItem>
     )

@@ -14,7 +14,7 @@ export const Button: React.FC<ButtonPropsType> = ({icon, title, onClick}) => {
 
     return (
         <S.Button onClick={onClickHandler}>
-            <S.ButtonTitle icon={icon}>{title}</S.ButtonTitle>
+            <S.ButtonTitle $icon={icon}>{title}</S.ButtonTitle>
         </S.Button>
     )
 }

@@ -3,7 +3,7 @@ import {theme} from "../../styles/Theme"
 import {NavLink} from "react-router-dom"
 
 type MenuItemIcon = {
-    icon: string
+    $icon: string
 }
 
 type MenuLinkPropsType = {
@@ -25,7 +25,7 @@ export const MenuItem = styled.li<MenuItemIcon>`
     content: "";
     width: 20px;
     height: 20px;
-    background-image: url(${props => props.icon});
+    background-image: url(${props => props.$icon});
     background-repeat: no-repeat;
     display: inline-block;
     position: absolute;

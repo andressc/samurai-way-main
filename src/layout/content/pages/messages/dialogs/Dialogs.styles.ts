@@ -11,7 +11,7 @@ export const Dialogs = styled.div`
   overflow: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  height: 70vh;
+  max-height: 70vh;
 
   &::-webkit-scrollbar {
     width: 0;

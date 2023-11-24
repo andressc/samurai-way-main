@@ -1,12 +1,18 @@
-import React, {useContext} from "react"
 import {Messages} from "./Messages"
-import {StoreContext} from "../../../../StoreContext"
+import {connect} from "react-redux"
+import {AppDispatch, AppState} from "../../../../redux/redux-store"
+import {addMessageAC} from "../../../../redux/dialogs-reducer"
 
-export const MessagesContainer: React.FC = () => {
+const mapStateToProps = (state: AppState) => ({
+    dialogs: state.dialogsPage.dialogs,
+    friends: state.dialogsPage.friends,
+    buttonTitle: "Send Message",
+})
 
-    const context = useContext(StoreContext)
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+    callback: (newValue: string) => {
+        dispatch(addMessageAC(newValue))
+    }
+})
 
-    return (
-        <Messages dialogs={context.getState().dialogsPage.dialogs} friends={context.getState().dialogsPage.friends}/>
-    )
-}
+export const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)

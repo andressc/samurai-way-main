@@ -109,7 +109,7 @@ const dialogsReducer = (state: dialogsPageType = initialState, action: ActionsTy
 
     switch (action.type) {
         case ADD_MESSAGE: {
-            state.dialogs.push(
+            const newComment =
                 {
                     id: state.dialogs.length,
                     userImg: "https://брендлист.рф/upload/000/u60/73/53/manikyur-avatarka-photo-normal.jpg",
@@ -118,8 +118,7 @@ const dialogsReducer = (state: dialogsPageType = initialState, action: ActionsTy
                     userName: "Arin Stone",
                     date: new Date().toString(),
                 }
-            )
-            return state
+            return {...state, dialogs: [...state.dialogs, newComment]}
         }
 
         default:
@@ -129,6 +128,6 @@ const dialogsReducer = (state: dialogsPageType = initialState, action: ActionsTy
 
 type AddMessageType = ReturnType<typeof addMessageAC>
 
-export const addMessageAC = (value: string) => ({type: ADD_MESSAGE, userText: value})
+export const addMessageAC = (value: string) => ({type: ADD_MESSAGE, userText: value} as const)
 
 export default dialogsReducer

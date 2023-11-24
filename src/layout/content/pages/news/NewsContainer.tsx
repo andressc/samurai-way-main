@@ -1,12 +1,9 @@
-import React, {useContext} from "react"
 import {News} from "./News"
-import {StoreContext} from "../../../../StoreContext"
+import {AppState} from "../../../../redux/redux-store"
+import {connect} from "react-redux"
 
-export const NewsContainer: React.FC = () => {
+const mapStateToProps = (state: AppState) => ({
+    posts: state.postsPage.posts,
+})
 
-    const context = useContext(StoreContext)
-
-    return (
-        <News posts={context.getState().postsPage.posts}/>
-    )
-}
+export const NewsContainer = connect(mapStateToProps)(News)

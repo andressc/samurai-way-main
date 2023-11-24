@@ -64,7 +64,7 @@ const postsReducer = (state: postsPageType = initialState, action: ActionsType):
 
     switch (action.type) {
         case ADD_POST:
-            state.posts.push(
+            const newPost =
                 {
                     id: state.posts.length,
                     userImg: "https://брендлист.рф/upload/000/u60/73/53/manikyur-avatarka-photo-normal.jpg",
@@ -75,8 +75,8 @@ const postsReducer = (state: postsPageType = initialState, action: ActionsType):
                     likes: 23,
                     views: 12,
                 }
-            )
-            return state
+
+            return {...state, posts: [newPost, ...state.posts]}
 
         default:
             return state
@@ -84,6 +84,6 @@ const postsReducer = (state: postsPageType = initialState, action: ActionsType):
 }
 
 type AddPostType = ReturnType<typeof addPostAC>
-export const addPostAC = (value: string) => ({type: ADD_POST, userText: value})
+export const addPostAC = (value: string) => ({type: ADD_POST, userText: value} as const)
 
 export default postsReducer

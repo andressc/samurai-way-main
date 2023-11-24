@@ -1,12 +1,9 @@
-import React, {useContext} from "react"
 import {Friends} from "./Friends"
-import {StoreContext} from "../../../../StoreContext"
+import {AppState} from "../../../../redux/redux-store"
+import {connect} from "react-redux"
 
-export const FriendsContainer: React.FC = () => {
+const mapStateToProps = (state: AppState) => ({
+    friends: state.dialogsPage.friends,
+})
 
-    const context = useContext(StoreContext)
-
-    return (
-        <Friends friends={context.getState().dialogsPage.friends}/>
-    )
-}
+export const FriendsContainer = connect(mapStateToProps)(Friends)

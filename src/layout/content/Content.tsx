@@ -19,23 +19,23 @@ export const Content: React.FC<PropsType> = ({state, dispatch}) => {
 
         <S.Content>
             <Switch>
-                <Route path="/" exact>
-                    <Redirect to="/profile"/>
+                <Route path="/samurai-way-main/" exact>
+                    <Redirect to="/samurai-way-main/profile"/>
                 </Route>
-                <Route path="/profile">
+                <Route path="/samurai-way-main/profile">
                     <Profile user={state.user.user} posts={state.postsPage.posts} dispatch={dispatch}/>
                 </Route>
-                <Route path="/messages">
+                <Route path="/samurai-way-main/messages">
                     <Messages dialogs={state.dialogsPage.dialogs} friends={state.dialogsPage.friends}
                               dispatch={dispatch}/>
                 </Route>
-                <Route path="/news">
+                <Route path="/samurai-way-main/news">
                     <News posts={state.postsPage.posts}/>
                 </Route>
-                <Route path="/friends">
+                <Route path="/samurai-way-main/friends">
                     <Friends friends={state.dialogsPage.friends}/>
                 </Route>
-                <Route path="/settings">
+                <Route path="/samurai-way-main/settings">
                     <Settings/>
                 </Route>
                 <Route path="*">

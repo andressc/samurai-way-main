@@ -1,6 +1,6 @@
 import React from "react"
 import * as S from "./Information.styled"
-import {InformationItemType} from "../../../redux/reducers/user-reducer"
+import {InformationItemType} from "../../../redux/reducers/profile-reducer"
 
 type InformationItemPropsType = {
     information: InformationItemType

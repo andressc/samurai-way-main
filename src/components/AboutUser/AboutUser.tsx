@@ -1,10 +1,10 @@
 import React from "react"
 import {Information} from "./information/Information"
 import * as S from "./AboutUser.styled"
-import {AuthUserType} from "../../redux/reducers/user-reducer"
+import {ProfileUserType} from "../../redux/reducers/profile-reducer"
 
 type AboutUserPropsType = {
-    user: AuthUserType
+    user: ProfileUserType
 }
 
 export const AboutUser: React.FC<AboutUserPropsType> = ({user}) => {

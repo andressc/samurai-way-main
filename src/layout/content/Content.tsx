@@ -6,7 +6,7 @@ import {NotFound} from "./pages/not-found/NotFound"
 import {MessagesContainer} from "./pages/messages/MessagesContainer"
 import {ProfileContainer} from "./pages/profile/ProfileContainer"
 import {NewsContainer} from "./pages/news/NewsContainer"
-import {FriendsContainer} from "./pages/friends/FriendsContainer"
+import {UsersContainer} from "./pages/users/UsersContainer"
 
 export const Content: React.FC = () => {
     return (
@@ -25,8 +25,8 @@ export const Content: React.FC = () => {
                 <Route path="/samurai-way-main/news">
                     <NewsContainer/>
                 </Route>
-                <Route path="/samurai-way-main/friends">
-                    <FriendsContainer/>
+                <Route path="/samurai-way-main/users">
+                    <UsersContainer/>
                 </Route>
                 <Route path="/samurai-way-main/settings">
                     <Settings/>

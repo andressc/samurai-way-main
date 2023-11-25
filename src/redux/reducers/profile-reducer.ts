@@ -6,7 +6,7 @@ export type InformationItemType = {
     description: string
 }
 
-export type AuthUserType = {
+export type ProfileUserType = {
     userId: number
     userName: string
     userImg: string
@@ -14,7 +14,7 @@ export type AuthUserType = {
 }
 
 export type UserType = {
-    user: AuthUserType
+    user: ProfileUserType
 }
 
 const initialState: UserType = {
@@ -46,8 +46,11 @@ const initialState: UserType = {
         ],
     }
 }
-const userReducer = (state: UserType = initialState, action: ActionType): UserType => {
-    return state
+const profileReducer = (state: UserType = initialState, action: ActionType): UserType => {
+    switch (action.type) {
+        default:
+            return state
+    }
 }
 
-export default userReducer
+export default profileReducer

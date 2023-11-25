@@ -11,7 +11,7 @@ type FriendPropsType = {
     friend: FriendType
 }
 
-export const Friend: React.FC<FriendPropsType> = ({friend}) => {
+export const User: React.FC<FriendPropsType> = ({friend}) => {
     return (
         <C.ContentBlock>
             <C.FlexWrapper $justify="space-between" $align="center">

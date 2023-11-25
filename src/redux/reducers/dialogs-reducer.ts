@@ -24,18 +24,6 @@ export type DialogsPageType = {
 let initialState: DialogsPageType = {
     friends: [
         {
-            userId: 0,
-            userImg: "https://брендлист.рф/upload/000/u60/73/53/manikyur-avatarka-photo-normal.jpg",
-            userName: "Arin Stone",
-            city: "Moscow",
-        },
-        {
-            userId: 1,
-            userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBMTYZOYQG0cQOvm5v0-RRP2JHkkQOHB8m_g&usqp=CAU",
-            userName: "Nikolay Gobov",
-            city: "Moscow",
-        },
-        {
             userId: 2,
             userImg: "https://habrastorage.org/webt/5b/db/fe/5bdbfe8c54bc4130948080.jpeg",
             userName: "Andrey Smith",

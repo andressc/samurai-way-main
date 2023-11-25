@@ -38,8 +38,8 @@ const initialState: SidebarType = {
         },
         {
             id: 4,
-            title: "Friends",
-            link: "/samurai-way-main/friends",
+            title: "Users",
+            link: "/samurai-way-main/users",
             icon: musicIcon,
         },
         {
@@ -51,7 +51,10 @@ const initialState: SidebarType = {
     ]
 }
 const sidebarReducer = (state: SidebarType = initialState, action: ActionType): SidebarType => {
-    return state
+    switch (action.type) {
+        default:
+            return state
+    }
 }
 
 export default sidebarReducer

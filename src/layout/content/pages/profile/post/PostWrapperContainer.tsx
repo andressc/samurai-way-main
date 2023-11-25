@@ -1,14 +1,26 @@
 import {connect} from "react-redux"
-import {AppDispatch, AppState} from "../../../../../redux/redux-store"
+import {AppStateType} from "../../../../../redux/redux-store"
 import {PostWrapper} from "./PostWrapper"
-import {addPostAC} from "../../../../../redux/posts-reducer"
+import {addPostAC, PostActionsType, PostType} from "../../../../../redux/reducers/posts-reducer"
+import {Dispatch} from "redux"
 
-const mapStateToProps = (state: AppState) => ({
+type MapStatePropsType = {
+    posts: PostType[]
+    buttonTitle: string
+}
+
+type MapDispatchPropsType = {
+    callback: (newValue: string) => void
+}
+
+export type PropsType = MapStatePropsType & MapDispatchPropsType
+
+const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     posts: state.postsPage.posts,
     buttonTitle: "Add Post",
 })
 
-const mapDispatchToProps = (dispatch: AppDispatch) => ({
+const mapDispatchToProps = (dispatch: Dispatch<PostActionsType>): MapDispatchPropsType => ({
     callback: (newValue: string) => {
         dispatch(addPostAC(newValue))
     }

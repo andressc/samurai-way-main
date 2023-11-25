@@ -1,8 +1,8 @@
 import React from "react"
 import {SimpleCell} from "../../../../../components/SimpleCell/SimpleCell"
 import {NavLink} from "react-router-dom"
-import {FriendType} from "../../friends/Friend"
 import * as C from "../../../../../components/Styled/Components"
+import {FriendType} from "../../../../../redux/reducers/dialogs-reducer"
 
 type FriendPropsType = {
     friend: FriendType

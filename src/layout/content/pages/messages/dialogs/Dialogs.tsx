@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from "react"
 import * as S from "./Dialogs.styles"
-import {Dialog, DialogType} from "./Dialog"
+import {Dialog} from "./Dialog"
+import {DialogType} from "../../../../../redux/reducers/dialogs-reducer"
 
 type DialogsPropsType = {
     dialogs: DialogType[]

@@ -1,18 +1,16 @@
 import {combineReducers, createStore} from "redux"
-import dialogsReducer from "./dialogs-reducer"
-import postsReducer from "./posts-reducer"
-import userReducer from "./user-reducer"
-import sidebarReducer from "./sidebar-reducer"
+import dialogsReducer from "./reducers/dialogs-reducer"
+import postsReducer from "./reducers/posts-reducer"
+import userReducer from "./reducers/user-reducer"
+import sidebarReducer from "./reducers/sidebar-reducer"
 
-const reducers = combineReducers({
+const rootReducer = combineReducers({
     postsPage: postsReducer,
     dialogsPage: dialogsReducer,
     user: userReducer,
     sidebar: sidebarReducer
 })
 
-export type AppStore = typeof store
-export type AppState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type AppStateType = ReturnType<typeof rootReducer>
 
-export const store = createStore(reducers)
+export const store = createStore(rootReducer)

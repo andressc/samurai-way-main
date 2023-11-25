@@ -1,7 +1,7 @@
 import React from "react"
 import {Friend} from "./Friend"
 import * as S from "./Friends.styled"
-import {FriendType} from "../../friends/Friend"
+import {FriendType} from "../../../../../redux/reducers/dialogs-reducer"
 
 type FriendsPropsType = {
     friends: FriendType[]

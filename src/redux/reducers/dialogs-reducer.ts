@@ -1,8 +1,27 @@
-import {dialogsPageType} from "./stateType"
-
 const ADD_MESSAGE = "ADD-MESSAGE"
 
-let initialState: dialogsPageType = {
+export type FriendType = {
+    userId: number
+    userImg: string
+    userName: string
+    city: string
+}
+
+export type DialogType = {
+    id: number
+    userImg: string
+    comment: string
+    userName: string
+    userId: number
+    date: string
+}
+
+export type DialogsPageType = {
+    friends: FriendType[]
+    dialogs: DialogType[]
+}
+
+let initialState: DialogsPageType = {
     friends: [
         {
             userId: 0,
@@ -103,9 +122,9 @@ let initialState: dialogsPageType = {
     ],
 }
 
-type ActionsType = AddMessageType
+export type DialogActionsType = AddMessageType
 
-const dialogsReducer = (state: dialogsPageType = initialState, action: ActionsType): dialogsPageType => {
+const dialogsReducer = (state: DialogsPageType = initialState, action: DialogActionsType): DialogsPageType => {
 
     switch (action.type) {
         case ADD_MESSAGE: {

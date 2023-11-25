@@ -1,11 +1,9 @@
 import React from "react"
 import * as S from "./Profile.styled"
-import {AboutUser, AuthUserType} from "../../../../components/AboutUser/AboutUser"
+import {AboutUser} from "../../../../components/AboutUser/AboutUser"
 import {PostWrapperContainer} from "./post/PostWrapperContainer"
+import {PropsType} from "./ProfileContainer"
 
-type PropsType = {
-    user: AuthUserType
-}
 export const Profile: React.FC<PropsType> = ({user}) => {
     return (
         <S.Profile>

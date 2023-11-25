@@ -1,8 +1,15 @@
 import {Friends} from "./Friends"
-import {AppState} from "../../../../redux/redux-store"
+import {AppStateType} from "../../../../redux/redux-store"
 import {connect} from "react-redux"
+import {FriendType} from "../../../../redux/reducers/dialogs-reducer"
 
-const mapStateToProps = (state: AppState) => ({
+type MapStatePropsType = {
+    friends: FriendType[]
+}
+
+export type PropsType = MapStatePropsType
+
+const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     friends: state.dialogsPage.friends,
 })
 

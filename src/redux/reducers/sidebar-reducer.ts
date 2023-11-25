@@ -1,12 +1,22 @@
-import {ActionType} from "./actionType"
-import {sidebarType} from "./stateType"
-import profileIcon from "../assets/icons/profile.svg"
-import messageIcon from "../assets/icons/message.svg"
-import newsIcon from "../assets/icons/news.svg"
-import musicIcon from "../assets/icons/music.svg"
-import settingsIcon from "../assets/icons/setting.svg"
+import {ActionType} from "../actionType"
+import profileIcon from "../../assets/icons/profile.svg"
+import messageIcon from "../../assets/icons/message.svg"
+import newsIcon from "../../assets/icons/news.svg"
+import musicIcon from "../../assets/icons/music.svg"
+import settingsIcon from "../../assets/icons/setting.svg"
 
-const initialState: sidebarType = {
+export type MenuItemType = {
+    id: number
+    title: string
+    link: string
+    icon: string
+}
+
+export type SidebarType = {
+    menu: MenuItemType[]
+}
+
+const initialState: SidebarType = {
     menu: [
         {
             id: 1,
@@ -40,7 +50,7 @@ const initialState: sidebarType = {
         },
     ]
 }
-const sidebarReducer = (state: sidebarType = initialState, action: ActionType): sidebarType => {
+const sidebarReducer = (state: SidebarType = initialState, action: ActionType): SidebarType => {
     return state
 }
 

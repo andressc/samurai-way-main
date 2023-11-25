@@ -1,15 +1,7 @@
 import React from "react"
 import {SimpleCell} from "../../../../../components/SimpleCell/SimpleCell"
 import * as C from "../../../../../components/Styled/Components"
-
-export type DialogType = {
-    id: number
-    userImg: string
-    comment: string
-    userName: string
-    userId: number
-    date: string
-}
+import {DialogType} from "../../../../../redux/reducers/dialogs-reducer"
 
 type DialogPropsType = {
     dialog: DialogType

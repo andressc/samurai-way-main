@@ -6,17 +6,7 @@ import {Button} from "../Button/Button"
 import {SimpleCell} from "../SimpleCell/SimpleCell"
 import {ButtonBar} from "../ButtonBar/ButtonBar"
 import * as C from "../Styled/Components"
-
-export type PostType = {
-    id: number
-    userImg: string
-    comment: string
-    userId: number
-    userName: string
-    date: string
-    likes: number
-    views: number
-}
+import {PostType} from "../../redux/reducers/posts-reducer"
 
 type PostPropsType = {
     post: PostType

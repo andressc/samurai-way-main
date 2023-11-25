@@ -1,7 +1,23 @@
-import {ActionType} from "./actionType"
-import {userType} from "./stateType"
+import {ActionType} from "../actionType"
 
-const initialState: userType = {
+export type InformationItemType = {
+    id: number
+    title: string
+    description: string
+}
+
+export type AuthUserType = {
+    userId: number
+    userName: string
+    userImg: string
+    information: InformationItemType[]
+}
+
+export type UserType = {
+    user: AuthUserType
+}
+
+const initialState: UserType = {
     user: {
         userId: 1,
         userName: "Vasya F.",
@@ -30,7 +46,7 @@ const initialState: userType = {
         ],
     }
 }
-const userReducer = (state: userType = initialState, action: ActionType): userType => {
+const userReducer = (state: UserType = initialState, action: ActionType): UserType => {
     return state
 }
 

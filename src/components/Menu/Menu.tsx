@@ -1,12 +1,9 @@
 import React from "react"
 import * as S from "./Menu.styled"
-import {MenuItem, MenuItemType} from "./MenuItem"
+import {MenuItem} from "./MenuItem"
+import {PropsType} from "./MenuContainer"
 
-type MenuPropsType = {
-    menu: MenuItemType[]
-}
-
-export const Menu: React.FC<MenuPropsType> = ({menu}) => {
+export const Menu: React.FC<PropsType> = ({menu}) => {
 
     const MenuList: JSX.Element[] = menu && menu.map(menu => <MenuItem key={menu.id} menu={menu}/>)
 

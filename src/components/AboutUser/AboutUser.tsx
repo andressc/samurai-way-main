@@ -1,14 +1,7 @@
 import React from "react"
 import {Information} from "./information/Information"
 import * as S from "./AboutUser.styled"
-import {InformationItemType} from "./information/InformationItem"
-
-export type AuthUserType = {
-    userId: number
-    userName: string
-    userImg: string
-    information: InformationItemType[]
-}
+import {AuthUserType} from "../../redux/reducers/user-reducer"
 
 type AboutUserPropsType = {
     user: AuthUserType

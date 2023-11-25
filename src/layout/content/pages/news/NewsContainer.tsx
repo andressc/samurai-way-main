@@ -1,8 +1,15 @@
 import {News} from "./News"
-import {AppState} from "../../../../redux/redux-store"
+import {AppStateType} from "../../../../redux/redux-store"
 import {connect} from "react-redux"
+import {PostType} from "../../../../redux/reducers/posts-reducer"
 
-const mapStateToProps = (state: AppState) => ({
+type MapStatePropsType = {
+    posts: PostType[]
+}
+
+export type PropsType = MapStatePropsType
+
+const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     posts: state.postsPage.posts,
 })
 

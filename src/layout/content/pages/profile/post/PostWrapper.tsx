@@ -2,13 +2,8 @@ import React from "react"
 import * as S from "./PostWrapper.styled"
 import {Form} from "../../../../../components/Form/Form"
 import {Posts} from "../../../../../components/Posts/Posts"
-import {PostType} from "../../../../../components/Posts/Post"
+import {PropsType} from "./PostWrapperContainer"
 
-type PropsType = {
-    posts: PostType[]
-    buttonTitle: string
-    callback: (value: string) => void
-}
 export const PostWrapper: React.FC<PropsType> = ({posts, buttonTitle, callback}) => {
     return (
         <S.PostWrapper>

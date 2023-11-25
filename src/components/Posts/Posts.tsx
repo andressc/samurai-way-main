@@ -1,6 +1,7 @@
 import React from "react"
 import * as S from "./Posts.styled"
-import {Post, PostType} from "./Post"
+import {Post} from "./Post"
+import {PostType} from "../../redux/reducers/posts-reducer"
 
 type PostsPropsTypes = {
     posts: PostType[]

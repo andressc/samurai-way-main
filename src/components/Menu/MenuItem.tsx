@@ -1,12 +1,6 @@
 import React from "react"
 import * as S from "./Menu.styled"
-
-export type MenuItemType = {
-    id: number
-    title: string
-    link: string
-    icon: string
-}
+import {MenuItemType} from "../../redux/reducers/sidebar-reducer"
 
 type MenuItemPropsType = {
     menu: MenuItemType

@@ -1,12 +1,16 @@
-import React, {useContext} from "react"
 import {Menu} from "./Menu"
-import {StoreContext} from "../../StoreContext"
+import {AppStateType} from "../../redux/redux-store"
+import {connect} from "react-redux"
+import {MenuItemType} from "../../redux/reducers/sidebar-reducer"
 
-export const MenuContainer: React.FC = () => {
-
-    const context = useContext(StoreContext)
-
-    return (
-        <Menu menu={context.getState().sidebar.menu}/>
-    )
+type MapStatePropsType = {
+    menu: MenuItemType[]
 }
+
+export type PropsType = MapStatePropsType
+
+const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
+    menu: state.sidebar.menu,
+})
+
+export const MenuContainer = connect(mapStateToProps)(Menu)

@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
     dialogsPage: dialogsReducer,
     profile: profileReducer,
     sidebar: sidebarReducer,
-    users: usersReducer
+    usersPage: usersReducer
 })
 
 export type AppStateType = ReturnType<typeof rootReducer>

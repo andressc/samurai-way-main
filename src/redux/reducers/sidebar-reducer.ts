@@ -2,7 +2,7 @@ import {ActionType} from "../actionType"
 import profileIcon from "../../assets/icons/profile.svg"
 import messageIcon from "../../assets/icons/message.svg"
 import newsIcon from "../../assets/icons/news.svg"
-import musicIcon from "../../assets/icons/music.svg"
+import userIcon from "../../assets/icons/user.svg"
 import settingsIcon from "../../assets/icons/setting.svg"
 
 export type MenuItemType = {
@@ -40,7 +40,7 @@ const initialState: SidebarType = {
             id: 4,
             title: "Users",
             link: "/samurai-way-main/users",
-            icon: musicIcon,
+            icon: userIcon,
         },
         {
             id: 5,

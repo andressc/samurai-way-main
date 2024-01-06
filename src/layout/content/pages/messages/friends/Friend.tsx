@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import {SimpleCell} from "../../../../../components/SimpleCell/SimpleCell"
 import {NavLink} from "react-router-dom"
 import * as C from "../../../../../components/Styled/Components"
@@ -8,7 +8,7 @@ type FriendPropsType = {
     friend: FriendType
 }
 
-export const Friend: React.FC<FriendPropsType> = ({friend}) => {
+export const Friend: FC<FriendPropsType> = ({friend}) => {
     return (
         <NavLink to={`/messages/${friend.userId}`}>
             <C.ContentBlock $hover={true}>

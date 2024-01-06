@@ -1,10 +1,10 @@
-import React from "react"
+import React, {FC} from "react"
 import * as S from "./Profile.styled"
 import {AboutUser} from "../../../../components/AboutUser/AboutUser"
 import {PostWrapperContainer} from "./post/PostWrapperContainer"
 import {PropsType} from "./ProfileContainer"
 
-export const Profile: React.FC<PropsType> = ({user}) => {
+export const Profile: FC<PropsType> = ({user}) => {
     return (
         <S.Profile>
             <S.ProfileCover

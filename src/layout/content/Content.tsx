@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import * as S from "./Content.styled"
 import {Redirect, Route, Switch} from "react-router-dom"
 import {Settings} from "./pages/settings/Settings"
@@ -6,9 +6,9 @@ import {NotFound} from "./pages/not-found/NotFound"
 import {MessagesContainer} from "./pages/messages/MessagesContainer"
 import {ProfileContainer} from "./pages/profile/ProfileContainer"
 import {NewsContainer} from "./pages/news/NewsContainer"
-import {UsersContainer} from "./pages/users/UsersContainer"
+import UsersContainer from "./pages/users/UsersContainer"
 
-export const Content: React.FC = () => {
+export const Content: FC = () => {
     return (
 
         <S.Content>

@@ -1,7 +1,7 @@
-import React from "react"
+import React, {FC} from "react"
 import * as S from "./Header.styled"
 
-export const Header: React.FC = () => {
+export const Header: FC = () => {
 
     return (
         <S.Header>

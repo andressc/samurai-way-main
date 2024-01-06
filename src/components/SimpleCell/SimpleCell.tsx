@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import * as C from "../Styled/Components"
 
 type SimpleCellPropsType = {
@@ -24,7 +24,7 @@ type SimpleCellPropsType = {
     subtitle?: string
 }
 
-export const SimpleCell: React.FC<SimpleCellPropsType> = ({image, subtitle, title}) => {
+export const SimpleCell: FC<SimpleCellPropsType> = ({image, subtitle, title}) => {
     return (
         <C.FlexWrapper $gap={15} $align="center">
             <C.Avatar src={image} alt=""/>

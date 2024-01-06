@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import messageIcon from "../../assets/icons/message.svg"
 import heartIcon from "../../assets/icons/heart.svg"
 import shareIcon from "../../assets/icons/share.svg"
@@ -12,7 +12,7 @@ type PostPropsType = {
     post: PostType
 }
 
-export const Post: React.FC<PostPropsType> = ({post}) => {
+export const Post: FC<PostPropsType> = ({post}) => {
 
     return (
         <C.ContentBlock>

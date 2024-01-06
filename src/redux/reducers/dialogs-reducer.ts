@@ -120,7 +120,7 @@ const dialogsReducer = (state: DialogsPageType = initialState, action: DialogAct
                 {
                     id: state.dialogs.length,
                     userImg: "https://брендлист.рф/upload/000/u60/73/53/manikyur-avatarka-photo-normal.jpg",
-                    comment: action.userText.toString(),
+                    comment: action.payload.userText.toString(),
                     userId: 1,
                     userName: "Arin Stone",
                     date: new Date().toString(),
@@ -135,6 +135,6 @@ const dialogsReducer = (state: DialogsPageType = initialState, action: DialogAct
 
 type AddMessageType = ReturnType<typeof addMessageAC>
 
-export const addMessageAC = (value: string) => ({type: ADD_MESSAGE, userText: value} as const)
+export const addMessageAC = (value: string) => ({type: ADD_MESSAGE, payload: {userText: value}} as const)
 
 export default dialogsReducer

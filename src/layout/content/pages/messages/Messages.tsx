@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import {Friends} from "./friends/Friends"
 import {Dialogs} from "./dialogs/Dialogs"
 import * as S from "./Messages.styled"
@@ -6,7 +6,7 @@ import {BlockWrapper} from "../../../../components/BlockWrapper/BlockWrapper"
 import {Form} from "../../../../components/Form/Form"
 import {PropsType} from "./MessagesContainer"
 
-export const Messages: React.FC<PropsType> = ({friends, dialogs, buttonTitle , callback}) => {
+export const Messages: FC<PropsType> = ({friends, dialogs, buttonTitle , callback}) => {
     return (
         <BlockWrapper title="Messages">
             <S.Messages>

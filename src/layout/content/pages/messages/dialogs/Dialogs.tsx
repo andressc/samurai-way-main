@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react"
+import React, {FC, useEffect, useRef, useState} from "react"
 import * as S from "./Dialogs.styles"
 import {Dialog} from "./Dialog"
 import {DialogType} from "../../../../../redux/reducers/dialogs-reducer"
@@ -6,7 +6,7 @@ import {DialogType} from "../../../../../redux/reducers/dialogs-reducer"
 type DialogsPropsType = {
     dialogs: DialogType[]
 }
-export const Dialogs: React.FC<DialogsPropsType> = ({dialogs}) => {
+export const Dialogs: FC<DialogsPropsType> = ({dialogs}) => {
 
     const chatContainerRef = useRef<HTMLDivElement>(null);
     const [initialLoad, setInitialLoad] = useState(true);

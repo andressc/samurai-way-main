@@ -1,20 +1,25 @@
 import * as S from "./Button.styled"
-import React from "react"
+import React, {FC, MouseEvent} from "react"
 
 type ButtonPropsType = {
-    icon: string
     title: string | number
-    onClick?: () => void
+    icon?: string
+    className?: string
+    onClick?: (page: number) => void
 }
-export const Button: React.FC<ButtonPropsType> = ({icon, title, onClick}) => {
+export const Button: FC<ButtonPropsType> = ({icon, title, onClick, className}) => {
 
-    const onClickHandler = () => {
-        if(onClick) onClick()
+    const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
+        console.log(e.currentTarget.textContent)
+        if(onClick) onClick(e.currentTarget.textContent ? +e.currentTarget.textContent : 1)
     }
 
+
     return (
-        <S.Button onClick={onClickHandler}>
-            <S.ButtonTitle $icon={icon}>{title}</S.ButtonTitle>
+        <>
+        <S.Button onClick={onClickHandler} className={className}>
+            <S.ButtonTitle $icon={icon ? icon : ""} >{title}</S.ButtonTitle>
         </S.Button>
+        </>
     )
 }

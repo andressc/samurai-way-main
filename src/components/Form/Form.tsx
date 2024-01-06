@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FormEvent, useState} from "react"
+import React, {ChangeEvent, FC, FormEvent, useState} from "react"
 import newsIcon from "../../assets/icons/news.svg"
 import {Button} from "../Button/Button"
 import * as S from "./Form.styled"
@@ -8,7 +8,7 @@ type PropsType = {
     callback: (value: string) => void
 }
 
-export const Form: React.FC<PropsType> = ({callback, buttonTitle}) => {
+export const Form: FC<PropsType> = ({callback, buttonTitle}) => {
 
     const [newValue, setNewValue] = useState<string>("")
 

@@ -19,11 +19,15 @@ export const Button = styled.button`
   &:hover {
     background-color: ${theme.colors.quaternaryBg};
   }
+
+  &.${props => props.className} {
+    background-color: ${theme.colors.quaternaryBg};
+  }
 `
 
 export const ButtonTitle = styled.span<ButtonPropsType>`
   position: relative;
-  padding-left: 30px;
+  padding-left: ${props => props.$icon ? "30px" : "0px"};
   margin: 15px;
   text-transform: capitalize;
   

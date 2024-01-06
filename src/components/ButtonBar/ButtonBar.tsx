@@ -1,11 +1,11 @@
-import React from "react"
+import React, {FC, ReactNode} from "react"
 import * as C from "../Styled/Components"
 
 type ButtonBarPropsType = {
-    children: React.ReactNode
+    children: ReactNode
 }
 
-export const ButtonBar: React.FC<ButtonBarPropsType> = ({children}) => {
+export const ButtonBar: FC<ButtonBarPropsType> = ({children}) => {
     return (
         <C.FlexWrapper $justify="flex-end" $gap={15}>
             {children}

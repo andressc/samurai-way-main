@@ -1,6 +1,6 @@
 import {ActionType} from "../actionType"
 
-export type InformationItemType = {
+export type ProfileInformationType = {
     id: number
     title: string
     description: string
@@ -10,14 +10,14 @@ export type ProfileUserType = {
     userId: number
     userName: string
     userImg: string
-    information: InformationItemType[]
+    information: ProfileInformationType[]
 }
 
-export type UserType = {
+export type ProfileType = {
     user: ProfileUserType
 }
 
-const initialState: UserType = {
+const initialState: ProfileType = {
     user: {
         userId: 1,
         userName: "Vasya F.",
@@ -46,7 +46,7 @@ const initialState: UserType = {
         ],
     }
 }
-const profileReducer = (state: UserType = initialState, action: ActionType): UserType => {
+const profileReducer = (state: ProfileType = initialState, action: ActionType): ProfileType => {
     switch (action.type) {
         default:
             return state

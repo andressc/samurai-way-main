@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import {SimpleCell} from "../../../../components/SimpleCell/SimpleCell"
 import {ButtonBar} from "../../../../components/ButtonBar/ButtonBar"
 import {Button} from "../../../../components/Button/Button"
@@ -7,6 +7,7 @@ import unfollowIcon from "../../../../assets/icons/unfollow.svg"
 import followIcon from "../../../../assets/icons/follow.svg"
 import * as C from "../../../../components/Styled/Components"
 import {UserType} from "../../../../redux/reducers/users-reducer"
+import defaultAvatar from "../../../../assets/img/default_avatar.png"
 
 type PropsType = {
     user: UserType
@@ -14,13 +15,13 @@ type PropsType = {
     unFollow: (userId: number) => void
 }
 
-export const User: React.FC<PropsType> = ({user, follow, unFollow}) => {
+export const User: FC<PropsType> = ({user, follow, unFollow}) => {
     const followHandler = () => {
-        follow(user.userId)
+        follow(user.id)
     }
 
     const unFollowHandler = () => {
-        unFollow(user.userId)
+        unFollow(user.id)
     }
 
     const subscribeButton: JSX.Element = user.followed
@@ -30,7 +31,7 @@ export const User: React.FC<PropsType> = ({user, follow, unFollow}) => {
     return (
         <C.ContentBlock>
             <C.FlexWrapper $justify="space-between" $align="center">
-                <SimpleCell image={user.userImg} title={user.userName} subtitle={user.city}/>
+                <SimpleCell image={user.photos.small ? user.photos.small : defaultAvatar} title={user.name} subtitle={"city"}/>
                 <ButtonBar>
                     {subscribeButton}
                     <Button icon={messageIcon} title="send message"/>

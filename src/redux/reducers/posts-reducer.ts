@@ -81,7 +81,7 @@ const postsReducer = (state: PostsPageType = initialState, action: PostActionsTy
                 {
                     id: state.posts.length,
                     userImg: "https://брендлист.рф/upload/000/u60/73/53/manikyur-avatarka-photo-normal.jpg",
-                    comment: action.userText.toString(),
+                    comment: action.payload.userText.toString(),
                     userId: 1,
                     userName: "Arin Stone",
                     date: new Date().toString(),
@@ -98,6 +98,6 @@ const postsReducer = (state: PostsPageType = initialState, action: PostActionsTy
 
 type AddPostType = ReturnType<typeof addPostAC>
 
-export const addPostAC = (value: string) => ({type: ADD_POST, userText: value} as const)
+export const addPostAC = (value: string) => ({type: ADD_POST, payload: {userText: value}} as const)
 
 export default postsReducer

@@ -1,4 +1,4 @@
-import React from "react"
+import React, {FC} from "react"
 import * as S from "./SpanTag.styled"
 import {TextColorType} from "./SpanTag.styled"
 
@@ -7,7 +7,7 @@ export type PropsType = {
     text: string
 }
 
-export const SpanTag: React.FC<PropsType> = ({textColor, text}) => {
+export const SpanTag: FC<PropsType> = ({textColor, text}) => {
     return (
         <S.SpanTag textColor={textColor}>{text}</S.SpanTag>
     )

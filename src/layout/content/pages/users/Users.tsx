@@ -1,11 +1,51 @@
-import React from "react"
+import React, {FC} from "react"
 import {BlockWrapper} from "../../../../components/BlockWrapper/BlockWrapper"
 import {User} from "./User"
-import {PropsType} from "./UsersContainer"
+import {UserType} from "../../../../redux/reducers/users-reducer"
+import {FlexWrapper} from "../../../../components/Styled/Components"
+import {Button} from "../../../../components/Button/Button"
 
-export const Users: React.FC<PropsType> = ({users, follow, unFollow, setUsers}) => {
+export type UsersPropsType = {
+    users: UserType[]
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    maxButtons: number
+    follow: (userId: number) => void
+    unFollow: (userId: number) => void
+    setCurrentPage: (page: number) => void
+}
 
-    const friendsList: JSX.Element[] = users && users.map(user => <User key={user.userId}
+export const Users: FC<UsersPropsType> = ({
+                                         users,
+                                         follow,
+                                         unFollow,
+                                         totalUsersCount,
+                                         pageSize,
+                                         currentPage,
+                                         maxButtons,
+                                         setCurrentPage
+                                     }) => {
+
+    const totalPages: number = Math.ceil(totalUsersCount / pageSize)
+
+    const generatePageNumbers = () => {
+        const pageNumbers = []
+        const startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2))
+        const endPage = Math.min(totalPages, startPage + maxButtons - 1)
+
+        for (let i = startPage; i <= endPage; i++) {
+            pageNumbers.push(i)
+        }
+
+        return pageNumbers
+    }
+
+    const buttons: JSX.Element[] = generatePageNumbers().map(v => <Button key={v} title={v}
+                                                                          className={v === currentPage ? "active" : ""}
+                                                                          onClick={setCurrentPage}/>)
+
+    const friendsList: JSX.Element[] = users && users.map(user => <User key={user.id}
                                                                         user={user}
                                                                         follow={follow}
                                                                         unFollow={unFollow}
@@ -13,6 +53,15 @@ export const Users: React.FC<PropsType> = ({users, follow, unFollow, setUsers}) 
 
     return (
         <BlockWrapper title="Users">
+            <FlexWrapper $gap={10} $justify="center">
+                {buttons}
+                <div></div>
+            </FlexWrapper>
+            <FlexWrapper $gap={10} $justify="center">
+                <span>Total Pages: {totalPages}</span>
+                <span>|</span>
+                <span>Total Users: {totalUsersCount}</span>
+            </FlexWrapper>
             {friendsList}
         </BlockWrapper>
     )

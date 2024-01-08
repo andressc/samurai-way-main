@@ -1,15 +1,16 @@
 export type UserResponseTypeItemsPhotos = {
-    small: string | null;
-    large: string | null;
+    small: string | null
+    large: string | null
 }
 
 export type UserType = {
-    name: string;
-    id: number;
-    uniqueUrlName: string | null,
-    photos: UserResponseTypeItemsPhotos;
-    status: string | null;
-    followed: boolean;
+    name: string
+    id: number
+    uniqueUrlName: string | null
+    photos: UserResponseTypeItemsPhotos
+    status: string | null
+    followed: boolean
+    isFollowed: boolean
 }
 
 export type UsersPageType = {

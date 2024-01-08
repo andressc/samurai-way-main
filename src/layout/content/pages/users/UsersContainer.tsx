@@ -16,7 +16,13 @@ import {Users} from "./Users"
 export type UserResponseType = {
     items: UserType[];
     totalCount: number;
-    error?: any;
+    error: string[];
+}
+
+export type FollowUnfollowType = {
+    resultCode: number;
+    messages: string[];
+    data: {};
 }
 
 class UsersContainer extends Component<PropsType> {
@@ -26,7 +32,7 @@ class UsersContainer extends Component<PropsType> {
     }
 
     getUsers = () => {
-        axios.get<UserResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get<UserResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true})
             .then(response => {
                 this.props.setUsers(response.data.items)
                 this.props.setTotalCount(response.data.totalCount)
@@ -37,18 +43,32 @@ class UsersContainer extends Component<PropsType> {
     setCurrentPage = (page: number) => {
         this.props.setIsFetching(true)
         this.props.setCurrentPage(page)
-        axios.get<UserResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
+        axios.get<UserResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`, {withCredentials: true})
             .then(response => {
                 this.props.setIsFetching(false)
                 this.props.setUsers(response.data.items)
             })
     }
 
+    follow = (userId: number) => {
+        axios.post<FollowUnfollowType>(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, {withCredentials: true})
+            .then(response => {
+                if (response.data.resultCode === 0) this.props.follow(userId)
+            })
+    }
+
+    unFollow = (userId: number) => {
+        axios.delete<FollowUnfollowType>(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {withCredentials: true})
+            .then(response => {
+                if (response.data.resultCode === 0) this.props.unFollow(userId)
+            })
+    }
+
     render() {
         return <Users users={this.props.users}
                       totalUsersCount={this.props.totalUsersCount}
-                      follow={this.props.follow}
-                      unFollow={this.props.unFollow}
+                      follow={this.follow}
+                      unFollow={this.unFollow}
                       maxButtons={this.props.maxButtons}
                       currentPage={this.props.currentPage}
                       pageSize={this.props.pageSize}

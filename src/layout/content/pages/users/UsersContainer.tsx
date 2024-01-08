@@ -2,7 +2,7 @@ import {AppStateType} from "../../../../redux/redux-store"
 import {connect} from "react-redux"
 import {
     followAC,
-    setCurrentPageAC, setTotalCountAC,
+    setCurrentPageAC, setIsFetchingAC, setTotalCountAC,
     setUsersAC,
     unFollowAC,
     UserActionsType,
@@ -30,13 +30,18 @@ class UsersContainer extends Component<PropsType> {
             .then(response => {
                 this.props.setUsers(response.data.items)
                 this.props.setTotalCount(response.data.totalCount)
+                this.props.setIsFetching(false)
             })
     }
 
     setCurrentPage = (page: number) => {
+        this.props.setIsFetching(true)
         this.props.setCurrentPage(page)
         axios.get<UserResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
-            .then(response => this.props.setUsers(response.data.items))
+            .then(response => {
+                this.props.setIsFetching(false)
+                this.props.setUsers(response.data.items)
+            })
     }
 
     render() {
@@ -47,6 +52,7 @@ class UsersContainer extends Component<PropsType> {
                       maxButtons={this.props.maxButtons}
                       currentPage={this.props.currentPage}
                       pageSize={this.props.pageSize}
+                      isFetching={this.props.isFetching}
                       setCurrentPage={this.setCurrentPage}
         />
     }
@@ -58,6 +64,7 @@ type MapStatePropsType = {
     totalUsersCount: number
     currentPage: number
     maxButtons: number
+    isFetching: boolean
 }
 
 type MapDispatchPropsType = {
@@ -66,6 +73,7 @@ type MapDispatchPropsType = {
     setUsers: (users: UserType[]) => void
     setCurrentPage: (page: number) => void
     setTotalCount: (totalCount: number) => void
+    setIsFetching: (isFetching: boolean) => void
 }
 
 export type PropsType = MapStatePropsType & MapDispatchPropsType
@@ -75,7 +83,8 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
-    maxButtons: state.usersPage.maxButtons
+    maxButtons: state.usersPage.maxButtons,
+    isFetching: state.usersPage.isFetching,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<UserActionsType>): MapDispatchPropsType => ({
@@ -93,6 +102,9 @@ const mapDispatchToProps = (dispatch: Dispatch<UserActionsType>): MapDispatchPro
     },
     setTotalCount: (totalCount: number) => {
         dispatch(setTotalCountAC(totalCount))
+    },
+    setIsFetching: (isFetching: boolean) => {
+        dispatch(setIsFetchingAC(isFetching))
     }
 })
 

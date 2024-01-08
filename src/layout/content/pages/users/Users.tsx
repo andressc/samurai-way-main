@@ -4,6 +4,7 @@ import {User} from "./User"
 import {UserType} from "../../../../redux/reducers/users-reducer"
 import {FlexWrapper} from "../../../../components/Styled/Components"
 import {Button} from "../../../../components/Button/Button"
+import Preloader from "../../../../components/Preloader/Preloader"
 
 export type UsersPropsType = {
     users: UserType[]
@@ -11,21 +12,23 @@ export type UsersPropsType = {
     pageSize: number
     currentPage: number
     maxButtons: number
+    isFetching: boolean
     follow: (userId: number) => void
     unFollow: (userId: number) => void
     setCurrentPage: (page: number) => void
 }
 
 export const Users: FC<UsersPropsType> = ({
-                                         users,
-                                         follow,
-                                         unFollow,
-                                         totalUsersCount,
-                                         pageSize,
-                                         currentPage,
-                                         maxButtons,
-                                         setCurrentPage
-                                     }) => {
+                                              users,
+                                              follow,
+                                              unFollow,
+                                              totalUsersCount,
+                                              pageSize,
+                                              currentPage,
+                                              maxButtons,
+                                              setCurrentPage,
+                                              isFetching
+                                          }) => {
 
     const totalPages: number = Math.ceil(totalUsersCount / pageSize)
 
@@ -55,14 +58,13 @@ export const Users: FC<UsersPropsType> = ({
         <BlockWrapper title="Users">
             <FlexWrapper $gap={10} $justify="center">
                 {buttons}
-                <div></div>
             </FlexWrapper>
             <FlexWrapper $gap={10} $justify="center">
                 <span>Total Pages: {totalPages}</span>
                 <span>|</span>
                 <span>Total Users: {totalUsersCount}</span>
             </FlexWrapper>
-            {friendsList}
+            {isFetching ? <Preloader/> : friendsList}
         </BlockWrapper>
     )
 }

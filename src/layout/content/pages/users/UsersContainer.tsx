@@ -10,20 +10,8 @@ import {
     UserType
 } from "../../../../redux/reducers/users-reducer"
 import React, {Component} from "react"
-import axios from "axios"
 import {Users} from "./Users"
-
-export type UserResponseType = {
-    items: UserType[];
-    totalCount: number;
-    error: string[];
-}
-
-export type FollowUnfollowType = {
-    resultCode: number;
-    messages: string[];
-    data: {};
-}
+import {usersApi} from "../../../../api/users-api"
 
 class UsersContainer extends Component<PropsType> {
 
@@ -32,7 +20,7 @@ class UsersContainer extends Component<PropsType> {
     }
 
     getUsers = () => {
-        axios.get<UserResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true})
+        usersApi.getUsers(this.props.currentPage, this.props.pageSize)
             .then(response => {
                 this.props.setUsers(response.data.items)
                 this.props.setTotalCount(response.data.totalCount)
@@ -43,7 +31,7 @@ class UsersContainer extends Component<PropsType> {
     setCurrentPage = (page: number) => {
         this.props.setIsFetching(true)
         this.props.setCurrentPage(page)
-        axios.get<UserResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`, {withCredentials: true})
+        usersApi.getUsers(page, this.props.pageSize)
             .then(response => {
                 this.props.setIsFetching(false)
                 this.props.setUsers(response.data.items)
@@ -51,17 +39,15 @@ class UsersContainer extends Component<PropsType> {
     }
 
     follow = (userId: number) => {
-        axios.post<FollowUnfollowType>(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, {withCredentials: true})
-            .then(response => {
-                if (response.data.resultCode === 0) this.props.follow(userId)
-            })
+        usersApi.follow(userId).then(response => {
+            if (response.data.resultCode === 0) this.props.follow(userId)
+        })
     }
 
     unFollow = (userId: number) => {
-        axios.delete<FollowUnfollowType>(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {withCredentials: true})
-            .then(response => {
-                if (response.data.resultCode === 0) this.props.unFollow(userId)
-            })
+        usersApi.unFollow(userId).then(response => {
+            if (response.data.resultCode === 0) this.props.unFollow(userId)
+        })
     }
 
     render() {

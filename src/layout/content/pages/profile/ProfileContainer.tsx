@@ -3,9 +3,9 @@ import {AppStateType} from "../../../../redux/redux-store"
 import {connect} from "react-redux"
 import {ProfileType, setProfile} from "../../../../redux/reducers/profile-reducer"
 import {Component} from "react"
-import axios from "axios"
 import {RouteComponentProps, withRouter} from "react-router-dom"
 import {AuthUserType} from "../../../../redux/reducers/auth-reducer"
+import {profileApi} from "../../../../api/profile-api"
 
 export type ProfileResponseType = {
 	userId: number;
@@ -40,12 +40,11 @@ class ProfileContainer extends Component<PropsType> {
 
 	getProfile = () => {
 
-		let userId = this.props.match.params.userId
+		let userId = +this.props.match.params.userId
 
-		if(!userId) userId = "2"
+		if(!userId) userId = 2
 
-        axios.get<ProfileResponseType>
-		(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+        profileApi.getProfile(userId)
             .then(response => {
 				const profile: ProfileType = {
 					userId: response.data.userId,

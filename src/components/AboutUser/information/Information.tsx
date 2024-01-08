@@ -1,20 +1,16 @@
 import React, {FC} from "react"
 import * as S from "./Information.styled"
 import {InformationItem} from "./InformationItem"
-import {ProfileInformationType} from "../../../redux/reducers/profile-reducer"
 
 
 type InformationPropsType = {
-    information: ProfileInformationType[]
+    aboutMe: string
 }
-export const Information: FC<InformationPropsType> = ({information}) => {
-
-    const InformationList: JSX.Element[] = information && information
-        .map(information => (<InformationItem key={information.id} information={information}/>))
+export const Information: FC<InformationPropsType> = ({aboutMe}) => {
 
     return (
         <S.Information>
-            {InformationList}
+            <InformationItem aboutMe={aboutMe} title="About Me"/>
         </S.Information>
     )
 }

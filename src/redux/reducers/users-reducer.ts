@@ -67,22 +67,22 @@ const usersReducer = (state: UsersPageType = initialState, action: UserActionsTy
     }
 }
 
-type FollowType = ReturnType<typeof followAC>
-type UnFollowType = ReturnType<typeof unFollowAC>
-type SetUsersType = ReturnType<typeof setUsersAC>
-type SetCurrentPageType = ReturnType<typeof setCurrentPageAC>
-type SetTotalCountType = ReturnType<typeof setTotalCountAC>
-type setIsFetchingType = ReturnType<typeof setIsFetchingAC>
+type FollowType = ReturnType<typeof follow>
+type UnFollowType = ReturnType<typeof unFollow>
+type SetUsersType = ReturnType<typeof setUsers>
+type SetCurrentPageType = ReturnType<typeof setCurrentPage>
+type SetTotalCountType = ReturnType<typeof setTotalCount>
+type setIsFetchingType = ReturnType<typeof setIsFetching>
 
-export const followAC = (userId: number) => ({type: "FOLLOW", payload: {userId}} as const)
+export const follow = (userId: number) => ({type: "FOLLOW", payload: {userId}} as const)
 
-export const unFollowAC = (userId: number) => ({type: "UNFOLLOW", payload: {userId}} as const)
+export const unFollow = (userId: number) => ({type: "UNFOLLOW", payload: {userId}} as const)
 
-export const setUsersAC = (users: UserType[]) => ({type: "SET_USERS", payload: {users}} as const)
-export const setCurrentPageAC = (page: number) => ({type: "SET_CURRENT_PAGE", payload: {page}} as const)
+export const setUsers = (users: UserType[]) => ({type: "SET_USERS", payload: {users}} as const)
+export const setCurrentPage = (page: number) => ({type: "SET_CURRENT_PAGE", payload: {page}} as const)
 
-export const setTotalCountAC = (totalCount: number) => ({type: "SET_TOTAL_COUNT", payload: {totalCount}} as const)
+export const setTotalCount = (totalCount: number) => ({type: "SET_TOTAL_COUNT", payload: {totalCount}} as const)
 
-export const setIsFetchingAC = (isFetching: boolean) => ({type: "SET_IS_FETCHING", payload: {isFetching}} as const)
+export const setIsFetching = (isFetching: boolean) => ({type: "SET_IS_FETCHING", payload: {isFetching}} as const)
 
 export default usersReducer

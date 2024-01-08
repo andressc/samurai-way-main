@@ -122,4 +122,5 @@ export const Avatar = styled.img`
   height: 50px;
   object-fit: cover;
   border-radius: 10px;
+  cursor: pointer;
 `

@@ -1,19 +1,20 @@
 import React, {FC} from "react"
 import {Information} from "./information/Information"
 import * as S from "./AboutUser.styled"
-import {ProfileUserType} from "../../redux/reducers/profile-reducer"
+import defaultAvatar from "../../assets/img/default_avatar.png"
+import {ProfileType} from "../../redux/reducers/profile-reducer"
 
 type AboutUserPropsType = {
-    user: ProfileUserType
+    user: ProfileType
 }
 
 export const AboutUser: FC<AboutUserPropsType> = ({user}) => {
     return (
         <S.AboutUser>
-            <img src={user.userImg} alt="avatar"/>
+            <img src={user.userImg ? user.userImg : defaultAvatar} alt="avatar"/>
             <div>
-                <S.UserName>{user.userName}</S.UserName>
-                <Information information={user.information}/>
+                <S.UserName>{user.fullName}</S.UserName>
+                <Information aboutMe={user.aboutMe ? user.aboutMe : ""}/>
             </div>
         </S.AboutUser>
     )

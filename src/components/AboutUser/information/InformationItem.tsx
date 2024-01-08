@@ -1,14 +1,14 @@
 import React, {FC} from "react"
 import * as S from "./Information.styled"
-import {ProfileInformationType} from "../../../redux/reducers/profile-reducer"
 
 type InformationItemPropsType = {
-    information: ProfileInformationType
+    title: string
+    aboutMe: string
 }
-export const InformationItem: FC<InformationItemPropsType> = ({information}) => {
+export const InformationItem: FC<InformationItemPropsType> = ({title, aboutMe}) => {
     return (
         <S.InformationItem>
-            <span>{information.title}:</span> {information.description}
+            <span>{title}:</span> {aboutMe}
         </S.InformationItem>
     )
 }

@@ -1,56 +1,30 @@
-import {ActionType} from "../actionType"
-
-export type ProfileInformationType = {
-    id: number
-    title: string
-    description: string
-}
-
-export type ProfileUserType = {
-    userId: number
-    userName: string
-    userImg: string
-    information: ProfileInformationType[]
-}
+export type ProfileActionsType =
+    SetProfileType
 
 export type ProfileType = {
-    user: ProfileUserType
+    userId: number | null
+    fullName: string | null
+    userImg: string | null
+    aboutMe: string | null
 }
 
 const initialState: ProfileType = {
-    user: {
-        userId: 1,
-        userName: "Vasya F.",
-        userImg: "https://cs14.pikabu.ru/post_img/big/2023/02/13/8/1676295806139337963.png",
-        information: [
-            {
-                id: 1,
-                title: "Date of Birth",
-                description: "13 jul",
-            },
-            {
-                id: 2,
-                title: "City",
-                description: "Ivanovo",
-            },
-            {
-                id: 3,
-                title: "Education",
-                description: "School",
-            },
-            {
-                id: 4,
-                title: "Web Site",
-                description: "Https://Web.com",
-            }
-        ],
-    }
+    userId: null,
+    fullName: null,
+    userImg: null,
+    aboutMe: null
 }
-const profileReducer = (state: ProfileType = initialState, action: ActionType): ProfileType => {
+const profileReducer = (state: ProfileType = initialState, action: ProfileActionsType): ProfileType => {
     switch (action.type) {
+        case "SET_PROFILE":
+            return {...state, ...action.payload}
         default:
             return state
     }
 }
+
+type SetProfileType = ReturnType<typeof setProfile>
+
+export const setProfile = (profile: ProfileType) => ({type: "SET_PROFILE", payload: profile} as const)
 
 export default profileReducer

@@ -2,8 +2,11 @@ import React, {FC} from "react"
 import * as S from "./Profile.styled"
 import {AboutUser} from "../../../../components/AboutUser/AboutUser"
 import {PostWrapperContainer} from "./post/PostWrapperContainer"
-import {PropsType} from "./ProfileContainer"
+import {ProfileType} from "../../../../redux/reducers/profile-reducer"
 
+type PropsType = {
+    user: ProfileType
+}
 export const Profile: FC<PropsType> = ({user}) => {
     return (
         <S.Profile>

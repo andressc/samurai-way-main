@@ -8,15 +8,18 @@ export type UserResponseType = {
 }
 
 export const usersApi = {
-    getUsers(currentPage: number, pageSize: number) {
-        return instance.get<UserResponseType>(`users?page=${currentPage}&count=${pageSize}`)
+    async getUsers(currentPage: number, pageSize: number) {
+        let response = await instance.get<UserResponseType>(`users?page=${currentPage}&count=${pageSize}`)
+        return response.data
     },
 
-    follow(userId: number) {
-        return instance.post<ResponseType>(`follow/${userId}`, {})
+    async follow(userId: number) {
+        let response = await instance.post<ResponseType>(`follow/${userId}`, {})
+        return response.data
     },
 
-    unFollow(userId: number) {
-        return instance.delete<ResponseType>(`follow/${userId}`)
+    async unFollow(userId: number) {
+        let response = await instance.delete<ResponseType>(`follow/${userId}`)
+        return response.data
     },
 }

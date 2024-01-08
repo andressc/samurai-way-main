@@ -27,11 +27,13 @@ export type ProfileResponseTypePhotos = {
 }
 
 export const profileApi = {
-    getProfile(userId: number) {
-        return instance.get<ProfileResponseType>(`profile/${userId}`)
+    async getProfile(userId: number) {
+        let response = await instance.get<ProfileResponseType>(`profile/${userId}`)
+        return response.data
     },
 
-    getAuthUser() {
-        return instance.get<ResponseType<AuthUserType>>(`auth/me`)
+    async getAuthUser() {
+        let response = await instance.get<ResponseType<AuthUserType>>(`auth/me`)
+        return response.data
     },
 }

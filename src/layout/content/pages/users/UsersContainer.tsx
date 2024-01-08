@@ -22,8 +22,8 @@ class UsersContainer extends Component<PropsType> {
     getUsers = () => {
         usersApi.getUsers(this.props.currentPage, this.props.pageSize)
             .then(response => {
-                this.props.setUsers(response.data.items)
-                this.props.setTotalCount(response.data.totalCount)
+                this.props.setUsers(response.items)
+                this.props.setTotalCount(response.totalCount)
                 this.props.setIsFetching(false)
             })
     }
@@ -34,19 +34,19 @@ class UsersContainer extends Component<PropsType> {
         usersApi.getUsers(page, this.props.pageSize)
             .then(response => {
                 this.props.setIsFetching(false)
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(response.items)
             })
     }
 
     follow = (userId: number) => {
         usersApi.follow(userId).then(response => {
-            if (response.data.resultCode === 0) this.props.follow(userId)
+            if (response.resultCode === 0) this.props.follow(userId)
         })
     }
 
     unFollow = (userId: number) => {
         usersApi.unFollow(userId).then(response => {
-            if (response.data.resultCode === 0) this.props.unFollow(userId)
+            if (response.resultCode === 0) this.props.unFollow(userId)
         })
     }
 

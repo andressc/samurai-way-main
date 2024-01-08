@@ -23,7 +23,7 @@ class AuthContainer extends Component<PropsType> {
     getAuthUser = () => {
         profileApi.getAuthUser()
             .then(response => {
-                if(response.data.resultCode === 0) this.props.setAuth(response.data.data)
+                if(response.resultCode === 0) this.props.setAuth(response.data)
             })
     }
 

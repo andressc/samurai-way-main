@@ -47,10 +47,10 @@ class ProfileContainer extends Component<PropsType> {
         profileApi.getProfile(userId)
             .then(response => {
 				const profile: ProfileType = {
-					userId: response.data.userId,
-					fullName: response.data.fullName,
-					userImg: response.data.photos.small,
-					aboutMe: response.data.aboutMe
+					userId: response.userId,
+					fullName: response.fullName,
+					userImg: response.photos.small,
+					aboutMe: response.aboutMe
 				}
                 this.props.setProfile(profile)
                 //this.props.setIsFetching(false)

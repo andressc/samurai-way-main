@@ -1,3 +1,6 @@
+import {usersApi} from "../../api/users-api"
+import {AppThunk, AppStateType} from "../redux-store"
+
 export type UserResponseTypeItemsPhotos = {
     small: string | null
     large: string | null
@@ -29,7 +32,7 @@ let initialState: UsersPageType = {
     totalUsersCount: 0,
     currentPage: 1,
     maxButtons: 11,
-    isFetching: true,
+    isFetching: false,
 }
 
 export type UserActionsType =
@@ -66,7 +69,8 @@ const usersReducer = (state: UsersPageType = initialState, action: UserActionsTy
         case "SET_IS_FETCHING":
             return {...state, isFetching: action.payload.isFetching}
         case "SET_IS_DISABLED":
-            return {...state,
+            return {
+                ...state,
                 users: state.users.map(user => user.id === action.payload.userId ? {
                     ...user,
                     buttonDisabled: action.payload.isDisabled
@@ -100,5 +104,37 @@ export const setIsDisabled = (userId: number, isDisabled: boolean) => ({
     type: "SET_IS_DISABLED",
     payload: {userId, isDisabled}
 } as const)
+
+export const getUsers = (currentPage: number): AppThunk => (dispatch, getState: () => AppStateType) => {
+
+    const state = getState()
+
+    dispatch(setIsFetching(true))
+    dispatch(setCurrentPage(currentPage))
+    usersApi.getUsers(currentPage, state.usersPage.pageSize)
+        .then(response => {
+            dispatch(setUsers(response.items))
+            dispatch(setTotalCount(response.totalCount))
+            dispatch(setIsFetching(false))
+        })
+}
+
+export const toggleFollow = (userId: number): AppThunk => (dispatch) => {
+
+    dispatch(setIsDisabled(userId, true))
+    usersApi.follow(userId).then(response => {
+        if (response.resultCode === 0) dispatch(follow(userId))
+        dispatch(setIsDisabled(userId, false))
+    })
+}
+
+export const toggleUnfollow = (userId: number): AppThunk => (dispatch) => {
+
+    dispatch(setIsDisabled(userId, true))
+    usersApi.unFollow(userId).then(response => {
+        if (response.resultCode === 0) dispatch(unFollow(userId))
+        dispatch(setIsDisabled(userId, false))
+    })
+}
 
 export default usersReducer

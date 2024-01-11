@@ -1,11 +1,12 @@
-import {combineReducers, createStore} from "redux"
-import dialogsReducer from "./reducers/dialogs-reducer"
-import postsReducer from "./reducers/posts-reducer"
-import profileReducer from "./reducers/profile-reducer"
+import {applyMiddleware, combineReducers, createStore} from "redux"
+import dialogsReducer, {DialogActionsType} from "./reducers/dialogs-reducer"
+import postsReducer, {PostActionsType} from "./reducers/posts-reducer"
+import profileReducer, {ProfileActionsType} from "./reducers/profile-reducer"
 import sidebarReducer from "./reducers/sidebar-reducer"
-import usersReducer from "./reducers/users-reducer"
+import usersReducer, {UserActionsType} from "./reducers/users-reducer"
 import {composeWithDevTools} from "@redux-devtools/extension"
-import authReducer from "./reducers/auth-reducer"
+import authReducer, {AuthUserActionsType} from "./reducers/auth-reducer"
+import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk"
 
 const rootReducer = combineReducers({
     postsPage: postsReducer,
@@ -17,5 +18,13 @@ const rootReducer = combineReducers({
 })
 
 export type AppStateType = ReturnType<typeof rootReducer>
+export type AppActionsType =
+    AuthUserActionsType
+    | DialogActionsType
+    | PostActionsType
+    | ProfileActionsType
+    | UserActionsType
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppStateType, unknown, AppActionsType>
+export type AppDispatch = ThunkDispatch<AppStateType, unknown, AppActionsType>
 
-export const store = createStore(rootReducer, composeWithDevTools())
+export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))

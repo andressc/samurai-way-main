@@ -1,3 +1,6 @@
+import {AppThunk} from "../redux-store"
+import {profileApi} from "../../api/profile-api"
+
 export type ProfileActionsType =
     SetProfileType
 
@@ -26,5 +29,19 @@ const profileReducer = (state: ProfileType = initialState, action: ProfileAction
 type SetProfileType = ReturnType<typeof setProfile>
 
 export const setProfile = (profile: ProfileType) => ({type: "SET_PROFILE", payload: profile} as const)
+
+export const getProfile = (userId: number): AppThunk => (dispatch) => {
+
+    profileApi.getProfile(userId)
+        .then(response => {
+            const profile: ProfileType = {
+                userId: response.userId,
+                fullName: response.fullName,
+                userImg: response.photos.small,
+                aboutMe: response.aboutMe
+            }
+            dispatch(setProfile(profile))
+        })
+}
 
 export default profileReducer

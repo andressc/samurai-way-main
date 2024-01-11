@@ -1,9 +1,13 @@
-import {ActionType} from "../actionType"
 import profileIcon from "../../assets/icons/profile.svg"
 import messageIcon from "../../assets/icons/message.svg"
 import newsIcon from "../../assets/icons/news.svg"
 import userIcon from "../../assets/icons/user.svg"
 import settingsIcon from "../../assets/icons/setting.svg"
+
+export type ActionType = {
+    type: string,
+    [key: string]: string | number
+}
 
 export type MenuItemType = {
     id: number

@@ -1,69 +1,30 @@
 import {AppStateType} from "../../../../redux/redux-store"
 import {connect} from "react-redux"
 import {
-    follow,
-    setCurrentPage, setIsDisabled,
-    setIsFetching,
-    setTotalCount,
-    setUsers,
-    unFollow,
+    getUsers,
+    toggleFollow,
+    toggleUnfollow,
     UserType
 } from "../../../../redux/reducers/users-reducer"
 import React, {Component} from "react"
 import {Users} from "./Users"
-import {usersApi} from "../../../../api/users-api"
 
 class UsersContainer extends Component<PropsType> {
 
     componentDidMount() {
-        this.getUsers()
-    }
-
-    getUsers = () => {
-        usersApi.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(response => {
-                this.props.setUsers(response.items)
-                this.props.setTotalCount(response.totalCount)
-                this.props.setIsFetching(false)
-            })
-    }
-
-    setCurrentPage = (page: number) => {
-        this.props.setIsFetching(true)
-        this.props.setCurrentPage(page)
-        usersApi.getUsers(page, this.props.pageSize)
-            .then(response => {
-                this.props.setIsFetching(false)
-                this.props.setUsers(response.items)
-            })
-    }
-
-    follow = (userId: number) => {
-        this.props.setIsDisabled(userId, true)
-        usersApi.follow(userId).then(response => {
-            if (response.resultCode === 0) this.props.follow(userId)
-            this.props.setIsDisabled(userId, false)
-        })
-    }
-
-    unFollow = (userId: number) => {
-        this.props.setIsDisabled(userId, true)
-        usersApi.unFollow(userId).then(response => {
-            if (response.resultCode === 0) this.props.unFollow(userId)
-            this.props.setIsDisabled(userId, false)
-        })
+        this.props.getUsers(this.props.currentPage)
     }
 
     render() {
         return <Users users={this.props.users}
                       totalUsersCount={this.props.totalUsersCount}
-                      follow={this.follow}
-                      unFollow={this.unFollow}
+                      follow={this.props.toggleFollow}
+                      unFollow={this.props.toggleUnfollow}
                       maxButtons={this.props.maxButtons}
                       currentPage={this.props.currentPage}
                       pageSize={this.props.pageSize}
                       isFetching={this.props.isFetching}
-                      setCurrentPage={this.setCurrentPage}
+                      setCurrentPage={this.props.getUsers}
         />
     }
 }
@@ -78,13 +39,9 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-    follow: (userId: number) => void
-    unFollow: (userId: number) => void
-    setUsers: (users: UserType[]) => void
-    setCurrentPage: (page: number) => void
-    setTotalCount: (totalCount: number) => void
-    setIsFetching: (isFetching: boolean) => void
-    setIsDisabled: (userId: number, isDisabled: boolean) => void
+    getUsers: (currentPage: number) => void
+    toggleFollow: (userId: number) => void
+    toggleUnfollow: (userId: number) => void
 }
 
 export type PropsType = MapStatePropsType & MapDispatchPropsType
@@ -116,15 +73,14 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     },
     setIsFetching: (isFetching: boolean) => {
         dispatch(setIsFetchingAC(isFetching))
+    },
+    setUsersTC: (currentPage: number, pageSize: number) => {
+        dispatch(setUsersTC(currentPage, pageSize))
     }
 })*/
 
 export default connect(mapStateToProps, {
-    follow,
-    unFollow,
-    setUsers,
-    setCurrentPage,
-    setTotalCount,
-    setIsFetching,
-    setIsDisabled
+    getUsers,
+    toggleFollow,
+    toggleUnfollow
 })(UsersContainer)

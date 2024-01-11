@@ -25,6 +25,7 @@ class UsersContainer extends Component<PropsType> {
                       pageSize={this.props.pageSize}
                       isFetching={this.props.isFetching}
                       setCurrentPage={this.props.getUsers}
+                      authUserId = {this.props.authUserId}
         />
     }
 }
@@ -36,6 +37,7 @@ type MapStatePropsType = {
     currentPage: number
     maxButtons: number
     isFetching: boolean
+    authUserId: number | null
 }
 
 type MapDispatchPropsType = {
@@ -53,6 +55,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     currentPage: state.usersPage.currentPage,
     maxButtons: state.usersPage.maxButtons,
     isFetching: state.usersPage.isFetching,
+    authUserId: state.auth.id
 })
 
 /*const mapDispatchToProps = (dispatch: Dispatch<UserActionsType>): MapDispatchPropsType => ({

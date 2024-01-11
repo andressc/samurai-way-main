@@ -5,8 +5,12 @@ import * as S from "./Messages.styled"
 import {BlockWrapper} from "../../../../components/BlockWrapper/BlockWrapper"
 import {Form} from "../../../../components/Form/Form"
 import {PropsType} from "./MessagesContainer"
+import {Redirect} from "react-router-dom"
 
-export const Messages: FC<PropsType> = ({friends, dialogs, buttonTitle , callback}) => {
+export const Messages: FC<PropsType> = ({friends, dialogs, buttonTitle, authUserId, callback}) => {
+
+    if(!authUserId) return <Redirect to="/samurai-way-main/login"/>
+
     return (
         <BlockWrapper title="Messages">
             <S.Messages>

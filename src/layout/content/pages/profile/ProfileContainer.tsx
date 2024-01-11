@@ -16,13 +16,14 @@ class ProfileContainer extends Component<PropsType> {
     }
 
     render() {
-        return <Profile user={this.props.user}/>
+        return <Profile user={this.props.user} authUserId={this.props.authUserId}/>
     }
 }
 
 type MapStatePropsType = {
     user: ProfileType
 	authUser: AuthUserType
+    authUserId: number | null
 }
 
 type MapDispatchPropsType = {
@@ -34,6 +35,7 @@ export type PropsType = MapStatePropsType & MapDispatchPropsType & RouteComponen
 const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     user: state.profile,
 	authUser: state.auth,
+    authUserId: state.auth.id
 })
 
 export default connect(mapStateToProps, {getProfile})(withRouter(ProfileContainer))

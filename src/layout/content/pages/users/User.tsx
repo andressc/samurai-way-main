@@ -12,11 +12,12 @@ import buttonLoader from "../../../../assets/animations/button-loader.svg"
 
 type PropsType = {
     user: UserType
+    authUserId: number | null
     follow: (userId: number) => void
     unFollow: (userId: number) => void
 }
 
-export const User: FC<PropsType> = ({user, follow, unFollow}) => {
+export const User: FC<PropsType> = ({user, follow, unFollow, authUserId}) => {
     const followHandler = () => {
         follow(user.id)
     }
@@ -25,11 +26,11 @@ export const User: FC<PropsType> = ({user, follow, unFollow}) => {
         unFollow(user.id)
     }
 
-    const subscribeButton: JSX.Element = user.followed
+    const subscribeButton: JSX.Element = authUserId ? user.followed
         ? <Button icon={!user.buttonDisabled ? unfollowIcon : buttonLoader} title="UnFollow" onClick={unFollowHandler}
                   disabled={user.buttonDisabled}/>
         : <Button icon={!user.buttonDisabled ? followIcon : buttonLoader} title="Follow" onClick={followHandler}
-                  disabled={user.buttonDisabled}/>
+                  disabled={user.buttonDisabled}/> : <></>
 
     return (
         <C.ContentBlock>

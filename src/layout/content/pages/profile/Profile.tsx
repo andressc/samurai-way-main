@@ -3,11 +3,16 @@ import * as S from "./Profile.styled"
 import {AboutUser} from "../../../../components/AboutUser/AboutUser"
 import {PostWrapperContainer} from "./post/PostWrapperContainer"
 import {ProfileType} from "../../../../redux/reducers/profile-reducer"
+import {Redirect} from "react-router-dom"
 
 type PropsType = {
     user: ProfileType
+    authUserId: number | null
 }
-export const Profile: FC<PropsType> = ({user}) => {
+export const Profile: FC<PropsType> = ({user, authUserId}) => {
+
+    if(!authUserId) return <Redirect to="/samurai-way-main/login"/>
+
     return (
         <S.Profile>
             <S.ProfileCover

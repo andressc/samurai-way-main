@@ -13,6 +13,7 @@ export type UsersPropsType = {
     currentPage: number
     maxButtons: number
     isFetching: boolean
+    authUserId: number | null
     follow: (userId: number) => void
     unFollow: (userId: number) => void
     setCurrentPage: (page: number) => void
@@ -20,6 +21,7 @@ export type UsersPropsType = {
 
 export const Users: FC<UsersPropsType> = ({
                                               users,
+                                              authUserId,
                                               follow,
                                               unFollow,
                                               totalUsersCount,
@@ -52,6 +54,7 @@ export const Users: FC<UsersPropsType> = ({
                                                                         user={user}
                                                                         follow={follow}
                                                                         unFollow={unFollow}
+                                                                        authUserId={authUserId}
     />)
 
     return (

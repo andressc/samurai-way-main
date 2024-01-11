@@ -8,13 +8,13 @@ import {
     FriendType
 } from "../../../../redux/reducers/dialogs-reducer"
 import {Dispatch} from "redux"
+import {withAuthRedirect} from "../../../../hoc/withAuthRedirect"
 
 
 type MapStatePropsType = {
     dialogs: DialogType[]
     friends: FriendType[]
     buttonTitle: string
-    authUserId: number | null
 }
 
 type MapDispatchPropsType = {
@@ -27,7 +27,6 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     dialogs: state.dialogsPage.dialogs,
     friends: state.dialogsPage.friends,
     buttonTitle: "Send Message",
-    authUserId: state.auth.id
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<DialogActionsType>): MapDispatchPropsType => ({
@@ -36,4 +35,4 @@ const mapDispatchToProps = (dispatch: Dispatch<DialogActionsType>): MapDispatchP
     }
 })
 
-export const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
+export const MessagesContainer = withAuthRedirect(connect(mapStateToProps, mapDispatchToProps)(Messages))

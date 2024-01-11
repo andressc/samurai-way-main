@@ -1,7 +1,7 @@
 import React, {FC} from "react"
 import {Information} from "./information/Information"
 import * as S from "./AboutUser.styled"
-import defaultAvatar from "../../assets/img/default_avatar.png"
+import defaultAvatar from "../../assets/img/default-avatar.png"
 import {ProfileType} from "../../redux/reducers/profile-reducer"
 
 type AboutUserPropsType = {

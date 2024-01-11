@@ -1,5 +1,5 @@
 import React, {FC} from "react"
-import spinner from "../../assets/img/spinner.svg"
+import spinner from "../../assets/animations/spinner.svg"
 import {FlexWrapper} from "../Styled/Components"
 
 export const Preloader: FC = () => {

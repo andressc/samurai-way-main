@@ -6,18 +6,18 @@ type ButtonPropsType = {
     icon?: string
     className?: string
     onClick?: (page: number) => void
+    disabled?: boolean
 }
-export const Button: FC<ButtonPropsType> = ({icon, title, onClick, className}) => {
+export const Button: FC<ButtonPropsType> = ({icon, title, onClick, className, disabled}) => {
 
     const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
-        console.log(e.currentTarget.textContent)
         if(onClick) onClick(e.currentTarget.textContent ? +e.currentTarget.textContent : 1)
     }
 
 
     return (
         <>
-        <S.Button onClick={onClickHandler} className={className}>
+        <S.Button onClick={onClickHandler} className={className} disabled={disabled}>
             <S.ButtonTitle $icon={icon ? icon : ""} >{title}</S.ButtonTitle>
         </S.Button>
         </>

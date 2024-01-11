@@ -7,7 +7,8 @@ import unfollowIcon from "../../../../assets/icons/unfollow.svg"
 import followIcon from "../../../../assets/icons/follow.svg"
 import * as C from "../../../../components/Styled/Components"
 import {UserType} from "../../../../redux/reducers/users-reducer"
-import defaultAvatar from "../../../../assets/img/default_avatar.png"
+import defaultAvatar from "../../../../assets/img/default-avatar.png"
+import buttonLoader from "../../../../assets/animations/button-loader.svg"
 
 type PropsType = {
     user: UserType
@@ -25,8 +26,10 @@ export const User: FC<PropsType> = ({user, follow, unFollow}) => {
     }
 
     const subscribeButton: JSX.Element = user.followed
-        ? <Button icon={unfollowIcon} title="UnFollow" onClick={unFollowHandler}/>
-        : <Button icon={followIcon} title="Follow" onClick={followHandler}/>
+        ? <Button icon={!user.buttonDisabled ? unfollowIcon : buttonLoader} title="UnFollow" onClick={unFollowHandler}
+                  disabled={user.buttonDisabled}/>
+        : <Button icon={!user.buttonDisabled ? followIcon : buttonLoader} title="Follow" onClick={followHandler}
+                  disabled={user.buttonDisabled}/>
 
     return (
         <C.ContentBlock>

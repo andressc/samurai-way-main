@@ -1,7 +1,7 @@
 import React, {FC} from "react"
 import {FlexWrapper} from "../../../components/Styled/Components"
 import * as S from "./Auth.styled"
-import defaultAvatar from "../../../assets/img/default_avatar.png"
+import defaultAvatar from "../../../assets/img/default-avatar.png"
 
 type PropsType = {
     profileName: string | null

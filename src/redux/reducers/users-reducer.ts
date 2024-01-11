@@ -11,6 +11,7 @@ export type UserType = {
     status: string | null
     followed: boolean
     isFollowed: boolean
+    buttonDisabled: boolean
 }
 
 export type UsersPageType = {
@@ -28,7 +29,7 @@ let initialState: UsersPageType = {
     totalUsersCount: 0,
     currentPage: 1,
     maxButtons: 11,
-    isFetching: true
+    isFetching: true,
 }
 
 export type UserActionsType =
@@ -38,6 +39,7 @@ export type UserActionsType =
     | SetCurrentPageType
     | SetTotalCountType
     | setIsFetchingType
+    | setIsDisabledType
 
 const usersReducer = (state: UsersPageType = initialState, action: UserActionsType): UsersPageType => {
 
@@ -56,13 +58,20 @@ const usersReducer = (state: UsersPageType = initialState, action: UserActionsTy
                 } : user)
             }
         case "SET_USERS":
-            return {...state, users: [...action.payload.users]}
+            return {...state, users: action.payload.users.map(u => ({...u, buttonDisabled: false}))}
         case "SET_CURRENT_PAGE":
             return {...state, currentPage: action.payload.page}
         case "SET_TOTAL_COUNT":
             return {...state, totalUsersCount: action.payload.totalCount}
         case "SET_IS_FETCHING":
             return {...state, isFetching: action.payload.isFetching}
+        case "SET_IS_DISABLED":
+            return {...state,
+                users: state.users.map(user => user.id === action.payload.userId ? {
+                    ...user,
+                    buttonDisabled: action.payload.isDisabled
+                } : user)
+            }
         default:
             return state
     }
@@ -74,6 +83,7 @@ type SetUsersType = ReturnType<typeof setUsers>
 type SetCurrentPageType = ReturnType<typeof setCurrentPage>
 type SetTotalCountType = ReturnType<typeof setTotalCount>
 type setIsFetchingType = ReturnType<typeof setIsFetching>
+type setIsDisabledType = ReturnType<typeof setIsDisabled>
 
 export const follow = (userId: number) => ({type: "FOLLOW", payload: {userId}} as const)
 
@@ -85,5 +95,10 @@ export const setCurrentPage = (page: number) => ({type: "SET_CURRENT_PAGE", payl
 export const setTotalCount = (totalCount: number) => ({type: "SET_TOTAL_COUNT", payload: {totalCount}} as const)
 
 export const setIsFetching = (isFetching: boolean) => ({type: "SET_IS_FETCHING", payload: {isFetching}} as const)
+
+export const setIsDisabled = (userId: number, isDisabled: boolean) => ({
+    type: "SET_IS_DISABLED",
+    payload: {userId, isDisabled}
+} as const)
 
 export default usersReducer

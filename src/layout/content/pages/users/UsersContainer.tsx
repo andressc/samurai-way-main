@@ -2,7 +2,7 @@ import {AppStateType} from "../../../../redux/redux-store"
 import {connect} from "react-redux"
 import {
     follow,
-    setCurrentPage,
+    setCurrentPage, setIsDisabled,
     setIsFetching,
     setTotalCount,
     setUsers,
@@ -39,14 +39,18 @@ class UsersContainer extends Component<PropsType> {
     }
 
     follow = (userId: number) => {
+        this.props.setIsDisabled(userId, true)
         usersApi.follow(userId).then(response => {
             if (response.resultCode === 0) this.props.follow(userId)
+            this.props.setIsDisabled(userId, false)
         })
     }
 
     unFollow = (userId: number) => {
+        this.props.setIsDisabled(userId, true)
         usersApi.unFollow(userId).then(response => {
             if (response.resultCode === 0) this.props.unFollow(userId)
+            this.props.setIsDisabled(userId, false)
         })
     }
 
@@ -80,6 +84,7 @@ type MapDispatchPropsType = {
     setCurrentPage: (page: number) => void
     setTotalCount: (totalCount: number) => void
     setIsFetching: (isFetching: boolean) => void
+    setIsDisabled: (userId: number, isDisabled: boolean) => void
 }
 
 export type PropsType = MapStatePropsType & MapDispatchPropsType
@@ -120,5 +125,6 @@ export default connect(mapStateToProps, {
     setUsers,
     setCurrentPage,
     setTotalCount,
-    setIsFetching
+    setIsFetching,
+    setIsDisabled
 })(UsersContainer)

@@ -28,7 +28,7 @@ const profileReducer = (state: ProfileType = initialState, action: ProfileAction
 
 type SetProfileType = ReturnType<typeof setProfile>
 
-export const setProfile = (profile: ProfileType) => ({type: "SET_PROFILE", payload: profile} as const)
+const setProfile = (profile: ProfileType) => ({type: "SET_PROFILE", payload: profile} as const)
 
 export const getProfile = (userId: number): AppThunk => (dispatch) => {
 

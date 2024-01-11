@@ -89,18 +89,18 @@ type SetTotalCountType = ReturnType<typeof setTotalCount>
 type setIsFetchingType = ReturnType<typeof setIsFetching>
 type setIsDisabledType = ReturnType<typeof setIsDisabled>
 
-export const follow = (userId: number) => ({type: "FOLLOW", payload: {userId}} as const)
+const follow = (userId: number) => ({type: "FOLLOW", payload: {userId}} as const)
 
-export const unFollow = (userId: number) => ({type: "UNFOLLOW", payload: {userId}} as const)
+const unFollow = (userId: number) => ({type: "UNFOLLOW", payload: {userId}} as const)
 
-export const setUsers = (users: UserType[]) => ({type: "SET_USERS", payload: {users}} as const)
-export const setCurrentPage = (page: number) => ({type: "SET_CURRENT_PAGE", payload: {page}} as const)
+const setUsers = (users: UserType[]) => ({type: "SET_USERS", payload: {users}} as const)
+const setCurrentPage = (page: number) => ({type: "SET_CURRENT_PAGE", payload: {page}} as const)
 
-export const setTotalCount = (totalCount: number) => ({type: "SET_TOTAL_COUNT", payload: {totalCount}} as const)
+const setTotalCount = (totalCount: number) => ({type: "SET_TOTAL_COUNT", payload: {totalCount}} as const)
 
-export const setIsFetching = (isFetching: boolean) => ({type: "SET_IS_FETCHING", payload: {isFetching}} as const)
+const setIsFetching = (isFetching: boolean) => ({type: "SET_IS_FETCHING", payload: {isFetching}} as const)
 
-export const setIsDisabled = (userId: number, isDisabled: boolean) => ({
+const setIsDisabled = (userId: number, isDisabled: boolean) => ({
     type: "SET_IS_DISABLED",
     payload: {userId, isDisabled}
 } as const)

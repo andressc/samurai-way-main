@@ -32,7 +32,7 @@ const authReducer = (state: AuthUserType = initialState, action: AuthUserActions
 
 type AuthType = ReturnType<typeof setAuth>
 
-export const setAuth = (authUser: AuthUserType) => ({type: "SET_AUTH", payload: {authUser}} as const)
+const setAuth = (authUser: AuthUserType) => ({type: "SET_AUTH", payload: {authUser}} as const)
 
 export const getAuthUser = (): AppThunk => (dispatch) => {
 

@@ -9,6 +9,12 @@ type InformationItemPropsType = {
 
 export class InformationItem extends Component<InformationItemPropsType> {
 
+    componentDidUpdate(prevProps: Readonly<InformationItemPropsType>, prevState: Readonly<{}>, snapshot?: any) {
+        if(prevProps.aboutMe !== this.props.aboutMe) {
+            this.setState({status: this.props.aboutMe})
+        }
+    }
+
     state = {isEdit: false, status: this.props.aboutMe}
 
     onDoubleClickHandler() {
@@ -31,7 +37,7 @@ export class InformationItem extends Component<InformationItemPropsType> {
                 <div onDoubleClick={this.onDoubleClickHandler.bind(this)}><span
                     style={{fontWeight: 700}}>{this.props.title}:</span> {this.state.isEdit ?
                     <input value={this.state.status} onBlur={this.onBlurHandler.bind(this)} autoFocus={true}
-                           onChange={this.onChangeHandler.bind(this)}/> : <span>{this.props.aboutMe}</span>}</div>
+                           onChange={this.onChangeHandler.bind(this)}/> : <span>{this.state.status}</span>}</div>
             </S.InformationItem>
         )
     }

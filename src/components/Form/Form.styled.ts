@@ -8,7 +8,7 @@ export const PostForm = styled.form`
 `
 
 export const PostFormField = styled.input`
-  width: 100%;
+  max-width: 100%;
   background-color: ${theme.colors.secondaryBg};
   border: 0;
   padding: 7px ${theme.indentation.padding};
@@ -27,5 +27,5 @@ export const PostFormField = styled.input`
   }
   
   resize: none;
-  height: 80px;
+  max-height: 80px;
 `

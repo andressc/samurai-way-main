@@ -36,4 +36,14 @@ export const profileApi = {
         let response = await instance.get<ResponseType<AuthUserType>>(`auth/me`)
         return response.data
     },
+
+    async getStatusUser(userId: number) {
+        let response = await instance.get<string>(`profile/status/${userId}`)
+        return response.data
+    },
+
+    async updateStatusUser(status: string) {
+        let response = await instance.put<ResponseType>(`profile/status/`, {status})
+        return response.data
+    },
 }

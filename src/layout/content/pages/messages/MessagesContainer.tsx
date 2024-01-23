@@ -7,8 +7,9 @@ import {
     DialogType,
     FriendType
 } from "../../../../redux/reducers/dialogs-reducer"
-import {Dispatch} from "redux"
+import {compose, Dispatch} from "redux"
 import {withAuthRedirect} from "../../../../hoc/withAuthRedirect"
+import {ComponentType} from "react";
 
 
 type MapStatePropsType = {
@@ -35,4 +36,13 @@ const mapDispatchToProps = (dispatch: Dispatch<DialogActionsType>): MapDispatchP
     }
 })
 
-export const MessagesContainer = withAuthRedirect(connect(mapStateToProps, mapDispatchToProps)(Messages))
+export const MessagesContainer =  compose<ComponentType>(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(Messages)
+
+/*
+export const MessagesContainer = compose<ComponentType>(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(Messages)*/

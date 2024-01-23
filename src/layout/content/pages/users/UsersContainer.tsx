@@ -6,8 +6,9 @@ import {
     toggleUnfollow,
     UserType
 } from "../../../../redux/reducers/users-reducer"
-import React, {Component} from "react"
+import React, {Component, ComponentType} from "react"
 import {Users} from "./Users"
+import {compose} from "redux";
 
 class UsersContainer extends Component<PropsType> {
 
@@ -82,8 +83,16 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     }
 })*/
 
-export default connect(mapStateToProps, {
+export default compose<ComponentType>(
+    connect(mapStateToProps, {
+        getUsers,
+        toggleFollow,
+        toggleUnfollow
+    }),
+)(UsersContainer)
+
+/*export default connect(mapStateToProps, {
     getUsers,
     toggleFollow,
     toggleUnfollow
-})(UsersContainer)
+})(UsersContainer)*/

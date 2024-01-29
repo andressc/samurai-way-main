@@ -15,7 +15,7 @@ let initialState: AuthUserType = {
     photo: null
 }
 
-export type AuthUserActionsType = AuthType | LoginType | LogoutType
+export type AuthUserActionsType = AuthType | LogoutType
 
 const authReducer = (state: AuthUserType = initialState, action: AuthUserActionsType): AuthUserType => {
 
@@ -24,7 +24,6 @@ const authReducer = (state: AuthUserType = initialState, action: AuthUserActions
             return {...state, ...action.payload.authUser}
         case "LOGOUT":
             return {
-                ...state,
                 id: null,
                 email: null,
                 login: null,
@@ -37,9 +36,6 @@ const authReducer = (state: AuthUserType = initialState, action: AuthUserActions
 
 type AuthType = ReturnType<typeof setAuth>
 const setAuth = (authUser: AuthUserType) => ({type: "SET_AUTH", payload: {authUser}} as const)
-
-type LoginType = ReturnType<typeof login>
-const login = (data: LoginPayloadType) => ({type: "LOGIN", payload: data} as const)
 
 type LogoutType = ReturnType<typeof logout>
 const logout = () => ({type: "LOGOUT"} as const)

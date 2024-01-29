@@ -7,6 +7,11 @@ export const PostForm = styled.form`
   gap: ${theme.indentation.gap};
 `
 
+export const ErrorField = styled.span`
+    color: red;
+    font-size: 12px;
+`
+
 export const PostFormField = styled.input`
     max-width: 100%;
     background-color: #f3f3f3;

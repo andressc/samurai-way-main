@@ -4,6 +4,7 @@ import {FlexWrapper} from "../../../../components/Styled/Components";
 import {Button} from "../../../../components/Button/Button";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {FormField} from "../../../../components/Form/FormField";
+import {email, maxLength20, requiredField} from "../../../../utils/validators";
 
 type FormDataType = {
     login: string
@@ -30,8 +31,10 @@ const LoginForm: FC<InjectedFormProps<FormDataType>> = (props) => {
         <form onSubmit={handleSubmit}>
             <FlexWrapper $direction="column" $gap={20} $justify="center" $align="center">
                 <p>Sign In</p>
-                <Field name="login" component={FormField} type="text" placeholder="login"/>
-                <Field name="password" component={FormField} type="text" placeholder="password"/>
+                <Field name="login" component={FormField} type="text" placeholder="login"
+                       validate={[requiredField, maxLength20, email]}/>
+                <Field name="password" component={FormField} type="text" placeholder="password"
+                       validate={[requiredField, maxLength20]}/>
                 <FlexWrapper $gap={10} $justify="center" $align="center">
                     <Field name="rememberMe" component="input" type="checkbox"/>
                     <span>Remember Me</span>

@@ -9,6 +9,7 @@ import {FlexWrapper} from "../../../../components/Styled/Components";
 import {FormTextArea} from "../../../../components/Form/FormTextArea";
 import {Button} from "../../../../components/Button/Button";
 import messageIcon from "../../../../assets/icons/message.svg"
+import {maxLength20, requiredField} from "../../../../utils/validators";
 
 type FormDataType = {
     value: string
@@ -31,14 +32,14 @@ export const Messages: FC<PropsType> = ({friends, dialogs, buttonTitle, callback
     )
 }
 
-const MessageForm: FC<InjectedFormProps<FormDataType>> = (props) => {
-    const {handleSubmit} = props
+const MessageForm: FC<InjectedFormProps<FormDataType>> = ({handleSubmit}) => {
 
     return (
         <form onSubmit={handleSubmit}>
             <FlexWrapper $direction="column" $gap={20} $justify="center" $align="center">
-                <Field name="value" component={FormTextArea} type="textarea" placeholder="your text here..."/>
-                <Button title="Send Message" icon={messageIcon} />
+                <Field name="value" component={FormTextArea} type="textarea" placeholder="your text here..."
+                       validate={[requiredField, maxLength20]}/>
+                <Button title="Send Message" icon={messageIcon}/>
             </FlexWrapper>
         </form>
     )

@@ -7,7 +7,7 @@ import {MessagesContainer} from "./pages/messages/MessagesContainer"
 import {NewsContainer} from "./pages/news/NewsContainer"
 import UsersContainer from "./pages/users/UsersContainer"
 import ProfileContainer from "./pages/profile/ProfileContainer"
-import {Login} from "./pages/login/Login"
+import {LoginContainer} from "./pages/login/LoginContainer";
 
 export const Content: FC = () => {
     return (
@@ -18,7 +18,7 @@ export const Content: FC = () => {
                     <Redirect to="/samurai-way-main/profile"/>
                 </Route>
                 <Route path="/samurai-way-main/login">
-                    <Login/>
+                    <LoginContainer/>
                 </Route>
                 <Route path="/samurai-way-main/profile/:userId?">
                     <ProfileContainer/>

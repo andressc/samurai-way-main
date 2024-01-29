@@ -6,6 +6,7 @@ import {Component, ComponentType} from "react"
 import {RouteComponentProps, withRouter} from "react-router-dom"
 import {AuthUserType} from "../../../../redux/reducers/auth-reducer"
 import {compose} from "redux";
+import {withAuthRedirect} from "../../../../hoc/withAuthRedirect";
 
 class ProfileContainer extends Component<PropsType> {
 
@@ -40,11 +41,10 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
 	authUser: state.auth,
 })
 
-
 export default compose<ComponentType>(
     connect(mapStateToProps, {getProfile, getStatus, setStatus}),
     withRouter,
-    //withAuthRedirect
+    withAuthRedirect
 )(ProfileContainer)
 
 /*

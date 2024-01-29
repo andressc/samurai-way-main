@@ -26,24 +26,40 @@ export type ProfileResponseTypePhotos = {
     large: string;
 }
 
+export type LoginPayloadType = {
+    email: string
+    password: string
+    rememberMe: boolean
+}
+
 export const profileApi = {
+    async login(payload: LoginPayloadType) {
+        const response = await instance.post<ResponseType<{ userId: number }>>(`auth/login`, payload)
+        return response.data
+    },
+
+    async logout() {
+        const response = await instance.delete<ResponseType>(`auth/login`)
+        return response.data
+    },
+
     async getProfile(userId: number) {
-        let response = await instance.get<ProfileResponseType>(`profile/${userId}`)
+        const response = await instance.get<ProfileResponseType>(`profile/${userId}`)
         return response.data
     },
 
     async getAuthUser() {
-        let response = await instance.get<ResponseType<AuthUserType>>(`auth/me`)
+        const response = await instance.get<ResponseType<AuthUserType>>(`auth/me`)
         return response.data
     },
 
     async getStatusUser(userId: number) {
-        let response = await instance.get<string>(`profile/status/${userId}`)
+        const response = await instance.get<string>(`profile/status/${userId}`)
         return response.data
     },
 
     async updateStatusUser(status: string) {
-        let response = await instance.put<ResponseType>(`profile/status/`, {status})
+        const response = await instance.put<ResponseType>(`profile/status/`, {status})
         return response.data
     },
 }

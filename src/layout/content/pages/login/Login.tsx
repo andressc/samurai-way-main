@@ -5,16 +5,13 @@ import {Button} from "../../../../components/Button/Button";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {FormField} from "../../../../components/Form/FormField";
 import {email, maxLength20, requiredField} from "../../../../utils/validators";
+import {LoginPayloadType} from "../../../../api/profile-api";
+import {PropsType} from "./LoginContainer";
 
-type FormDataType = {
-    login: string
-    password: string
-    rememberMe: boolean
-}
+export const Login: FC<PropsType> = ({loginTC}) => {
 
-export const Login = () => {
-    const onSubmit = (values: FormDataType) => {
-        console.log(values)
+    const onSubmit = (values: LoginPayloadType) => {
+        loginTC(values)
     }
 
     return (
@@ -23,7 +20,7 @@ export const Login = () => {
         </BlockWrapper>)
 }
 
-const LoginForm: FC<InjectedFormProps<FormDataType>> = (props) => {
+const LoginForm: FC<InjectedFormProps<LoginPayloadType>> = (props) => {
 
     const {handleSubmit} = props
 
@@ -31,7 +28,7 @@ const LoginForm: FC<InjectedFormProps<FormDataType>> = (props) => {
         <form onSubmit={handleSubmit}>
             <FlexWrapper $direction="column" $gap={20} $justify="center" $align="center">
                 <p>Sign In</p>
-                <Field name="login" component={FormField} type="text" placeholder="login"
+                <Field name="email" component={FormField} type="text" placeholder="email"
                        validate={[requiredField, maxLength20, email]}/>
                 <Field name="password" component={FormField} type="text" placeholder="password"
                        validate={[requiredField, maxLength20]}/>
@@ -45,4 +42,4 @@ const LoginForm: FC<InjectedFormProps<FormDataType>> = (props) => {
     )
 }
 
-const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(LoginForm)
+const LoginReduxForm = reduxForm<LoginPayloadType>({form: 'login'})(LoginForm)

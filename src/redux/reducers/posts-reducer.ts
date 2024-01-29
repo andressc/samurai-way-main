@@ -1,4 +1,4 @@
-const ADD_POST = "ADD-POST"
+export const ADD_POST = "ADD-POST"
 
 export type PostType = {
     id: number

@@ -3,10 +3,22 @@ import {Friends} from "./friends/Friends"
 import {Dialogs} from "./dialogs/Dialogs"
 import * as S from "./Messages.styled"
 import {BlockWrapper} from "../../../../components/BlockWrapper/BlockWrapper"
-import {Form} from "../../../../components/Form/Form"
 import {PropsType} from "./MessagesContainer"
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {FlexWrapper} from "../../../../components/Styled/Components";
+import {FormTextArea} from "../../../../components/Form/FormTextArea";
+import {Button} from "../../../../components/Button/Button";
+import messageIcon from "../../../../assets/icons/message.svg"
+
+type FormDataType = {
+    value: string
+}
 
 export const Messages: FC<PropsType> = ({friends, dialogs, buttonTitle, callback}) => {
+
+    const onSubmit = (values: FormDataType) => {
+        callback(values.value)
+    }
 
     return (
         <BlockWrapper title="Messages">
@@ -14,7 +26,22 @@ export const Messages: FC<PropsType> = ({friends, dialogs, buttonTitle, callback
                 <Friends friends={friends}/>
                 <Dialogs dialogs={dialogs}/>
             </S.Messages>
-            <Form callback={callback} buttonTitle={buttonTitle}/>
+            <MessageReduxForm onSubmit={onSubmit}/>
         </BlockWrapper>
     )
 }
+
+const MessageForm: FC<InjectedFormProps<FormDataType>> = (props) => {
+    const {handleSubmit} = props
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <FlexWrapper $direction="column" $gap={20} $justify="center" $align="center">
+                <Field name="value" component={FormTextArea} type="textarea" placeholder="your text here..."/>
+                <Button title="Send Message" icon={messageIcon} />
+            </FlexWrapper>
+        </form>
+    )
+}
+
+const MessageReduxForm = reduxForm<FormDataType>({form: 'message'})(MessageForm)

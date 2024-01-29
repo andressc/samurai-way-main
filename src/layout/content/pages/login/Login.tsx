@@ -30,8 +30,8 @@ const LoginForm: FC<InjectedFormProps<FormDataType>> = (props) => {
         <form onSubmit={handleSubmit}>
             <FlexWrapper $direction="column" $gap={20} $justify="center" $align="center">
                 <p>Sign In</p>
-                <Field name="login" component={FormField} type="text"/>
-                <Field name="password" component={FormField} type="text"/>
+                <Field name="login" component={FormField} type="text" placeholder="login"/>
+                <Field name="password" component={FormField} type="text" placeholder="password"/>
                 <FlexWrapper $gap={10} $justify="center" $align="center">
                     <Field name="rememberMe" component="input" type="checkbox"/>
                     <span>Remember Me</span>

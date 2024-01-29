@@ -1,13 +1,13 @@
 import {applyMiddleware, combineReducers, createStore} from "redux"
-import dialogsReducer, {DialogActionsType} from "./reducers/dialogs-reducer"
-import postsReducer, {PostActionsType} from "./reducers/posts-reducer"
+import dialogsReducer, {ADD_MESSAGE, DialogActionsType} from "./reducers/dialogs-reducer"
+import postsReducer, {ADD_POST, PostActionsType} from "./reducers/posts-reducer"
 import profileReducer, {ProfileActionsType} from "./reducers/profile-reducer"
 import sidebarReducer from "./reducers/sidebar-reducer"
 import usersReducer, {UserActionsType} from "./reducers/users-reducer"
 import {composeWithDevTools} from "@redux-devtools/extension"
 import authReducer, {AuthUserActionsType} from "./reducers/auth-reducer"
 import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk"
-import { reducer as formReducer } from 'redux-form'
+import {reducer as formReducer} from 'redux-form'
 
 const rootReducer = combineReducers({
     postsPage: postsReducer,
@@ -16,7 +16,24 @@ const rootReducer = combineReducers({
     sidebar: sidebarReducer,
     usersPage: usersReducer,
     auth: authReducer,
-    form: formReducer
+    form: formReducer.plugin({
+        post: (state, action) => {
+            switch (action.type) {
+                case ADD_POST:
+                    return undefined;
+                default:
+                    return state;
+            }
+        },
+        message: (state, action) => {
+            switch (action.type) {
+                case ADD_MESSAGE:
+                    return undefined;
+                default:
+                    return state;
+            }
+        }
+    })
 })
 
 export type AppStateType = ReturnType<typeof rootReducer>

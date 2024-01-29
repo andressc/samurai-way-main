@@ -1,14 +1,42 @@
 import React, {FC} from "react"
 import * as S from "./PostWrapper.styled"
-import {Form} from "../../../../../components/Form/Form"
 import {Posts} from "../../../../../components/Posts/Posts"
 import {PropsType} from "./PostWrapperContainer"
+import {FlexWrapper} from "../../../../../components/Styled/Components";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {Button} from "../../../../../components/Button/Button";
+import {FormTextArea} from "../../../../../components/Form/FormTextArea";
+import newsIcon from "../../../../../assets/icons/news.svg";
+
+type FormDataType = {
+    value: string
+}
 
 export const PostWrapper: FC<PropsType> = ({posts, buttonTitle, callback}) => {
+
+    const onSubmit = (values: FormDataType) => {
+        callback(values.value)
+    }
+
     return (
         <S.PostWrapper>
-            <Form callback={callback} buttonTitle={buttonTitle}/>
+            <PostReduxForm onSubmit={onSubmit}/>
             <Posts posts={posts}/>
         </S.PostWrapper>
     )
 }
+
+const PostForm: FC<InjectedFormProps<FormDataType>> = (props) => {
+    const {handleSubmit} = props
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <FlexWrapper $direction="column" $gap={20} $justify="center" $align="center">
+                <Field name="value" component={FormTextArea} type="textarea" placeholder="your text here..."/>
+                <Button title="Send Post" icon={newsIcon} />
+            </FlexWrapper>
+        </form>
+    )
+}
+
+const PostReduxForm = reduxForm<FormDataType>({form: 'post'})(PostForm)

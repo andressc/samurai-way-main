@@ -1,5 +1,7 @@
 import {AppThunk} from "../redux-store"
 import {LoginPayloadType, profileApi} from "../../api/profile-api"
+import {stopSubmit} from "redux-form";
+import {setInitialized} from "./app-reducer";
 
 export type AuthUserType = {
     id: number | null
@@ -46,13 +48,22 @@ export const getAuthUser = (): AppThunk => (dispatch) => {
         .then(response => {
             if (response.resultCode === 0) dispatch(setAuth(response.data))
         })
+        .finally(() => {
+                dispatch(setInitialized(true))
+            }
+        )
 }
 
 export const loginTC = (data: LoginPayloadType): AppThunk => (dispatch) => {
 
     profileApi.login(data)
         .then(response => {
-            if (response.resultCode === 0) dispatch(getAuthUser())
+            if (response.resultCode === 0) {
+                dispatch(getAuthUser())
+                return
+            }
+
+            dispatch(stopSubmit('login', {_error: response.messages[0]}))
         })
 }
 

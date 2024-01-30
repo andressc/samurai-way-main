@@ -11,11 +11,11 @@ import {withAuthRedirect} from "../../../../hoc/withAuthRedirect";
 class ProfileContainer extends Component<PropsType> {
 
     componentDidMount() {
-		let userId = +this.props.match.params.userId
-        if(!userId && this.props.authUser.id) userId = this.props.authUser.id
-		//if(!userId) userId = this.props.authUser.id
+        let userId: number | null = +this.props.match.params.userId
+        if (!userId && this.props.authUser.id) userId = this.props.authUser.id
+        //if (!userId) this.props.history.push('/login')
 
-		this.props.getProfile(userId)
+        this.props.getProfile(userId)
         this.props.getStatus(userId)
     }
 
@@ -26,7 +26,7 @@ class ProfileContainer extends Component<PropsType> {
 
 type MapStatePropsType = {
     user: ProfileType
-	authUser: AuthUserType
+    authUser: AuthUserType
 }
 
 type MapDispatchPropsType = {
@@ -35,11 +35,11 @@ type MapDispatchPropsType = {
     setStatus: (status: string) => void
 }
 
-export type PropsType = MapStatePropsType & MapDispatchPropsType & RouteComponentProps<{userId: string}>
+export type PropsType = MapStatePropsType & MapDispatchPropsType & RouteComponentProps<{ userId: string }>
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     user: state.profile,
-	authUser: state.auth,
+    authUser: state.auth,
 })
 
 export default compose<ComponentType>(

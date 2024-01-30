@@ -1,6 +1,6 @@
 import {connect} from "react-redux"
 import React, {Component} from "react"
-import {AuthUserType, getAuthUser, logoutTC} from "../../../redux/reducers/auth-reducer"
+import {AuthUserType, logoutTC} from "../../../redux/reducers/auth-reducer"
 import Auth from "./Auth"
 import {AppStateType} from "../../../redux/redux-store"
 import {NavLink} from "react-router-dom"
@@ -8,14 +8,6 @@ import {Button} from "../../../components/Button/Button"
 import profileIcon from "../../../assets/icons/profile.svg"
 
 class AuthContainer extends Component<PropsType> {
-
-    componentDidMount() {
-        this.props.getAuthUser()
-    }
-
-    onclickHandler = () => {
-        this.props.logoutTC()
-    }
 
     render() {
         return <>
@@ -33,7 +25,6 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-    getAuthUser: () => void
     logoutTC: () => void
 }
 
@@ -43,4 +34,4 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     authUser: state.auth
 })
 
-export default connect(mapStateToProps, {getAuthUser, logoutTC})(AuthContainer)
+export default connect(mapStateToProps, {logoutTC})(AuthContainer)

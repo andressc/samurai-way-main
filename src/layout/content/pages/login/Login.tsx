@@ -8,6 +8,7 @@ import {email, maxLength20, requiredField} from "../../../../utils/validators";
 import {LoginPayloadType} from "../../../../api/profile-api";
 import {PropsType} from "./LoginContainer";
 import {Redirect} from "react-router-dom";
+import {ErrorField} from "../../../../components/Form/ErrorField";
 
 export const Login: FC<PropsType> = ({loginTC, authUserId}) => {
 
@@ -25,7 +26,7 @@ export const Login: FC<PropsType> = ({loginTC, authUserId}) => {
 
 const LoginForm: FC<InjectedFormProps<LoginPayloadType>> = (props) => {
 
-    const {handleSubmit} = props
+    const {handleSubmit, error} = props
 
     return (
         <form onSubmit={handleSubmit}>
@@ -40,9 +41,12 @@ const LoginForm: FC<InjectedFormProps<LoginPayloadType>> = (props) => {
                     <span>Remember Me</span>
                 </FlexWrapper>
                 <Button title="Sign In"/>
+                {error && <ErrorField error={error}/>}
             </FlexWrapper>
         </form>
     )
 }
 
-const LoginReduxForm = reduxForm<LoginPayloadType>({form: 'login'})(LoginForm)
+const LoginReduxForm = reduxForm<LoginPayloadType>({
+    form: 'login',
+})(LoginForm)

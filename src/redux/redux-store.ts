@@ -8,6 +8,7 @@ import {composeWithDevTools} from "@redux-devtools/extension"
 import authReducer, {AuthUserActionsType} from "./reducers/auth-reducer"
 import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk"
 import {reducer as formReducer} from 'redux-form'
+import appReducer, {AppReducerActionsType} from "./reducers/app-reducer";
 
 const rootReducer = combineReducers({
     postsPage: postsReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     sidebar: sidebarReducer,
     usersPage: usersReducer,
     auth: authReducer,
+    app: appReducer,
     form: formReducer.plugin({
         post: (state, action) => {
             switch (action.type) {
@@ -43,6 +45,7 @@ export type AppActionsType =
     | PostActionsType
     | ProfileActionsType
     | UserActionsType
+    | AppReducerActionsType
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppStateType, unknown, AppActionsType>
 export type AppDispatch = ThunkDispatch<AppStateType, unknown, AppActionsType>
 

@@ -9,6 +9,13 @@ import {
 import React, {Component, ComponentType} from "react"
 import {Users} from "./Users"
 import {compose} from "redux";
+import {
+    getCurrentPage, getIsFetching,
+    getMaxButtons,
+    getPageSize,
+    getTotalUsersCount, getUsersState,
+} from "../../../../selectors/users-selectors";
+import {getAuthUserId} from "../../../../selectors/auth-selectors";
 
 class UsersContainer extends Component<PropsType> {
 
@@ -49,7 +56,7 @@ type MapDispatchPropsType = {
 
 export type PropsType = MapStatePropsType & MapDispatchPropsType
 
-const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
+/*const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
@@ -57,6 +64,16 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     maxButtons: state.usersPage.maxButtons,
     isFetching: state.usersPage.isFetching,
     authUserId: state.auth.id
+})*/
+
+const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
+    users: getUsersState(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    maxButtons: getMaxButtons(state),
+    isFetching: getIsFetching(state),
+    authUserId: getAuthUserId(state)
 })
 
 /*const mapDispatchToProps = (dispatch: Dispatch<UserActionsType>): MapDispatchPropsType => ({

@@ -1,6 +1,6 @@
 import React, {FC} from "react"
 import * as S from "./Information.styled"
-import {InformationItem} from "./InformationItem"
+import {InformationItem} from "./InformationItem";
 
 
 type InformationPropsType = {

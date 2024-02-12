@@ -1,4 +1,4 @@
-export const ADD_MESSAGE = "ADD-MESSAGE"
+export const ADD_MESSAGE = "dialog/ADD-MESSAGE"
 
 export type FriendType = {
     userId: number

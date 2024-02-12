@@ -47,12 +47,12 @@ export type UserActionsType =
 const usersReducer = (state: UsersPageType = initialState, action: UserActionsType): UsersPageType => {
 
     switch (action.type) {
-        case "FOLLOW":
+        case "users/FOLLOW":
             return {
                 ...state,
                 users: state.users.map(user => user.id === action.payload.userId ? {...user, followed: true} : user)
             }
-        case "UNFOLLOW":
+        case "users/UNFOLLOW":
             return {
                 ...state,
                 users: state.users.map(user => user.id === action.payload.userId ? {
@@ -60,15 +60,15 @@ const usersReducer = (state: UsersPageType = initialState, action: UserActionsTy
                     followed: false
                 } : user)
             }
-        case "SET_USERS":
+        case "users/SET_USERS":
             return {...state, users: action.payload.users.map(u => ({...u, buttonDisabled: false}))}
-        case "SET_CURRENT_PAGE":
+        case "users/SET_CURRENT_PAGE":
             return {...state, currentPage: action.payload.page}
-        case "SET_TOTAL_COUNT":
+        case "users/SET_TOTAL_COUNT":
             return {...state, totalUsersCount: action.payload.totalCount}
-        case "SET_IS_FETCHING":
+        case "users/SET_IS_FETCHING":
             return {...state, isFetching: action.payload.isFetching}
-        case "SET_IS_DISABLED":
+        case "users/SET_IS_DISABLED":
             return {
                 ...state,
                 users: state.users.map(user => user.id === action.payload.userId ? {
@@ -89,52 +89,58 @@ type SetTotalCountType = ReturnType<typeof setTotalCount>
 type setIsFetchingType = ReturnType<typeof setIsFetching>
 type setIsDisabledType = ReturnType<typeof setIsDisabled>
 
-const follow = (userId: number) => ({type: "FOLLOW", payload: {userId}} as const)
+const follow = (userId: number) => ({type: "users/FOLLOW", payload: {userId}} as const)
 
-const unFollow = (userId: number) => ({type: "UNFOLLOW", payload: {userId}} as const)
+const unFollow = (userId: number) => ({type: "users/UNFOLLOW", payload: {userId}} as const)
 
-const setUsers = (users: UserType[]) => ({type: "SET_USERS", payload: {users}} as const)
-const setCurrentPage = (page: number) => ({type: "SET_CURRENT_PAGE", payload: {page}} as const)
+const setUsers = (users: UserType[]) => ({type: "users/SET_USERS", payload: {users}} as const)
+const setCurrentPage = (page: number) => ({type: "users/SET_CURRENT_PAGE", payload: {page}} as const)
 
-const setTotalCount = (totalCount: number) => ({type: "SET_TOTAL_COUNT", payload: {totalCount}} as const)
+const setTotalCount = (totalCount: number) => ({type: "users/SET_TOTAL_COUNT", payload: {totalCount}} as const)
 
-const setIsFetching = (isFetching: boolean) => ({type: "SET_IS_FETCHING", payload: {isFetching}} as const)
+const setIsFetching = (isFetching: boolean) => ({type: "users/SET_IS_FETCHING", payload: {isFetching}} as const)
 
 const setIsDisabled = (userId: number, isDisabled: boolean) => ({
-    type: "SET_IS_DISABLED",
+    type: "users/SET_IS_DISABLED",
     payload: {userId, isDisabled}
 } as const)
 
-export const getUsers = (currentPage: number): AppThunk => (dispatch, getState: () => AppStateType) => {
+export const getUsers = (currentPage: number): AppThunk => async (dispatch, getState: () => AppStateType) => {
 
     const state = getState()
 
     dispatch(setIsFetching(true))
     dispatch(setCurrentPage(currentPage))
-    usersApi.getUsers(currentPage, state.usersPage.pageSize)
-        .then(response => {
-            dispatch(setUsers(response.items))
-            dispatch(setTotalCount(response.totalCount))
-            dispatch(setIsFetching(false))
-        })
+    const response = await usersApi.getUsers(currentPage, state.usersPage.pageSize)
+
+    dispatch(setUsers(response.items))
+    dispatch(setTotalCount(response.totalCount))
+    dispatch(setIsFetching(false))
+
 }
 
-export const toggleFollow = (userId: number): AppThunk => (dispatch) => {
+export const toggleFollow = (userId: number): AppThunk => async (dispatch) => {
 
     dispatch(setIsDisabled(userId, true))
-    usersApi.follow(userId).then(response => {
-        if (response.resultCode === 0) dispatch(follow(userId))
-        dispatch(setIsDisabled(userId, false))
-    })
+    const response = await usersApi.follow(userId)
+
+    if (response.resultCode === 0) {
+        dispatch(follow(userId))
+    }
+
+    dispatch(setIsDisabled(userId, false))
 }
 
-export const toggleUnfollow = (userId: number): AppThunk => (dispatch) => {
+export const toggleUnfollow = (userId: number): AppThunk => async (dispatch) => {
 
     dispatch(setIsDisabled(userId, true))
-    usersApi.unFollow(userId).then(response => {
-        if (response.resultCode === 0) dispatch(unFollow(userId))
-        dispatch(setIsDisabled(userId, false))
-    })
+    const response = await usersApi.unFollow(userId)
+
+    if (response.resultCode === 0) {
+        dispatch(unFollow(userId))
+    }
+
+    dispatch(setIsDisabled(userId, false))
 }
 
 export default usersReducer

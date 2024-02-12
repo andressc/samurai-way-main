@@ -19,11 +19,11 @@ const initialState: ProfileType = {
     aboutMe: null,
     status: ""
 }
-const profileReducer = (state: ProfileType = initialState, action: ProfileActionsType): ProfileType => {
+export const profileReducer = (state: ProfileType = initialState, action: ProfileActionsType): ProfileType => {
     switch (action.type) {
-        case "SET_PROFILE":
+        case "profile/SET_PROFILE":
             return {...state, ...action.payload}
-        case "SET_PROFILE_STATUS":
+        case "profile/SET_PROFILE_STATUS":
             return {...state, status: action.payload.status}
         default:
             return state
@@ -31,44 +31,39 @@ const profileReducer = (state: ProfileType = initialState, action: ProfileAction
 }
 type SetProfileType = ReturnType<typeof setProfile>
 
-const setProfile = (profile: ProfileType) => ({type: "SET_PROFILE", payload: profile} as const)
+export const setProfile = (profile: ProfileType) => ({type: "profile/SET_PROFILE", payload: profile} as const)
 
 type SetProfileStatusType = ReturnType<typeof setProfileStatus>
-const setProfileStatus = (status: string) => ({type: "SET_PROFILE_STATUS", payload: {status}} as const)
+export const setProfileStatus = (status: string) => ({type: "profile/SET_PROFILE_STATUS", payload: {status}} as const)
 
-export const getProfile = (userId: number): AppThunk => (dispatch, getState) => {
+export const getProfile = (userId: number): AppThunk => async (dispatch, getState) => {
 
-    profileApi.getProfile(userId)
-        .then(response => {
+    const response = await profileApi.getProfile(userId)
 
-            const state = getState()
+    const state = getState()
 
-            const profile: ProfileType = {
-                userId: response.userId,
-                fullName: response.fullName,
-                userImg: response.photos.small,
-                aboutMe: response.aboutMe,
-                status: state.profile.status
-            }
-            dispatch(setProfile(profile))
-        })
+    const profile: ProfileType = {
+        userId: response.userId,
+        fullName: response.fullName,
+        userImg: response.photos.small,
+        aboutMe: response.aboutMe,
+        status: state.profile.status
+    }
+    dispatch(setProfile(profile))
+
 }
 
-export const getStatus = (userId: number): AppThunk => (dispatch) => {
-
-    profileApi.getStatusUser(userId)
-        .then(response => {
-            dispatch(setProfileStatus(response))
-        })
+export const getStatus = (userId: number): AppThunk => async (dispatch) => {
+    const response = await profileApi.getStatusUser(userId)
+    dispatch(setProfileStatus(response))
 }
 
-export const setStatus = (status: string): AppThunk => (dispatch) => {
-    profileApi.updateStatusUser(status)
-        .then(response => {
-            if(response.resultCode === 0) {
-                dispatch(setProfileStatus(status))
-            }
-        })
+export const setStatus = (status: string): AppThunk => async (dispatch) => {
+    const response = await profileApi.updateStatusUser(status)
+
+    if (response.resultCode === 0) {
+        dispatch(setProfileStatus(status))
+    }
 }
 
 export default profileReducer

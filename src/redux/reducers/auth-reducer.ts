@@ -22,9 +22,9 @@ export type AuthUserActionsType = AuthType | LogoutType
 const authReducer = (state: AuthUserType = initialState, action: AuthUserActionsType): AuthUserType => {
 
     switch (action.type) {
-        case "SET_AUTH":
+        case "auth/SET_AUTH":
             return {...state, ...action.payload.authUser}
-        case "LOGOUT":
+        case "auth/LOGOUT":
             return {
                 id: null,
                 email: null,
@@ -37,10 +37,10 @@ const authReducer = (state: AuthUserType = initialState, action: AuthUserActions
 }
 
 type AuthType = ReturnType<typeof setAuth>
-const setAuth = (authUser: AuthUserType) => ({type: "SET_AUTH", payload: {authUser}} as const)
+const setAuth = (authUser: AuthUserType) => ({type: "auth/SET_AUTH", payload: {authUser}} as const)
 
 type LogoutType = ReturnType<typeof logout>
-const logout = () => ({type: "LOGOUT"} as const)
+const logout = () => ({type: "auth/LOGOUT"} as const)
 
 export const getAuthUser = (): AppThunk => (dispatch) => {
 
@@ -54,25 +54,25 @@ export const getAuthUser = (): AppThunk => (dispatch) => {
         )
 }
 
-export const loginTC = (data: LoginPayloadType): AppThunk => (dispatch) => {
+export const loginTC = (data: LoginPayloadType): AppThunk => async (dispatch) => {
 
-    profileApi.login(data)
-        .then(response => {
-            if (response.resultCode === 0) {
-                dispatch(getAuthUser())
-                return
-            }
+    const response = await profileApi.login(data)
 
-            dispatch(stopSubmit('login', {_error: response.messages[0]}))
-        })
+    if (response.resultCode === 0) {
+        dispatch(getAuthUser())
+        return
+    }
+
+    dispatch(stopSubmit('login', {_error: response.messages[0]}))
 }
 
-export const logoutTC = (): AppThunk => (dispatch) => {
+export const logoutTC = (): AppThunk => async (dispatch) => {
 
-    profileApi.logout()
-        .then(response => {
-            if (response.resultCode === 0) dispatch(logout())
-        })
+    const response = await profileApi.logout()
+
+    if (response.resultCode === 0) {
+        dispatch(logout())
+    }
 }
 
 export default authReducer

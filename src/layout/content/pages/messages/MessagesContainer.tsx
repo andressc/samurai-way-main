@@ -36,13 +36,9 @@ const mapDispatchToProps = (dispatch: Dispatch<DialogActionsType>): MapDispatchP
     }
 })
 
-export const MessagesContainer =  compose<ComponentType>(
+const MessagesContainer  =  compose<ComponentType>(
     connect(mapStateToProps, mapDispatchToProps),
     withAuthRedirect
 )(Messages)
 
-/*
-export const MessagesContainer = compose<ComponentType>(
-    connect(mapStateToProps, mapDispatchToProps),
-    withAuthRedirect
-)(Messages)*/
+export default MessagesContainer

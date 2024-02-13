@@ -36,6 +36,7 @@ export const InformationItem: FC<InformationItemPropsType> = ({title, aboutMe, s
 
     return (
         <S.InformationItem>
+            <input type="checkbox"/>
             <div onDoubleClick={onDoubleClickHandler}><span
                 style={{fontWeight: 700}}>{title}:</span> {isEdit ?
                 <input value={inputStatus} onBlur={onBlurHandler} autoFocus={true}

@@ -2,7 +2,7 @@ import {AppThunk} from "../redux-store"
 import {profileApi} from "../../api/profile-api"
 
 export type ProfileActionsType =
-    SetProfileType | SetProfileStatusType
+    SetProfileType | SetProfileStatusType | UpdateProfilePhotoType
 
 export type ProfileType = {
     userId: number | null
@@ -25,6 +25,8 @@ export const profileReducer = (state: ProfileType = initialState, action: Profil
             return {...state, ...action.payload}
         case "profile/SET_PROFILE_STATUS":
             return {...state, status: action.payload.status}
+        case "profile/UPDATE_PROFILE_PHOTO":
+            return {...state, userImg: action.payload.image}
         default:
             return state
     }
@@ -36,6 +38,9 @@ export const setProfile = (profile: ProfileType) => ({type: "profile/SET_PROFILE
 type SetProfileStatusType = ReturnType<typeof setProfileStatus>
 export const setProfileStatus = (status: string) => ({type: "profile/SET_PROFILE_STATUS", payload: {status}} as const)
 
+type UpdateProfilePhotoType = ReturnType<typeof updateProfilePhoto>
+export const updateProfilePhoto = (image: string) => ({type: "profile/UPDATE_PROFILE_PHOTO", payload: {image}} as const)
+
 export const getProfile = (userId: number): AppThunk => async (dispatch, getState) => {
 
     const response = await profileApi.getProfile(userId)
@@ -45,12 +50,17 @@ export const getProfile = (userId: number): AppThunk => async (dispatch, getStat
     const profile: ProfileType = {
         userId: response.userId,
         fullName: response.fullName,
-        userImg: response.photos.small,
+        userImg: response.photos.large,
         aboutMe: response.aboutMe,
         status: state.profile.status
     }
     dispatch(setProfile(profile))
 
+}
+
+export const savePhoto = (image: File): AppThunk => async (dispatch) => {
+    const response = await profileApi.updatePhotoUser(image)
+    dispatch(updateProfilePhoto(response.data.photos.large))
 }
 
 export const getStatus = (userId: number): AppThunk => async (dispatch) => {

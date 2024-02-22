@@ -37,7 +37,7 @@ export const User: FC<PropsType> = ({user, follow, unFollow, authUserId}) => {
             <C.FlexWrapper $justify="space-between" $align="center">
                 <SimpleCell image={user.photos.small ? user.photos.small : defaultAvatar}
                             title={user.name}
-                            subtitle={"city"} link={`/samurai-way-main/profile/${user.id}`}/>
+                            subtitle={"city"} link={`/profile/${user.id}`}/>
                 <ButtonBar>
                     {subscribeButton}
                     <Button icon={messageIcon} title="send message"/>

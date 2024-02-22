@@ -16,27 +16,27 @@ export const Content: FC = () => {
 
         <S.Content>
             <Switch>
-                <Route path="/samurai-way-main/" exact>
-                    <Redirect to="/samurai-way-main/profile"/>
+                <Route path="/" exact>
+                    <Redirect to="/profile"/>
                 </Route>
-                <Route path="/samurai-way-main/login">
+                <Route path="/login">
                     <LoginContainer/>
                 </Route>
-                <Route path="/samurai-way-main/profile/:userId?">
+                <Route path="/profile/:userId?">
                     <ProfileContainer/>
                 </Route>
-                <Route path="/samurai-way-main/messages">
+                <Route path="/messages">
                     <Suspense fallback={<Preloader/>}>
                     <MessagesContainer/>
                     </Suspense>
                 </Route>
-                <Route path="/samurai-way-main/news">
+                <Route path="/news">
                     <NewsContainer/>
                 </Route>
-                <Route path="/samurai-way-main/users">
+                <Route path="/users">
                     <UsersContainer/>
                 </Route>
-                <Route path="/samurai-way-main/settings">
+                <Route path="/settings">
                     <Settings/>
                 </Route>
                 <Route path="*">

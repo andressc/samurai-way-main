@@ -14,7 +14,7 @@ class AuthContainer extends Component<PropsType> {
             {this.props.authUser.id
                 ? <Auth profileName={this.props.authUser.login} profilePhoto={this.props.authUser.photo}
                         logoutTC={this.props.logoutTC}/>
-                : <NavLink to="/samurai-way-main/login"><Button title="Login" icon={profileIcon}/></NavLink>
+                : <NavLink to="/login"><Button title="Login" icon={profileIcon}/></NavLink>
             }
         </>
     }

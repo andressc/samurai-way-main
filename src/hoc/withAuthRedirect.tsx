@@ -16,7 +16,7 @@ export function withAuthRedirect<T>(Component: ComponentType<T>) {
 
         let {authUserId, ...restProps} = props
 
-        if (!authUserId) return <Redirect to="/samurai-way-main/login"/>
+        if (!authUserId) return <Redirect to="/login"/>
 
         return <Component {...restProps as T}/>
     }

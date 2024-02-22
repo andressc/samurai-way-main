@@ -25,31 +25,31 @@ const initialState: SidebarType = {
         {
             id: 1,
             title: "Profile",
-            link: "/samurai-way-main/profile",
+            link: "/profile",
             icon: profileIcon,
         },
         {
             id: 2,
             title: "Messages",
-            link: "/samurai-way-main/messages",
+            link: "/messages",
             icon: messageIcon,
         },
         {
             id: 3,
             title: "News",
-            link: "/samurai-way-main/news",
+            link: "/news",
             icon: newsIcon,
         },
         {
             id: 4,
             title: "Users",
-            link: "/samurai-way-main/users",
+            link: "/users",
             icon: userIcon,
         },
         {
             id: 5,
             title: "Settings",
-            link: "/samurai-way-main/settings",
+            link: "/settings",
             icon: settingsIcon,
         },
     ]

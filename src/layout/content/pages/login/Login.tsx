@@ -16,7 +16,7 @@ export const Login: FC<PropsType> = ({loginTC, authUserId}) => {
         loginTC(values)
     }
 
-    if (authUserId) return <Redirect to="/samurai-way-main/"/>
+    if (authUserId) return <Redirect to="/"/>
 
     return (
         <BlockWrapper title="Login">

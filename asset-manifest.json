@@ -1,20 +1,24 @@
 {
   "files": {
-    "main.js": "/samurai-way-main/static/js/main.019986a2.js",
-    "static/media/setting.svg": "/samurai-way-main/static/media/setting.594b0deefc0fc711b6e9bda5a3d6f792.svg",
-    "static/media/profile.svg": "/samurai-way-main/static/media/profile.fd22c2460197beaeb8fc7678cd7e7fd0.svg",
+    "main.js": "/samurai-way-main/static/js/main.a7aba80c.js",
+    "static/js/537.d4e4a111.chunk.js": "/samurai-way-main/static/js/537.d4e4a111.chunk.js",
+    "static/media/button-loader.svg": "/samurai-way-main/static/media/button-loader.ab71a917f59b321f601f6ed948990829.svg",
+    "static/media/spinner.svg": "/samurai-way-main/static/media/spinner.2f8ae0bd1f23286468c33e5f1b3b5fc7.svg",
+    "static/media/setting.svg": "/samurai-way-main/static/media/setting.b8339074032bb6ad22c6e79d1c131752.svg",
+    "static/media/profile.svg": "/samurai-way-main/static/media/profile.88245276a2a96f657360126dfd6c7543.svg",
     "index.html": "/samurai-way-main/index.html",
-    "static/media/message.svg": "/samurai-way-main/static/media/message.2e306280a8e8d75c396e59db13137793.svg",
-    "static/media/news.svg": "/samurai-way-main/static/media/news.484f739bb147507570f21ddb670ec87c.svg",
-    "static/media/view.svg": "/samurai-way-main/static/media/view.a0ddb2123d23699bcb6334840aef1257.svg",
-    "static/media/unfollow.svg": "/samurai-way-main/static/media/unfollow.c76e1173e903fd0d4018652f4a6f2b6e.svg",
-    "static/media/follow.svg": "/samurai-way-main/static/media/follow.acd142baf58d66f3ada4f8e0b15ecf10.svg",
-    "static/media/share.svg": "/samurai-way-main/static/media/share.4d93a7fc6bd48c850a2e0e9e72fdf564.svg",
-    "static/media/heart.svg": "/samurai-way-main/static/media/heart.e83ecfeac4c776f0f6bf336c8c035e45.svg",
-    "static/media/user.svg": "/samurai-way-main/static/media/user.fec6a3b7dfe0229a3de17ec740af8db6.svg",
-    "main.019986a2.js.map": "/samurai-way-main/static/js/main.019986a2.js.map"
+    "static/media/message.svg": "/samurai-way-main/static/media/message.7058dd492a0368e637109e3ef90515a6.svg",
+    "static/media/news.svg": "/samurai-way-main/static/media/news.2d1dc2f2e8878824a5dd1d1abf5be167.svg",
+    "static/media/view.svg": "/samurai-way-main/static/media/view.94250e048f542d55bbe400d2c69b9f1f.svg",
+    "static/media/unfollow.svg": "/samurai-way-main/static/media/unfollow.295a032e6f0b156eb519a4488c3b69ad.svg",
+    "static/media/follow.svg": "/samurai-way-main/static/media/follow.39d73ed56b2ca2652fece8878004a968.svg",
+    "static/media/share.svg": "/samurai-way-main/static/media/share.cb9b9d707dc0700e9e0a9409db5d4d60.svg",
+    "static/media/heart.svg": "/samurai-way-main/static/media/heart.4c3e79953d856a6e6b124a5f061d3e49.svg",
+    "static/media/user.svg": "/samurai-way-main/static/media/user.e799a59a595ebdf42433481bc2078398.svg",
+    "main.a7aba80c.js.map": "/samurai-way-main/static/js/main.a7aba80c.js.map",
+    "537.d4e4a111.chunk.js.map": "/samurai-way-main/static/js/537.d4e4a111.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.019986a2.js"
+    "static/js/main.a7aba80c.js"
   ]
 }

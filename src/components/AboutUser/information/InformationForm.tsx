@@ -32,8 +32,6 @@ export const InformationForm: FC<InformationFormPropsType> = ({user, updateProfi
         contacts: user.contacts
     }
 
-
-
     return (
         <InformationReduxForm onSubmit={onSubmit} initialValues={initialValues}/>
     )

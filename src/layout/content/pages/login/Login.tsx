@@ -10,6 +10,10 @@ import {PropsType} from "./LoginContainer";
 import {Redirect} from "react-router-dom";
 import {ErrorField} from "../../../../components/Form/ErrorField";
 
+type PropsCaptcha = {
+    captcha: string | null
+}
+
 export const Login: FC<PropsType> = ({loginTC, authUserId, captcha}) => {
 
     const onSubmit = (values: LoginPayloadType) => {
@@ -18,19 +22,15 @@ export const Login: FC<PropsType> = ({loginTC, authUserId, captcha}) => {
 
     if (authUserId) return <Redirect to="/"/>
 
-    const initialValues = {
-        captcha: captcha ? captcha : undefined,
-    }
-
     return (
         <BlockWrapper title="Login">
-            <LoginReduxForm onSubmit={onSubmit} initialValues={initialValues}/>
+            <LoginReduxForm onSubmit={onSubmit} captcha={captcha}/>
         </BlockWrapper>)
 }
 
-const LoginForm: FC<InjectedFormProps<LoginPayloadType>> = (props) => {
+const LoginForm: FC<PropsCaptcha & InjectedFormProps<LoginPayloadType, PropsCaptcha>> = (props) => {
 
-    const {handleSubmit, error, initialValues} = props
+    const {handleSubmit, error, captcha} = props
 
     return (
         <form onSubmit={handleSubmit}>
@@ -44,13 +44,13 @@ const LoginForm: FC<InjectedFormProps<LoginPayloadType>> = (props) => {
                     <Field name="rememberMe" component="input" type="checkbox"/>
                     <span>Remember Me</span>
                 </FlexWrapper>
-                {initialValues.captcha && <>
+                {captcha && <>
                     <Field name="captcha"
                            component={FormField}
                            placeholder="captcha"
                            validate={[requiredField, maxLength20]}
                     />
-                    <img src={initialValues.captcha} alt="captcha" style={{width: "150px"}}/>
+                    <img src={captcha} alt="captcha" style={{width: "150px"}}/>
                 </>}
                 <Button title="Sign In"/>
                 {error && <ErrorField error={error}/>}
@@ -59,6 +59,6 @@ const LoginForm: FC<InjectedFormProps<LoginPayloadType>> = (props) => {
     )
 }
 
-const LoginReduxForm = reduxForm<LoginPayloadType>({
+const LoginReduxForm = reduxForm<LoginPayloadType, PropsCaptcha>({
     form: 'login',
 })(LoginForm)

@@ -9,6 +9,7 @@ import {LoginPayloadType} from "../../../../api/profile-api";
 
 type MapStatePropsType = {
     authUserId: number | null
+    captcha: string | null
 }
 
 type MapDispatchPropsType = {
@@ -18,7 +19,8 @@ type MapDispatchPropsType = {
 export type PropsType = MapStatePropsType & MapDispatchPropsType
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
-    authUserId: state.auth.id
+    authUserId: state.auth.id,
+    captcha: state.auth.captcha
 })
 
 export const LoginContainer = compose<ComponentType>(

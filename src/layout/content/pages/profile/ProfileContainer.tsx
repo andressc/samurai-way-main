@@ -1,12 +1,20 @@
 import {Profile} from "./Profile"
 import {AppStateType} from "../../../../redux/redux-store"
 import {connect} from "react-redux"
-import {getProfile, getStatus, ProfileType, savePhoto, setStatus} from "../../../../redux/reducers/profile-reducer"
+import {
+    getProfile,
+    getStatus,
+    ProfileType,
+    savePhoto,
+    setStatus,
+    updateProfile
+} from "../../../../redux/reducers/profile-reducer"
 import {Component, ComponentType} from "react"
 import {RouteComponentProps, withRouter} from "react-router-dom"
 import {AuthUserType} from "../../../../redux/reducers/auth-reducer"
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../../hoc/withAuthRedirect";
+import {UpdateProfilePayloadType} from "../../../../api/profile-api";
 
 class ProfileContainer extends Component<PropsType> {
 
@@ -30,7 +38,12 @@ class ProfileContainer extends Component<PropsType> {
     }
 
     render() {
-        return <Profile user={this.props.user} setStatus={this.props.setStatus} isOwner={!this.props.match.params.userId} savePhoto={this.props.savePhoto}/>
+        return <Profile user={this.props.user}
+                        setStatus={this.props.setStatus}
+                        isOwner={!this.props.match.params.userId}
+                        savePhoto={this.props.savePhoto}
+                        updateProfile={this.props.updateProfile}
+        />
     }
 }
 
@@ -44,6 +57,7 @@ type MapDispatchPropsType = {
     getStatus: (userId: number) => void
     setStatus: (status: string) => void
     savePhoto: (image: File) => void
+    updateProfile: (payload: UpdateProfilePayloadType) => Promise<boolean>
 }
 
 export type PropsType = MapStatePropsType & MapDispatchPropsType & RouteComponentProps<{ userId: string }>
@@ -54,7 +68,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
 })
 
 export default compose<ComponentType>(
-    connect(mapStateToProps, {getProfile, getStatus, setStatus, savePhoto}),
+    connect(mapStateToProps, {getProfile, getStatus, setStatus, savePhoto, updateProfile}),
     withRouter,
     withAuthRedirect
 )(ProfileContainer)

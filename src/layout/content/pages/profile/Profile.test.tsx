@@ -1,9 +1,9 @@
 import React from 'react'
 import {render, fireEvent} from '@testing-library/react'
-import {InformationItem} from "../../../../components/AboutUser/information/InformationItem";
 import '@testing-library/jest-dom'
+import {StatusItem} from "../../../../components/AboutUser/information/StatusItem";
 
-const component = <InformationItem title="title" aboutMe="aboutMe"
+const component = <StatusItem title="title" aboutMe="aboutMe"
                                    setStatus={() => {
                                    }}/>
 
@@ -42,7 +42,7 @@ describe("informationItem", () => {
 
         const mockSetStatus = jest.fn()
 
-        const {queryAllByRole, getByRole} = render(<InformationItem title="title" aboutMe="aboutMe"
+        const {queryAllByRole, getByRole} = render(<StatusItem title="title" aboutMe="aboutMe"
                                                                     setStatus={mockSetStatus}/>)
 
         let div = queryAllByRole('generic')

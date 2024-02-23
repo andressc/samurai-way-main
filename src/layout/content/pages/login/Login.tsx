@@ -10,7 +10,7 @@ import {PropsType} from "./LoginContainer";
 import {Redirect} from "react-router-dom";
 import {ErrorField} from "../../../../components/Form/ErrorField";
 
-export const Login: FC<PropsType> = ({loginTC, authUserId}) => {
+export const Login: FC<PropsType> = ({loginTC, authUserId, captcha}) => {
 
     const onSubmit = (values: LoginPayloadType) => {
         loginTC(values)
@@ -18,15 +18,19 @@ export const Login: FC<PropsType> = ({loginTC, authUserId}) => {
 
     if (authUserId) return <Redirect to="/"/>
 
+    const initialValues = {
+        captcha: captcha ? captcha : undefined,
+    }
+
     return (
         <BlockWrapper title="Login">
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} initialValues={initialValues}/>
         </BlockWrapper>)
 }
 
 const LoginForm: FC<InjectedFormProps<LoginPayloadType>> = (props) => {
 
-    const {handleSubmit, error} = props
+    const {handleSubmit, error, initialValues} = props
 
     return (
         <form onSubmit={handleSubmit}>
@@ -40,6 +44,14 @@ const LoginForm: FC<InjectedFormProps<LoginPayloadType>> = (props) => {
                     <Field name="rememberMe" component="input" type="checkbox"/>
                     <span>Remember Me</span>
                 </FlexWrapper>
+                {initialValues.captcha && <>
+                    <Field name="captcha"
+                           component={FormField}
+                           placeholder="captcha"
+                           validate={[requiredField, maxLength20]}
+                    />
+                    <img src={initialValues.captcha} alt="captcha" style={{width: "150px"}}/>
+                </>}
                 <Button title="Sign In"/>
                 {error && <ErrorField error={error}/>}
             </FlexWrapper>

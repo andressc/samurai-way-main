@@ -1,45 +1,20 @@
-import React, {ChangeEvent, FC, useState} from "react"
+import React, {FC} from "react"
 import * as S from "./Information.styled"
 
 type InformationItemPropsType = {
     title: string
-    aboutMe: string
-    setStatus: (status: string) => void
+    text: string
+    fontWeight?: number
 }
 
-export const InformationItem: FC<InformationItemPropsType> = ({title, aboutMe, setStatus}) => {
-
-    const [isEdit, setIsEdit] = useState(false)
-    const [inputStatus, setInputStatus] = useState("")
-
-
-    /*componentDidUpdate(prevProps: Readonly<InformationItemPropsType>, prevState: Readonly<{}>, snapshot?: any) {
-         if(prevProps.aboutMe !== this.props.aboutMe) {
-             this.setState({status: this.props.aboutMe})
-         }
-     }*/
-
-     const onDoubleClickHandler = () => {
-         setIsEdit(true)
-         setInputStatus(aboutMe)
-     }
-
-     const onBlurHandler = () => {
-         setIsEdit(false)
-         setStatus(inputStatus)
-     }
-
-     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setInputStatus(e.currentTarget.value)
-     }
-
+export const InformationItem: FC<InformationItemPropsType> = ({title, text, fontWeight = 700}) => {
 
     return (
         <S.InformationItem>
-            <div onDoubleClick={onDoubleClickHandler}><span
-                style={{fontWeight: 700}}>{title}:</span> {isEdit ?
-                <input value={inputStatus} onBlur={onBlurHandler} autoFocus={true}
-                       onChange={onChangeHandler}/> : <span>{aboutMe}</span>}</div>
+            <div>
+                <span style={{fontWeight}}>{title}:</span>
+                <span>{" " + text}</span>
+            </div>
         </S.InformationItem>
     )
 }

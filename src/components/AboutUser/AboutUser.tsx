@@ -1,18 +1,24 @@
-import React, {ChangeEvent, FC} from "react"
+import React, {ChangeEvent, FC, useState} from "react"
 import {Information} from "./information/Information"
 import * as S from "./AboutUser.styled"
 import defaultAvatar from "../../assets/img/default-avatar.png"
 import {ProfileType} from "../../redux/reducers/profile-reducer"
 import {FlexWrapper} from "../Styled/Components";
+import {InformationForm} from "./information/InformationForm";
+import {StatusItem} from "./information/StatusItem";
+import {UpdateProfilePayloadType} from "../../api/profile-api";
 
 type AboutUserPropsType = {
     user: ProfileType
     isOwner: boolean
     setStatus: (status: string) => void
     savePhoto: (image: File) => void
+    updateProfile: (payload: UpdateProfilePayloadType) => Promise<boolean>
 }
 
-export const AboutUser: FC<AboutUserPropsType> = ({user, setStatus, isOwner, savePhoto}) => {
+export const AboutUser: FC<AboutUserPropsType> = ({user, setStatus, isOwner, savePhoto, updateProfile}) => {
+
+    const [isEdit, setIsEdit] = useState(false)
 
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
         if(e.currentTarget.files?.length) {
@@ -29,7 +35,10 @@ export const AboutUser: FC<AboutUserPropsType> = ({user, setStatus, isOwner, sav
             </FlexWrapper>
             <div>
                 <S.UserName>{user.fullName}</S.UserName>
-                <Information aboutMe={user.status} setStatus={setStatus}/>
+                <StatusItem aboutMe={user.status} title="Status" setStatus={setStatus}/>
+                {!isEdit
+                    ? <Information user={user} isOwner={isOwner} setIsEdit={setIsEdit}/>
+                    : <InformationForm setIsEdit={setIsEdit} user={user} updateProfile={updateProfile}/>}
             </div>
         </S.AboutUser>
     )

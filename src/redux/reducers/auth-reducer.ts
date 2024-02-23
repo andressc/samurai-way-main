@@ -8,16 +8,18 @@ export type AuthUserType = {
     email: string | null
     login: string | null
     photo: string | null
+    captcha: string | null
 }
 
 let initialState: AuthUserType = {
     id: null,
     email: null,
     login: null,
-    photo: null
+    photo: null,
+    captcha: null
 }
 
-export type AuthUserActionsType = AuthType | LogoutType
+export type AuthUserActionsType = AuthType | LogoutType | SetCaptchaType
 
 const authReducer = (state: AuthUserType = initialState, action: AuthUserActionsType): AuthUserType => {
 
@@ -29,8 +31,11 @@ const authReducer = (state: AuthUserType = initialState, action: AuthUserActions
                 id: null,
                 email: null,
                 login: null,
-                photo: null
+                photo: null,
+                captcha: null
             }
+        case "auth/SET_CAPTCHA":
+            return {...state, captcha: action.payload.captcha}
         default:
             return state
     }
@@ -41,6 +46,9 @@ const setAuth = (authUser: AuthUserType) => ({type: "auth/SET_AUTH", payload: {a
 
 type LogoutType = ReturnType<typeof logout>
 const logout = () => ({type: "auth/LOGOUT"} as const)
+
+type SetCaptchaType = ReturnType<typeof setCaptcha>
+const setCaptcha = (captcha: string | null) => ({type: "auth/SET_CAPTCHA", payload: {captcha}} as const)
 
 export const getAuthUser = (): AppThunk => (dispatch) => {
 
@@ -60,7 +68,12 @@ export const loginTC = (data: LoginPayloadType): AppThunk => async (dispatch) =>
 
     if (response.resultCode === 0) {
         dispatch(getAuthUser())
+        dispatch(setCaptcha(null))
         return
+    }
+
+    if (response.resultCode === 10) {
+        dispatch(getCaptchaTC())
     }
 
     dispatch(stopSubmit('login', {_error: response.messages[0]}))
@@ -73,6 +86,12 @@ export const logoutTC = (): AppThunk => async (dispatch) => {
     if (response.resultCode === 0) {
         dispatch(logout())
     }
+}
+
+export const getCaptchaTC = (): AppThunk => async (dispatch) => {
+
+    const response = await profileApi.getCaptcha()
+    dispatch(setCaptcha(response.url))
 }
 
 export default authReducer

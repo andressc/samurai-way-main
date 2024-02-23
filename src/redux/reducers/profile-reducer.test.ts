@@ -7,7 +7,19 @@ let initialState: ProfileType = {
     fullName: null,
     userImg: null,
     aboutMe: null,
-    status: ""
+    status: "",
+    lookingForAJob: false,
+    lookingForAJobDescription: "",
+    contacts: {
+        facebook: "",
+        website: "",
+        vk: "",
+        twitter: "",
+        instagram: "",
+        youtube: "",
+        github: "",
+        mainLink: "",
+    }
 }
 
 beforeAll(() => {
@@ -16,7 +28,19 @@ beforeAll(() => {
         fullName: "Andrey",
         userImg: "Rebrov",
         aboutMe: "aboutMe",
-        status: "status"
+        status: "status",
+        lookingForAJob: false,
+        lookingForAJobDescription: "",
+        contacts: {
+            facebook: "",
+            website: "",
+            vk: "",
+            twitter: "",
+            instagram: "",
+            youtube: "",
+            github: "",
+            mainLink: "",
+        }
     }
 })
 
